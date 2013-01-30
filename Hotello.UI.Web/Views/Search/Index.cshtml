@@ -272,10 +272,19 @@
     @Scripts.Render("~/bundles/jqueryrateit")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/daterangepicker")
+    @Scripts.Render("~/Scripts/globalize.js")
+    @Scripts.Render("~/Scripts/cultures/globalize.culture.en-GB.js")
 
     <script type="text/javascript">
 
+        $.validator.methods.date = function(value, element) {
+            return this.optional(element) || !isNaN(Globalize.parseDate(value));
+        };
+
+
         $(document).ready(function() {
+
+            Globalize.culture('en-GB');
 
             // ----------------------------------------------------------------
             // Form Submit ----------------------------------------------------
@@ -365,32 +374,6 @@
 
             $("input#ArrivalDate").datepicker("setDate", +1);
             $("input#DepartureDate").datepicker("setDate", +7);
-
-
-            jQuery(function ($) {
-                
-                $.validator.addMethod('date',
-                    
-                function (value, element) {
-                    
-                    if (this.optional(element)) {
-                        return true;
-                    }
-
-                    var ok = true;
-                    
-                    try {
-                        
-                        $.datepicker.parseDate('dd/mm/yy', value);
-                    }
-                    catch (err) {
-                        
-                        ok = false;
-                    }
-                    
-                    return ok;
-                });
-            });
 
 
             // ----------------------------------------------------------------
