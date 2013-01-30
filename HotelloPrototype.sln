@@ -13,6 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotello.Services.Expedia", 
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotello.Services.Google", "Hotello.Services.Google\Hotello.Services.Google.csproj", "{D90EFF01-26CC-4942-8235-E332B3AA52E3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1B4033FB-5F82-4A0A-99F8-0876E0196EFE} = {1B4033FB-5F82-4A0A-99F8-0876E0196EFE}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotello.Data", "Hotello.Data\Hotello.Data.csproj", "{21998635-A483-463B-9B7A-414A5C9B0A2B}"
 EndProject
@@ -23,8 +26,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotello.Services.Wunderground", "Hotello.Services.Wunderground\Hotello.Services.Wunderground.csproj", "{4ABE99EE-2B04-4BF9-B543-F98955AA1CE9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotello.Services.GeoIp", "Hotello.Services.GeoIp\Hotello.Services.GeoIp.csproj", "{8856ED1F-49BE-469B-9B48-64BF6522CD48}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1B4033FB-5F82-4A0A-99F8-0876E0196EFE} = {1B4033FB-5F82-4A0A-99F8-0876E0196EFE}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotello.Services.GeoIp.Tests", "Hotello.Services.GeoIp.Tests\Hotello.Services.GeoIp.Tests.csproj", "{40190C3D-B4D4-4D1E-B198-26598F7E6A2B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1B4033FB-5F82-4A0A-99F8-0876E0196EFE} = {1B4033FB-5F82-4A0A-99F8-0876E0196EFE}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{C0C8A281-7CF3-46BE-8EC3-22590C684436}"
 	ProjectSection(SolutionItems) = preProject

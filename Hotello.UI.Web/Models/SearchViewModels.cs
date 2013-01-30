@@ -13,15 +13,13 @@ namespace Hotello.UI.Web.Models
         // Required for Hotel availability
 
         [Required]
+        [Display(Name = "Check-in")]
         [DataType(DataType.Date)]
-        [Display(Name = "Arrival Date", Description = "The date you wish to arrive")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime ArrivalDate { get; set; }
 
         [Required]
+        [Display(Name = "Check-out")]
         [DataType(DataType.Date)]
-        [Display(Name = "Departure Date", Description = "The date you wish to leave")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DepartureDate { get; set; }
 
         [Required]
@@ -53,7 +51,6 @@ namespace Hotello.UI.Web.Models
         // Optional requirements
         public int ResultsPerPage { get; set; }
         public int Option { get; set; }
-
 
         public MultiSelectList AmenitiesMultiList
         {
