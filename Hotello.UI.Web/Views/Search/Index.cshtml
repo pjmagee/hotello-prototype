@@ -277,14 +277,14 @@
 
     <script type="text/javascript">
 
-        $.validator.methods.date = function(value, element) {
-            return this.optional(element) || !isNaN(Globalize.parseDate(value));
-        };
-
 
         $(document).ready(function() {
 
             Globalize.culture('en-GB');
+            
+            $.validator.methods.date = function (value, element) {
+                return this.optional(element) || !isNaN(Globalize.parseDate(value));
+            };
 
             // ----------------------------------------------------------------
             // Form Submit ----------------------------------------------------
