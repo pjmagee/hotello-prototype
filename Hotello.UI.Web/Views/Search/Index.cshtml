@@ -272,19 +272,20 @@
     @Scripts.Render("~/bundles/jqueryrateit")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/daterangepicker")
-    @Scripts.Render("~/Scripts/globalize.js")
-    @Scripts.Render("~/Scripts/cultures/globalize.culture.en-GB.js")
+@*    @Scripts.Render("~/Scripts/globalize.js")
+    @Scripts.Render("~/Scripts/cultures/globalize.culture.en-GB.js")*@
 
     <script type="text/javascript">
 
 
         $(document).ready(function() {
 
-            Globalize.culture('en-GB');
+            //Globalize.culture('en-GB');
             
-            $.validator.methods.date = function (value, element) {
-                return this.optional(element) || !isNaN(Globalize.parseDate(value));
-            };
+            //$.validator.methods.date = function (value, element) {
+            //    return this.optional(element) || !isNaN(Globalize.parseDate(value));
+            //};
+            
 
             // ----------------------------------------------------------------
             // Form Submit ----------------------------------------------------
@@ -354,7 +355,7 @@
                 constrainInput: true,
                 numberOfMonths: 1,
                 minDate: 0,
-                dateFormat: 'dd/mm/yy',
+                //dateFormat: 'dd/mm/yy',
                 onClose: function (selectedDate) {
                     $("input#DepartureDate").datepicker("option", "minDate", selectedDate);
                 }
@@ -366,7 +367,7 @@
                 constrainInput: true,
                 numberOfMonths: 1,
                 minDate: 0,
-                dateFormat: 'dd/mm/yy',
+                //dateFormat: 'dd/mm/yy',
                 onClose: function (selectedDate) {
                     $("input#ArrivalDate").datepicker("option", "maxDate", selectedDate);
                 }

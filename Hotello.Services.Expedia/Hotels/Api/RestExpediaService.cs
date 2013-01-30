@@ -115,11 +115,7 @@ namespace Hotello.Services.Expedia.Hotels.Api
             }
 
 
-            if (hotelListRequest.NumberOfResults.HasValue)
-            {
-                restRequest.AddParameter("numberOfResults", 200);
-            }
-
+            restRequest.AddParameter("numberOfResults", 200);
             restRequest.AddParameter("supplierType", "E"); // Expedia Collect  
 
             HandleFilteringMethods(restRequest, hotelListRequest);
