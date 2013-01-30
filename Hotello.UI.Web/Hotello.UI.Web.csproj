@@ -48,10 +48,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="AutoMapper, Version=2.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\AutoMapper.2.2.1-ci9000\lib\net40\AutoMapper.dll</HintPath>
-    </Reference>
     <Reference Include="HtmlSanitizationLibrary">
       <HintPath>..\packages\AntiXSS.4.2.1\lib\net40\HtmlSanitizationLibrary.dll</HintPath>
     </Reference>
@@ -676,7 +672,7 @@
       <Project>{3E5CF7FB-8E8E-47E2-9382-A6E7698B628A}</Project>
       <Name>Hotello.Services.Expedia</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Hotello.Services.FreeGeoIp\Hotello.Services.GeoIp.csproj">
+    <ProjectReference Include="..\Hotello.Services.GeoIp\Hotello.Services.GeoIp.csproj">
       <Project>{8856ed1f-49be-469b-9b48-64bf6522cd48}</Project>
       <Name>Hotello.Services.GeoIp</Name>
     </ProjectReference>

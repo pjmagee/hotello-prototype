@@ -61,7 +61,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AmenityMaskTests.cs" />
-    <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="HotelInformationRequestTests.cs" />
     <Compile Include="HotelListRequestTests.cs" />
     <Compile Include="JsonTests.cs" />
