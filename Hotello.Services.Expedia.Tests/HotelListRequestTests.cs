@@ -1,0 +1,152 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Hotello.Common;
+using Hotello.Services.Expedia.Hotels.Api;
+using Hotello.Services.Expedia.Hotels.Models;
+using Hotello.Services.Expedia.Hotels.Models.Request;
+using Hotello.Services.Expedia.Hotels.Models.Response;
+using NUnit.Framework;
+
+namespace Hotello.Services.Expedia.Tests
+{
+    [TestFixture]
+    public class HotelListRequestTests
+    {
+        private RestExpediaService expediaService;
+
+        [TestFixtureSetUp]
+        public void TestFixtureSetUp()
+        {
+            expediaService = new RestExpediaService();
+            expediaService.ApiKey = "ty7wujrv6jc2vbrm2cpnmear";
+            expediaService.Cid = 55505;
+            expediaService.CurrencyCode = "GBP";
+            expediaService.MinorRev = 13;
+            expediaService.Locale = "en_GB";
+        }
+
+        [SetUp]
+        public void SetUp()
+        {
+           
+        }
+
+        [Test(Description = "Search request with City and Country code returns results")]
+        public void Request_HotelListMethodOneUK()
+        {
+            // Arrange
+            HotelListRequest hotelListRequest = new HotelListRequest();
+            hotelListRequest.City = "London";
+            hotelListRequest.CountryCode = "UK";
+
+            // Act
+            HotelListResponse hotelListResponse = expediaService.GetHotelActiveList(hotelListRequest);
+
+            // Assert
+            Assert.That(hotelListResponse.HotelList.HotelSummary.Any());
+        }
+
+        [Test(Description = "Search request with City, Country and State returns results")]
+        public void RequestHotelListMethodOneUS()
+        {
+            // Arrange
+            HotelListRequest hotelListRequest = new HotelListRequest();
+            hotelListRequest.City = "New York";
+            hotelListRequest.CountryCode = "US";
+            hotelListRequest.StateProvinceCode = "NY";
+
+            // Act
+            HotelListResponse hotelListResponse = expediaService.GetHotelActiveList(hotelListRequest);
+
+            // Assert
+            Assert.That(hotelListResponse.HotelList.HotelSummary.Any());
+        }
+
+        [Test(Description = "Search request with City, Country, Dates and Rooms returns results")]
+        public void RequestHotelListBasicAvailability()
+        {
+            // Arrange
+            HotelListRequest hotelListRequest = new HotelListRequest();
+            hotelListRequest.City = "London";
+            hotelListRequest.CountryCode = "UK";
+            hotelListRequest.ArrivalDate = new DateTime(2013, 02, 07);
+            hotelListRequest.DepartureDate = new DateTime(2013, 03, 07);
+            hotelListRequest.RoomGroup = new List<Room>
+                {
+                    new Room {NumberOfAdults = 2, NumberOfChildren = 2, ChildAges = new List<int> {14, 16}},
+                    new Room {NumberOfAdults = 1, NumberOfChildren = 0}
+                };
+
+            // Act
+            HotelListResponse hotelListResponse = expediaService.GetHotelAvailabilityList(hotelListRequest);
+
+            // Assert
+            Assert.That(hotelListResponse.HotelList.HotelSummary.Any());
+        }
+
+
+        [Test(Description = "Search request with City, Country, and Property Category all Inclusive returns results")]
+        public void RequestHotelListWithAllInclusiveFilter()
+        {
+            // Arrange
+            HotelListRequest hotelListRequest = new HotelListRequest();
+            hotelListRequest.City = "London";
+            hotelListRequest.CountryCode = "UK";
+            hotelListRequest.PropertyCategories = new List<PropertyCategory>();
+            hotelListRequest.PropertyCategories.Add(PropertyCategory.AllInclusive); // Return all that are Inclusive
+
+            // Act
+            HotelListResponse hotelListResponse = expediaService.GetHotelActiveList(hotelListRequest);
+
+            // Assert
+            if (hotelListResponse.HotelList != null)
+            {
+                if (hotelListResponse.HotelList.HotelSummary != null)
+                {
+                    foreach (var summary in hotelListResponse.HotelList.HotelSummary)
+                    {
+                        Console.WriteLine((PropertyCategory)summary.PropertyCategory);
+
+                        Assert.That(hotelListRequest.PropertyCategories.Contains((PropertyCategory)summary.PropertyCategory));
+                    }
+                }
+            }
+        }
+
+        [Test(Description = "Search request with Swimming Pool amenity brings back results with swimming")]
+        public void RequestHotelListWithAmenitiesFilter()
+        {
+            // Arrange
+            HotelListRequest hotelListRequest = new HotelListRequest();
+            hotelListRequest.City = "New York";
+            hotelListRequest.CountryCode = "US";
+            hotelListRequest.StateProvinceCode = "NY";
+
+            hotelListRequest.Amenities = new List<Amenity>(){ Amenity.SwimmingPool };
+
+            // Act
+            HotelListResponse hotelListResponse = expediaService.GetHotelActiveList(hotelListRequest);
+
+            // Assert
+            if (hotelListResponse.HotelList != null)
+            {
+                if (hotelListResponse.HotelList.HotelSummary != null)
+                {
+                    foreach (var summary in hotelListResponse.HotelList.HotelSummary)
+                    {
+                        Console.WriteLine("Amenity Mask: " + summary.AmenityMask);
+                        Console.WriteLine("Contained amenties: ");
+                    }
+                }
+            }
+        }
+
+
+        [TearDown]
+        public void TearDown()
+        {
+            
+        }
+    }
+}

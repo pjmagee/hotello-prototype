@@ -1,0 +1,410 @@
+﻿
+@using System.Globalization
+@using Hotello.Services.Expedia.Hotels.Models
+@model Hotello.Services.Expedia.Hotels.Models.Response.HotelInformationResponse
+
+@{
+    ViewBag.Title = "Information";
+    var culture = new CultureInfo("en-GB");
+    
+    HotelDetails details = Model.HotelDetails;
+    HotelSummary summary = Model.HotelSummary;
+    PropertyAmenities amenities = Model.PropertyAmenities;
+    RoomTypes roomTypes = Model.RoomTypes;
+    Suppliers suppliers = Model.Suppliers;
+    HotelImages images = Model.HotelImages;
+}
+
+
+<div class="row well">
+    
+    <!-- ROW -->
+    <div class="row">
+        <div class="span12">
+            <h2 class="pull-left">@Server.HtmlDecode(Model.HotelSummary.Name)<small></small></h2>
+        </div>
+    </div>
+
+    <!-- ROW -->
+    <div class="row">
+
+        <div class="span4">
+            
+            <!-- IMAGE CAROUSEL -->
+            <div class="carousel slide" id="myCarousel">
+                <div class="carousel-inner">
+                    @foreach (var image in Model.HotelImages.HotelImage)
+                    {
+                        <div class="item hotel-image">
+                            <img class="img-polaroid hotel-image" src="@image.Url" style="margin-left: auto; margin-right: auto;" />
+                        </div>
+                    }
+                </div>
+                <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+                <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+            </div>
+
+        </div>
+        
+        <!-- HOTEL POLICY AND INFORMATION -->
+        <div class="span6">
+            
+            <!-- INNER ROW 1 -->
+            <div class="row" style="margin-left: 10px;">
+                <span class="label label-important"><i class="icon-file"></i>Policy</span> 
+                <p>@Model.HotelDetails.HotelPolicy</p>
+            </div>
+            <!-- INNER ROW 2 -->
+            <div class="row" style="margin-left: 10px;">
+                <span class="label label-info"><i class="icon-exclamation-sign"></i> Information</span> 
+                <p>@Model.HotelDetails.PropertyInformation</p>
+            </div>
+            
+            <div class="row" style="margin-left: 10px;">
+                <h4>TripAdvisor <small>rating based on <span>@Model.HotelSummary.TripAdvisorReviewCount</span> reviews</small></h4>
+                <img src="@Model.HotelSummary.TripAdvisorRatingUrl" />
+            </div>
+        </div>
+    </div>
+    
+    <!-- ROW -->
+    <div class="row">
+        
+        <div class="span12" style="margin-top: 15px;">
+            <!-- LIST OF IMAGE THUMBNAILS -->
+            <ul class="thumbnails inline unstyled">
+                @foreach (var image in Model.HotelImages.HotelImage)
+                {
+                    <li><img title="Click me to see a bigger version!" class="img-polaroid" src="@image.ThumbnailUrl" height="50" width="50" /></li>
+                }
+            </ul>
+        </div>
+        
+    </div>
+    
+    <!-- ROW -->
+    <div class="row">
+        <div class="span12">
+            <div class="pull-right">
+                    
+                <!-- INNER ROW PRICE -->
+                <div class="row">
+                    <span>From</span>
+                    <h1><span>@culture.NumberFormat.CurrencySymbol</span>@Model.HotelSummary.LowRate.ToString("0.##")<small> per night</small></h1>
+                </div>
+
+                <!-- INNER ROW AVAILABILITY CHECK -->
+                <div class="row">
+                    <button id="availability" class="btn btn-info">
+                        <span> Check Room Availability <i class="icon-arrow-right"></i></span>
+                    </button>    
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <!-- ROW -->
+    <div class="row">
+        
+        <!-- HIDE TABS BUTTON -->
+        <div class="span2" style="margin-bottom: 10px;">
+            <button id="hide" class="btn btn-mini btn-block">
+                <span><i class="icon-search"></i> Hide Tab Content</span>
+            </button>
+        </div>
+
+    </div>
+
+    <!-- ROW -->
+    <div class="row">
+        
+        <div class="span12">
+            
+            <!-- TABS NAVIGATION -->
+            <ul id="tabs" class="nav nav-tabs">
+                <li><a href="#description" data-toggle="tab"><i class="icon-info-sign"></i> Description</a></li>
+                <li><a href="#amenities" data-toggle="tab"><i class="icon-list"></i> Amenities</a></li>
+                <li><a href="#area" data-toggle="tab"><i class="icon-info-sign"></i> Area Info</a></li>
+                <li><a href="#rooms" data-toggle="tab"><i class="icon-info-sign"></i> Room Info</a></li>
+                <li><a href="#driving" data-toggle="tab"><i class="icon-road"></i> Directions</a></li>
+                <li><a href="#checkin" data-toggle="tab"><i class="icon-tags"></i> Check-in</a></li>
+                <li><a href="#map" data-toggle="tab"><i class="icon-map-marker"></i> Map</a></li>
+                <li><a href="#tour" data-toggle="tab"><i class="icon-camera"></i> Virtual Tour</a></li>
+            </ul>
+
+            <!-- TAB CONTENT -->
+            <div class="tab-content">
+                
+                <!-- TAB 1 -->
+                <div id="description" class="tab-pane">
+                    <p>@Html.Raw(Server.HtmlDecode(details.PropertyDescription))</p>
+                </div>
+
+                <!-- TAB 2 -->
+                <div id="amenities" class="tab-pane">
+                    <ol>
+                        @foreach (var amenity in Model.PropertyAmenities.PropertyAmenity)
+                        {
+                            <li title="@amenity.AmenityId">@Server.HtmlDecode(amenity.Amenity)</li>
+                        }
+                    </ol>
+                </div>
+
+                <!-- TAB 3 -->
+                <div id="area" class="tab-pane">
+                    @Html.Raw(Server.HtmlDecode(details.AreaInformation))
+                </div>
+
+                <!-- TAB 4 -->
+                <div id="driving" class="tab-pane">
+                    @Html.Raw(Server.HtmlDecode(details.DrivingDirections))
+                </div>
+
+                <!-- TAB 5 -->
+                <div id="rooms" class="tab-pane">
+                    @Html.Raw(Server.HtmlDecode(details.RoomInformation))
+                </div>
+
+                <!-- TAB 6 -->
+                <div id="checkin" class="tab-pane">
+                    @Html.Raw(Server.HtmlDecode(details.CheckInInstructions))
+                </div>
+
+                <!-- TAB 7 -->
+                <div id="map" class="tab-pane">
+                    
+                    <!-- STORE VALUES FOR JQUERY -->
+                    <div id="latitude" class="hidden" title="@summary.Latitude"></div>
+                    <div id="longitude" class="hidden" title="@summary.Longitude"></div>
+
+                    <div id="map_canvas" style="width: 100%; height: 100%">
+                        <!-- GOOGLE MAP -->
+                    </div>
+                </div>
+                
+                <!-- TAB 8 -->
+                <div id="tour" class="tab-pane">
+                    
+                    @{
+                        string url = "http://travel.ian.com/hotel/tours/" + Model.HotelId + "?cid=55505";
+                    }
+
+                    <iframe style="width: 100%; height: 100%" seamless="seamless" src="@url"></iframe>
+                </div>
+
+            </div>
+        </div>
+        
+    </div>
+    
+    <div class="row">
+        @using (Html.BeginForm("Availability", "Rooms", new { id = summary.HotelId }, FormMethod.Get))
+        {
+            <input class="hidden" type="submit" />
+        } 
+    </div>
+</div>
+
+
+@section scripts {
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryui-bootstrap")
+    @Scripts.Render("~/bundles/jqueryrateit")
+
+    <script type="text/javascript">
+
+        var lat = $('div[id="latitude"]').attr('title');
+        var lon = $('div[id="longitude"]').attr('title');
+
+        var map;
+        var service;
+        var infoWindow;
+
+        function initialize() {
+
+            var mapOptions = {
+                center: new google.maps.LatLng(lat, lon),
+                zoomControlOptions: {
+                    style: google.maps.ZoomControlStyle.LARGE
+                },
+                zoom: 15,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+            infoWindow = new google.maps.InfoWindow();
+            service = new google.maps.places.PlacesService(map);
+
+            var weatherLayer = new google.maps.weather.WeatherLayer({
+                temperatureUnits: google.maps.weather.TemperatureUnit.CELSIUS
+            });
+
+            // Hotel Position
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(lat, lon),
+                draggable: false,
+                title: $('h2.pull-left').text()
+            });
+
+            marker.setMap(map);
+            weatherLayer.setMap(map);
+
+            map.setCenter(marker.position);
+
+        }
+
+        function getAttractions() {
+
+            // https://maps.googleapis.com/maps/api/place/nearbysearch/output?parameters
+
+            var request = {
+                location: new google.maps.LatLng(lat, lon),
+                radius: 500,
+                types: [
+                    "point_of_interest",
+                    "museum",
+                    "night_club",
+                    "park",
+                    "bar",
+                    "aquarium",
+                    "restaurant",
+                    "amusement_park",
+                    "zoo"]
+            };
+
+            service.radarSearch(request, callback);
+
+
+        }
+
+        function createMarker(result) {
+
+            var marker = new google.maps.Marker({
+                map: map,
+                position: result.geometry.location,
+                title: result.name,
+            });
+           
+            google.maps.event.addListener(marker, 'click', function () {
+                infoWindow.setContent(result.name);
+                infoWindow.open(map, this);
+            });
+
+        }
+
+        function callback(results, status) {
+
+            if (status != google.maps.places.PlacesServiceStatus.OK) {
+                console.log(status);
+                return;
+            }
+
+            for (var i = 0; i < results.length; i++) {
+                createMarker(results[i]);
+            }
+
+        }
+
+        $(document).ready(function() {
+
+            $(".rateit").rateit();
+
+            $('button#availability').click(function(e) {
+                e.preventDefault();
+
+                $('input[type="submit"]').click();
+                
+            });
+
+            $('#myCarousel').carousel({
+                interval: 5000,
+                pause: 'pause'
+            });
+
+            // ----------------------------------------------------------------
+            // Tabbed Hotel content -------------------------------------------
+            // ----------------------------------------------------------------
+
+            $('#tabs a').click(function(e) {
+
+                e.preventDefault();
+                $(this).tab('show');
+                $('.tab-content').show();
+
+            });
+
+            $('#tabs a:first').tab('show'); // Activate first tab
+
+            $('button#hide').click(function() {
+
+                var button = $(this);
+
+                console.log("tab content visible: " + $('.tab-content').is(':visible'));
+
+                if ($('.tab-content').is(':visible')) {
+
+                    $('.tab-content').slideUp('slow', function() {
+                        $(button).html('<span><i class="icon-search"></i> Show Tab Content</span>');
+                    });
+
+                } else {
+
+                    $('.tab-content').slideDown('slow', function() {
+                        $(button).html('<span><i class="icon-search"></i> Hide Tab Content</span>');
+                    });
+
+                }
+            });
+
+
+            // ----------------------------------------------------------------
+            // Hotel Images ---------------------------------------------------
+            // ----------------------------------------------------------------
+
+            $('ul.thumbnails li').click(function() {
+                $('#myCarousel').carousel($(this).index());
+            });
+
+            // ----------------------------------------------------------------
+            // Twitter Bootstrap Google Map Fix -------------------------------
+            // ----------------------------------------------------------------
+            // http://stackoverflow.com/questions/10453477/bootstrap-tabbable-nav-setting-tab-section2-height-to-tab-section1
+            // http://stackoverflow.com/questions/14320277/twitter-bootstrap-google-maps-still-doesnt-work-with-bug-fix            
+            // https://github.com/twitter/bootstrap/issues/1552
+            // https://github.com/twitter/bootstrap/issues/2330
+            // http://jsfiddle.net/26mrX/197/
+
+            var loaded = false;
+
+            // Only initilize once the tab has been shown, otherwise causes rendering issues with the map
+            
+            $('a[href="#map"]').on('shown', function(e) {
+
+                console.log("Load Google Map, Tab is shown");
+                
+                if (!loaded) {
+                    
+                    initialize();
+
+                    // getAttractions();
+
+                    loaded = true;
+                }
+
+                $(window).resize(function() {
+
+                    var h = $(".tab-content").height();
+                    $('#map_canvas').css('height', h);
+
+                }).resize();
+
+
+            });
+
+        });
+
+    </script>
+
+}

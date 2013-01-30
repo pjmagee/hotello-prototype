@@ -1,0 +1,1180 @@
+﻿{
+	"HotelListResponse": {
+		"customerSessionId": "0ABAA82F-1193-6913-C582-965213907BD5",
+		"numberOfRoomsRequested": 2,
+		"moreResultsAvailable": true,
+		"cacheKey": "-18011936:13c58965213:-7bce",
+		"cacheLocation": "10.186.168.47:7301",
+		"cachedSupplierResponse": {
+			"@matchedLocale": "true",
+			"@matchedCurrency": "true",
+			"@tpidUsed": "5101",
+			"@otherOverheadTime": "5",
+			"@candidatePreptime": "65",
+			"@supplierResponseTime": "492",
+			"@supplierResponseNum": "5",
+			"@supplierRequestNum": "627",
+			"@cachedTime": "0",
+			"@supplierCacheTolerance": "MED_ENHANCED"
+		},
+		"HotelList": {
+			"@activePropertyCount": "1066",
+			"@size": "5",
+			"HotelSummary": [{
+				"@ubsScore": "0",
+				"@order": "0",
+				"hotelId": 107642,
+				"name": "Marriott London Marble Arch",
+				"address1": "134 George Street",
+				"city": "London",
+				"postalCode": "W1H 5DN",
+				"countryCode": "GB",
+				"airportCode": "LHR",
+				"supplierType": "E",
+				"propertyCategory": 1,
+				"hotelRating": 4,
+				"confidenceRating": 47,
+				"amenityMask": 22511755,
+				"tripAdvisorRating": 4,
+				"tripAdvisorReviewCount": 487,
+				"tripAdvisorRatingUrl": "http:\/\/www.tripadvisor.com\/img\/cdsi\/img2\/ratings\/traveler\/4.0-12345-4.gif",
+				"locationDescription": "Near Marble Arch",
+				"shortDescription": "&lt;p&gt;&lt;b&gt;Location. &lt;\/b&gt; &lt;br \/&gt;Located in central London, Marriott London Marble Arch is a business-friendly hotel within walking distance of Marble Arch and Hyde Park Speakers&apos; Corner. Additional points",
+				"highRate": 359,
+				"lowRate": 287,
+				"rateCurrencyCode": "GBP",
+				"latitude": 51.51637,
+				"longitude": -0.16407,
+				"proximityDistance": 2.8285432,
+				"proximityUnit": "MI",
+				"hotelInDestination": true,
+				"thumbNailUrl": "\/hotels\/1000000\/10000\/2300\/2208\/2208_76_t.jpg",
+				"deepLink": "http:\/\/travel.ian.com\/index.jsp?pageName=hotAvail&amp;cid=55505&amp;hotelID=107642&amp;mode=2&amp;numberOfRooms=2&amp;room-0-adult-total=2&amp;room-0-child-total=2&amp;room-0-child-0-age=14&amp;room-0-child-1-age=16&amp;room-1-adult-total=1&amp;room-1-child-total=0&amp;arrivalMonth=1&amp;arrivalDay=7&amp;departureMonth=2&amp;departureDay=7&amp;showInfo=true&amp;locale=en_GB&amp;currencyCode=GBP",
+				"RoomRateDetailsList": {
+					"RoomRateDetails": {
+						"roomTypeCode": 173217,
+						"rateCode": 200281892,
+						"maxRoomOccupancy": 4,
+						"quotedRoomOccupancy": 2,
+						"minGuestAge": 0,
+						"roomDescription": "Executive Room",
+						"currentAllotment": 0,
+						"propertyAvailable": true,
+						"propertyRestricted": false,
+						"expediaPropertyId": 2208,
+						"rateKey": "a4057084-36ec-4127-bb43-db1234b9aea8",
+						"nonRefundable": false,
+						"RateInfos": {
+							"@size": "1",
+							"RateInfo": {
+								"@rateChange": "true",
+								"@promo": "false",
+								"@priceBreakdown": "true",
+								"RoomGroup": {
+									"Room": [{
+										"numberOfAdults": 2,
+										"numberOfChildren": 2,
+										"childAges": [14,
+										16]
+									},
+									{
+										"numberOfAdults": 1,
+										"numberOfChildren": 0
+									}]
+								},
+								"ChargeableRateInfo": {
+									"@total": "17440.0",
+									"@nightlyRateTotal": "17440.0",
+									"@maxNightlyRate": "359.0",
+									"@currencyCode": "GBP",
+									"@commissionableUsdTotal": "27673.76",
+									"@averageRate": "311.42856",
+									"@averageBaseRate": "311.42856",
+									"NightlyRatesPerRoom": {
+										"@size": "28",
+										"NightlyRate": [{
+											"@promo": "false",
+											"@rate": "287.0",
+											"@baseRate": "287.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "287.0",
+											"@baseRate": "287.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "287.0",
+											"@baseRate": "287.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "287.0",
+											"@baseRate": "287.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "287.0",
+											"@baseRate": "287.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "287.0",
+											"@baseRate": "287.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "287.0",
+											"@baseRate": "287.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "287.0",
+											"@baseRate": "287.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "287.0",
+											"@baseRate": "287.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "287.0",
+											"@baseRate": "287.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "359.0",
+											"@baseRate": "359.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "359.0",
+											"@baseRate": "359.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "359.0",
+											"@baseRate": "359.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "359.0",
+											"@baseRate": "359.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "359.0",
+											"@baseRate": "359.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "359.0",
+											"@baseRate": "359.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "347.0",
+											"@baseRate": "347.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "287.0",
+											"@baseRate": "287.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "287.0",
+											"@baseRate": "287.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "287.0",
+											"@baseRate": "287.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "287.0",
+											"@baseRate": "287.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "287.0",
+											"@baseRate": "287.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "299.0",
+											"@baseRate": "299.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "299.0",
+											"@baseRate": "299.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "329.0",
+											"@baseRate": "329.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "329.0",
+											"@baseRate": "329.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "329.0",
+											"@baseRate": "329.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "329.0",
+											"@baseRate": "329.0"
+										}]
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			{
+				"@ubsScore": "0",
+				"@order": "1",
+				"hotelId": 105992,
+				"name": "Melia White House Hotel",
+				"address1": "Regents Park",
+				"address2": "Albany Street",
+				"city": "London",
+				"postalCode": "NW1 3UP",
+				"countryCode": "GB",
+				"airportCode": "LON",
+				"supplierType": "E",
+				"propertyCategory": 1,
+				"hotelRating": 4,
+				"confidenceRating": 33,
+				"amenityMask": 7831555,
+				"tripAdvisorRating": 4,
+				"tripAdvisorReviewCount": 1557,
+				"tripAdvisorRatingUrl": "http:\/\/www.tripadvisor.com\/img\/cdsi\/img2\/ratings\/traveler\/4.0-12345-4.gif",
+				"locationDescription": "Near BT Tower",
+				"shortDescription": "&lt;p&gt;&lt;b&gt;Location. &lt;\/b&gt; &lt;br \/&gt;Located in central London, Melia White House Hotel is within walking distance of Crescent Gardens and BT Tower. Nearby points of interest also include Royal Academy of",
+				"highRate": 255,
+				"lowRate": 215,
+				"rateCurrencyCode": "GBP",
+				"latitude": 51.52475,
+				"longitude": -0.14389,
+				"proximityDistance": 2.731976,
+				"proximityUnit": "MI",
+				"hotelInDestination": true,
+				"thumbNailUrl": "\/hotels\/1000000\/530000\/525900\/525818\/525818_148_t.jpg",
+				"deepLink": "http:\/\/travel.ian.com\/index.jsp?pageName=hotAvail&amp;cid=55505&amp;hotelID=105992&amp;mode=2&amp;numberOfRooms=2&amp;room-0-adult-total=2&amp;room-0-child-total=2&amp;room-0-child-0-age=14&amp;room-0-child-1-age=16&amp;room-1-adult-total=1&amp;room-1-child-total=0&amp;arrivalMonth=1&amp;arrivalDay=7&amp;departureMonth=2&amp;departureDay=7&amp;showInfo=true&amp;locale=en_GB&amp;currencyCode=GBP",
+				"RoomRateDetailsList": {
+					"RoomRateDetails": {
+						"roomTypeCode": 49801,
+						"rateCode": 812697,
+						"maxRoomOccupancy": 4,
+						"quotedRoomOccupancy": 2,
+						"minGuestAge": 0,
+						"roomDescription": "Junior Suite Incl Executive Level",
+						"currentAllotment": 37,
+						"propertyAvailable": true,
+						"propertyRestricted": false,
+						"expediaPropertyId": 525818,
+						"rateKey": "a4057084-36ec-4127-bb43-db1234b9aea8",
+						"nonRefundable": false,
+						"RateInfos": {
+							"@size": "1",
+							"RateInfo": {
+								"@rateChange": "true",
+								"@promo": "false",
+								"@priceBreakdown": "true",
+								"RoomGroup": {
+									"Room": [{
+										"numberOfAdults": 2,
+										"numberOfChildren": 2,
+										"childAges": [14,
+										16]
+									},
+									{
+										"numberOfAdults": 1,
+										"numberOfChildren": 0
+									}]
+								},
+								"ChargeableRateInfo": {
+									"@total": "15960.0",
+									"@surchargeTotal": "2660.0",
+									"@nightlyRateTotal": "13300.0",
+									"@maxNightlyRate": "255.0",
+									"@currencyCode": "GBP",
+									"@commissionableUsdTotal": "21104.42",
+									"@averageRate": "237.5",
+									"@averageBaseRate": "237.5",
+									"NightlyRatesPerRoom": {
+										"@size": "28",
+										"NightlyRate": [{
+											"@promo": "false",
+											"@rate": "245.0",
+											"@baseRate": "245.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "230.0",
+											"@baseRate": "230.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "230.0",
+											"@baseRate": "230.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "215.0",
+											"@baseRate": "215.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "245.0",
+											"@baseRate": "245.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "245.0",
+											"@baseRate": "245.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "245.0",
+											"@baseRate": "245.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "245.0",
+											"@baseRate": "245.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "230.0",
+											"@baseRate": "230.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "230.0",
+											"@baseRate": "230.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "215.0",
+											"@baseRate": "215.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "245.0",
+											"@baseRate": "245.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "255.0",
+											"@baseRate": "255.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "255.0",
+											"@baseRate": "255.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "245.0",
+											"@baseRate": "245.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "230.0",
+											"@baseRate": "230.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "230.0",
+											"@baseRate": "230.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "215.0",
+											"@baseRate": "215.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "245.0",
+											"@baseRate": "245.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "245.0",
+											"@baseRate": "245.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "245.0",
+											"@baseRate": "245.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "245.0",
+											"@baseRate": "245.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "230.0",
+											"@baseRate": "230.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "230.0",
+											"@baseRate": "230.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "225.0",
+											"@baseRate": "225.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "245.0",
+											"@baseRate": "245.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "245.0",
+											"@baseRate": "245.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "245.0",
+											"@baseRate": "245.0"
+										}]
+									},
+									"Surcharges": {
+										"@size": "1",
+										"Surcharge": {
+											"@amount": "2660.0",
+											"@type": "TaxAndServiceFee"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			{
+				"@ubsScore": "0",
+				"@order": "2",
+				"hotelId": 106180,
+				"name": "The May Fair",
+				"address1": "Stratton Street",
+				"city": "London",
+				"postalCode": "W1J 8LT",
+				"countryCode": "GB",
+				"airportCode": "LHR",
+				"supplierType": "E",
+				"propertyCategory": 1,
+				"hotelRating": 5,
+				"confidenceRating": 95,
+				"amenityMask": 2129930,
+				"tripAdvisorRating": 4,
+				"tripAdvisorReviewCount": 1316,
+				"tripAdvisorRatingUrl": "http:\/\/www.tripadvisor.com\/img\/cdsi\/img2\/ratings\/traveler\/4.0-12345-4.gif",
+				"locationDescription": "Near Buckingham Palace",
+				"shortDescription": "&lt;p&gt;&lt;b&gt;Location. &lt;\/b&gt; &lt;br \/&gt;The May Fair is a business-friendly hotel located in central London, close to Berkeley Square, St. James Palace, and Grosvenor Square. Additional points of interest include",
+				"highRate": 449,
+				"lowRate": 309,
+				"rateCurrencyCode": "GBP",
+				"latitude": 51.50803,
+				"longitude": -0.1437,
+				"proximityDistance": 1.7924556,
+				"proximityUnit": "MI",
+				"hotelInDestination": true,
+				"thumbNailUrl": "\/hotels\/1000000\/10000\/7700\/7606\/7606_92_t.jpg",
+				"deepLink": "http:\/\/travel.ian.com\/index.jsp?pageName=hotAvail&amp;cid=55505&amp;hotelID=106180&amp;mode=2&amp;numberOfRooms=2&amp;room-0-adult-total=2&amp;room-0-child-total=2&amp;room-0-child-0-age=14&amp;room-0-child-1-age=16&amp;room-1-adult-total=1&amp;room-1-child-total=0&amp;arrivalMonth=1&amp;arrivalDay=7&amp;departureMonth=2&amp;departureDay=7&amp;showInfo=true&amp;locale=en_GB&amp;currencyCode=GBP",
+				"RoomRateDetailsList": {
+					"RoomRateDetails": {
+						"roomTypeCode": 407772,
+						"rateCode": 1399169,
+						"maxRoomOccupancy": 4,
+						"quotedRoomOccupancy": 2,
+						"minGuestAge": 0,
+						"roomDescription": "Family Room",
+						"currentAllotment": 0,
+						"propertyAvailable": true,
+						"propertyRestricted": false,
+						"expediaPropertyId": 7606,
+						"rateKey": "a4057084-36ec-4127-bb43-db1234b9aea8",
+						"nonRefundable": false,
+						"RateInfos": {
+							"@size": "1",
+							"RateInfo": {
+								"@rateChange": "true",
+								"@promo": "false",
+								"@priceBreakdown": "true",
+								"RoomGroup": {
+									"Room": [{
+										"numberOfAdults": 2,
+										"numberOfChildren": 2,
+										"childAges": [14,
+										16]
+									},
+									{
+										"numberOfAdults": 1,
+										"numberOfChildren": 0
+									}]
+								},
+								"ChargeableRateInfo": {
+									"@total": "22084.8",
+									"@surchargeTotal": "3680.8",
+									"@nightlyRateTotal": "18404.0",
+									"@maxNightlyRate": "449.0",
+									"@currencyCode": "GBP",
+									"@commissionableUsdTotal": "29203.42",
+									"@averageRate": "328.64285",
+									"@averageBaseRate": "328.64285",
+									"NightlyRatesPerRoom": {
+										"@size": "28",
+										"NightlyRate": [{
+											"@promo": "false",
+											"@rate": "319.0",
+											"@baseRate": "319.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "309.0",
+											"@baseRate": "309.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "309.0",
+											"@baseRate": "309.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "309.0",
+											"@baseRate": "309.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "319.0",
+											"@baseRate": "319.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "319.0",
+											"@baseRate": "319.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "319.0",
+											"@baseRate": "319.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "319.0",
+											"@baseRate": "319.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "319.0",
+											"@baseRate": "319.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "319.0",
+											"@baseRate": "319.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "319.0",
+											"@baseRate": "319.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "449.0",
+											"@baseRate": "449.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "449.0",
+											"@baseRate": "449.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "369.0",
+											"@baseRate": "369.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "369.0",
+											"@baseRate": "369.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "309.0",
+											"@baseRate": "309.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "309.0",
+											"@baseRate": "309.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "309.0",
+											"@baseRate": "309.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "319.0",
+											"@baseRate": "319.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "319.0",
+											"@baseRate": "319.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "319.0",
+											"@baseRate": "319.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "319.0",
+											"@baseRate": "319.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "309.0",
+											"@baseRate": "309.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "309.0",
+											"@baseRate": "309.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "309.0",
+											"@baseRate": "309.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "319.0",
+											"@baseRate": "319.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "319.0",
+											"@baseRate": "319.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "319.0",
+											"@baseRate": "319.0"
+										}]
+									},
+									"Surcharges": {
+										"@size": "1",
+										"Surcharge": {
+											"@amount": "3680.8",
+											"@type": "TaxAndServiceFee"
+										}
+									}
+								}
+							}
+						},
+						"ValueAdds": {
+							"@size": "1",
+							"ValueAdd": {
+								"@id": "2048",
+								"description": "Free Wireless Internet"
+							}
+						}
+					}
+				}
+			},
+			{
+				"@ubsScore": "0",
+				"@order": "3",
+				"hotelId": 271984,
+				"name": "Ventures Hotel",
+				"address1": "12-16 Sussex Gardens",
+				"address2": "Marble Arch",
+				"city": "London",
+				"postalCode": "W2 1UL",
+				"countryCode": "GB",
+				"airportCode": "BQH",
+				"supplierType": "E",
+				"propertyCategory": 1,
+				"hotelRating": 3,
+				"confidenceRating": 52,
+				"amenityMask": 0,
+				"tripAdvisorRating": 1.5,
+				"tripAdvisorReviewCount": 79,
+				"tripAdvisorRatingUrl": "http:\/\/www.tripadvisor.com\/img\/cdsi\/img2\/ratings\/traveler\/1.5-12345-4.gif",
+				"locationDescription": "Near Marble Arch",
+				"shortDescription": "&lt;p&gt;&lt;b&gt;Location. &lt;\/b&gt; &lt;br \/&gt;Located in London, Ventures Hotel is in a shopping district and close to Hyde Park Speakers&apos; Corner, Marble Arch, and Royal Albert Hall. Nearby points of interest also",
+				"highRate": 129.17,
+				"lowRate": 105,
+				"rateCurrencyCode": "GBP",
+				"latitude": 51.5179,
+				"longitude": -0.1682,
+				"proximityDistance": 3.0324957,
+				"proximityUnit": "MI",
+				"hotelInDestination": true,
+				"thumbNailUrl": "\/hotels\/1000000\/910000\/901000\/900935\/900935_27_t.jpg",
+				"deepLink": "http:\/\/travel.ian.com\/index.jsp?pageName=hotAvail&amp;cid=55505&amp;hotelID=271984&amp;mode=2&amp;numberOfRooms=2&amp;room-0-adult-total=2&amp;room-0-child-total=2&amp;room-0-child-0-age=14&amp;room-0-child-1-age=16&amp;room-1-adult-total=1&amp;room-1-child-total=0&amp;arrivalMonth=1&amp;arrivalDay=7&amp;departureMonth=2&amp;departureDay=7&amp;showInfo=true&amp;locale=en_GB&amp;currencyCode=GBP",
+				"RoomRateDetailsList": {
+					"RoomRateDetails": {
+						"roomTypeCode": 278665,
+						"rateCode": 808776,
+						"maxRoomOccupancy": 4,
+						"quotedRoomOccupancy": 4,
+						"minGuestAge": 0,
+						"roomDescription": "Quadruple Occupancy",
+						"promoId": 201287342,
+						"promoDescription": "Save 10% on this stay!",
+						"currentAllotment": 6,
+						"propertyAvailable": true,
+						"propertyRestricted": false,
+						"expediaPropertyId": 900935,
+						"rateKey": "a4057084-36ec-4127-bb43-db1234b9aea8",
+						"nonRefundable": false,
+						"RateInfos": {
+							"@size": "1",
+							"RateInfo": {
+								"@rateChange": "true",
+								"@promo": "true",
+								"@priceBreakdown": "true",
+								"RoomGroup": {
+									"Room": [{
+										"numberOfAdults": 2,
+										"numberOfChildren": 2,
+										"childAges": [14,
+										16]
+									},
+									{
+										"numberOfAdults": 1,
+										"numberOfChildren": 0
+									}]
+								},
+								"ChargeableRateInfo": {
+									"@total": "7475.58",
+									"@surchargeTotal": "1246.02",
+									"@nightlyRateTotal": "6229.56",
+									"@maxNightlyRate": "116.25",
+									"@currencyCode": "GBP",
+									"@commissionableUsdTotal": "9885.06",
+									"@averageRate": "111.24214",
+									"@averageBaseRate": "123.600365",
+									"NightlyRatesPerRoom": {
+										"@size": "28",
+										"NightlyRate": [{
+											"@promo": "true",
+											"@rate": "111.0",
+											"@baseRate": "123.33"
+										},
+										{
+											"@promo": "true",
+											"@rate": "112.5",
+											"@baseRate": "125.0"
+										},
+										{
+											"@promo": "true",
+											"@rate": "112.5",
+											"@baseRate": "125.0"
+										},
+										{
+											"@promo": "true",
+											"@rate": "111.0",
+											"@baseRate": "123.33"
+										},
+										{
+											"@promo": "true",
+											"@rate": "111.0",
+											"@baseRate": "123.33"
+										},
+										{
+											"@promo": "true",
+											"@rate": "111.0",
+											"@baseRate": "123.33"
+										},
+										{
+											"@promo": "true",
+											"@rate": "111.0",
+											"@baseRate": "123.33"
+										},
+										{
+											"@promo": "true",
+											"@rate": "111.0",
+											"@baseRate": "123.33"
+										},
+										{
+											"@promo": "true",
+											"@rate": "112.5",
+											"@baseRate": "125.0"
+										},
+										{
+											"@promo": "true",
+											"@rate": "112.5",
+											"@baseRate": "125.0"
+										},
+										{
+											"@promo": "true",
+											"@rate": "111.0",
+											"@baseRate": "123.33"
+										},
+										{
+											"@promo": "true",
+											"@rate": "111.0",
+											"@baseRate": "123.33"
+										},
+										{
+											"@promo": "true",
+											"@rate": "111.0",
+											"@baseRate": "123.33"
+										},
+										{
+											"@promo": "true",
+											"@rate": "111.0",
+											"@baseRate": "123.33"
+										},
+										{
+											"@promo": "true",
+											"@rate": "111.0",
+											"@baseRate": "123.33"
+										},
+										{
+											"@promo": "true",
+											"@rate": "112.5",
+											"@baseRate": "125.0"
+										},
+										{
+											"@promo": "true",
+											"@rate": "112.5",
+											"@baseRate": "125.0"
+										},
+										{
+											"@promo": "true",
+											"@rate": "111.0",
+											"@baseRate": "123.33"
+										},
+										{
+											"@promo": "true",
+											"@rate": "111.0",
+											"@baseRate": "123.33"
+										},
+										{
+											"@promo": "true",
+											"@rate": "111.0",
+											"@baseRate": "123.33"
+										},
+										{
+											"@promo": "true",
+											"@rate": "111.0",
+											"@baseRate": "123.33"
+										},
+										{
+											"@promo": "true",
+											"@rate": "111.0",
+											"@baseRate": "123.33"
+										},
+										{
+											"@promo": "true",
+											"@rate": "116.25",
+											"@baseRate": "129.17"
+										},
+										{
+											"@promo": "true",
+											"@rate": "116.25",
+											"@baseRate": "129.17"
+										},
+										{
+											"@promo": "true",
+											"@rate": "105.0",
+											"@baseRate": "116.67"
+										},
+										{
+											"@promo": "true",
+											"@rate": "108.76",
+											"@baseRate": "120.84"
+										},
+										{
+											"@promo": "true",
+											"@rate": "108.76",
+											"@baseRate": "120.84"
+										},
+										{
+											"@promo": "true",
+											"@rate": "108.76",
+											"@baseRate": "120.84"
+										}]
+									},
+									"Surcharges": {
+										"@size": "1",
+										"Surcharge": {
+											"@amount": "1246.02",
+											"@type": "TaxAndServiceFee"
+										}
+									}
+								}
+							}
+						},
+						"ValueAdds": {
+							"@size": "1",
+							"ValueAdd": {
+								"@id": "2",
+								"description": "Continental Breakfast"
+							}
+						}
+					}
+				}
+			},
+			{
+				"@ubsScore": "0",
+				"@order": "4",
+				"hotelId": 130289,
+				"name": "Kensington West Hotel",
+				"address1": "25 Matheson Road",
+				"address2": "Kensington",
+				"city": "London",
+				"postalCode": "W14 8SN",
+				"countryCode": "GB",
+				"airportCode": "LHR",
+				"supplierType": "E",
+				"propertyCategory": 1,
+				"hotelRating": 2.5,
+				"confidenceRating": 52,
+				"amenityMask": 0,
+				"tripAdvisorRating": 3,
+				"tripAdvisorReviewCount": 189,
+				"tripAdvisorRatingUrl": "http:\/\/www.tripadvisor.com\/img\/cdsi\/img2\/ratings\/traveler\/3.0-12345-4.gif",
+				"locationDescription": "Near Earl&apos;s Court Exhibition Centre",
+				"shortDescription": "&lt;p&gt;&lt;b&gt;Location. &lt;\/b&gt; &lt;br \/&gt;Kensington West Hotel is located in London, close to Olympia Conference and Exhibition Centre, Earl&apos;s Court Exhibition Centre, and Royal Albert Hall. Nearby points of",
+				"highRate": 108.33,
+				"lowRate": 84.17,
+				"rateCurrencyCode": "GBP",
+				"latitude": 51.4934,
+				"longitude": -0.20576,
+				"proximityDistance": 3.9593754,
+				"proximityUnit": "MI",
+				"hotelInDestination": true,
+				"thumbNailUrl": "\/hotels\/1000000\/10000\/8400\/8364\/8364_13_t.jpg",
+				"deepLink": "http:\/\/travel.ian.com\/index.jsp?pageName=hotAvail&amp;cid=55505&amp;hotelID=130289&amp;mode=2&amp;numberOfRooms=2&amp;room-0-adult-total=2&amp;room-0-child-total=2&amp;room-0-child-0-age=14&amp;room-0-child-1-age=16&amp;room-1-adult-total=1&amp;room-1-child-total=0&amp;arrivalMonth=1&amp;arrivalDay=7&amp;departureMonth=2&amp;departureDay=7&amp;showInfo=true&amp;locale=en_GB&amp;currencyCode=GBP",
+				"RoomRateDetailsList": {
+					"RoomRateDetails": {
+						"roomTypeCode": 181046,
+						"rateCode": 200036066,
+						"maxRoomOccupancy": 4,
+						"quotedRoomOccupancy": 4,
+						"minGuestAge": 0,
+						"roomDescription": "Family Room",
+						"promoId": 202478938,
+						"promoDescription": "Book now and save! (on select nights)",
+						"currentAllotment": 2,
+						"propertyAvailable": true,
+						"propertyRestricted": false,
+						"expediaPropertyId": 8364,
+						"rateKey": "a4057084-36ec-4127-bb43-db1234b9aea8",
+						"nonRefundable": true,
+						"RateInfos": {
+							"@size": "1",
+							"RateInfo": {
+								"@rateChange": "true",
+								"@promo": "true",
+								"@priceBreakdown": "true",
+								"RoomGroup": {
+									"Room": [{
+										"numberOfAdults": 2,
+										"numberOfChildren": 2,
+										"childAges": [14,
+										16]
+									},
+									{
+										"numberOfAdults": 1,
+										"numberOfChildren": 0
+									}]
+								},
+								"ChargeableRateInfo": {
+									"@total": "5270.02",
+									"@surchargeTotal": "878.34",
+									"@nightlyRateTotal": "4391.68",
+									"@maxNightlyRate": "108.33",
+									"@currencyCode": "GBP",
+									"@commissionableUsdTotal": "6968.7",
+									"@averageRate": "78.42286",
+									"@averageBaseRate": "93.661446",
+									"NightlyRatesPerRoom": {
+										"@size": "28",
+										"NightlyRate": [{
+											"@promo": "false",
+											"@rate": "95.83",
+											"@baseRate": "95.83"
+										},
+										{
+											"@promo": "false",
+											"@rate": "108.33",
+											"@baseRate": "108.33"
+										},
+										{
+											"@promo": "false",
+											"@rate": "108.33",
+											"@baseRate": "108.33"
+										},
+										{
+											"@promo": "false",
+											"@rate": "101.67",
+											"@baseRate": "101.67"
+										},
+										{
+											"@promo": "false",
+											"@rate": "101.67",
+											"@baseRate": "101.67"
+										},
+										{
+											"@promo": "true",
+											"@rate": "0.0",
+											"@baseRate": "90.0"
+										},
+										{
+											"@promo": "false",
+											"@rate": "84.17",
+											"@baseRate": "84.17"
+										},
+										{
+											"@promo": "false",
+											"@rate": "84.17",
+											"@baseRate": "84.17"
+										},
+										{
+											"@promo": "false",
+											"@rate": "101.67",
+											"@baseRate": "101.67"
+										},
+										{
+											"@promo": "false",
+											"@rate": "108.33",
+											"@baseRate": "108.33"
+										},
+										{
+											"@promo": "false",
+											"@rate": "90.0",
+											"@baseRate": "90.0"
+										},
+										{
+											"@promo": "true",
+											"@rate": "0.0",
+											"@baseRate": "84.17"
+										},
+										{
+											"@promo": "false",
+											"@rate": "84.17",
+											"@baseRate": "84.17"
+										},
+										{
+											"@promo": "false",
+											"@rate": "84.17",
+											"@baseRate": "84.17"
+										},
+										{
+											"@promo": "true",
+											"@rate": "0.0",
+											"@baseRate": "84.17"
+										},
+										{
+											"@promo": "false",
+											"@rate": "101.67",
+											"@baseRate": "101.67"
+										},
+										{
+											"@promo": "false",
+											"@rate": "108.33",
+											"@baseRate": "108.33"
+										},
+										{
+											"@promo": "true",
+											"@rate": "0.0",
+											"@baseRate": "84.17"
+										},
+										{
+											"@promo": "false",
+											"@rate": "84.17",
+											"@baseRate": "84.17"
+										},
+										{
+											"@promo": "false",
+											"@rate": "84.17",
+											"@baseRate": "84.17"
+										},
+										{
+											"@promo": "true",
+											"@rate": "0.0",
+											"@baseRate": "84.17"
+										},
+										{
+											"@promo": "false",
+											"@rate": "95.83",
+											"@baseRate": "95.83"
+										},
+										{
+											"@promo": "false",
+											"@rate": "95.83",
+											"@baseRate": "95.83"
+										},
+										{
+											"@promo": "false",
+											"@rate": "101.67",
+											"@baseRate": "101.67"
+										},
+										{
+											"@promo": "false",
+											"@rate": "84.17",
+											"@baseRate": "84.17"
+										},
+										{
+											"@promo": "false",
+											"@rate": "95.83",
+											"@baseRate": "95.83"
+										},
+										{
+											"@promo": "false",
+											"@rate": "95.83",
+											"@baseRate": "95.83"
+										},
+										{
+											"@promo": "false",
+											"@rate": "95.83",
+											"@baseRate": "95.83"
+										}]
+									},
+									"Surcharges": {
+										"@size": "1",
+										"Surcharge": {
+											"@amount": "878.34",
+											"@type": "TaxAndServiceFee"
+										}
+									}
+								}
+							}
+						},
+						"ValueAdds": {
+							"@size": "1",
+							"ValueAdd": {
+								"@id": "2048",
+								"description": "Free Wireless Internet"
+							}
+						}
+					}
+				}
+			}]
+		}
+	}
+}

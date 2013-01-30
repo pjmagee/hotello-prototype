@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4ABE99EE-2B04-4BF9-B543-F98955AA1CE9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Hotello.Services.Wunderground</RootNamespace>
+    <AssemblyName>Hotello.Services.Wunderground</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Weather\Models\Airport.cs" />
+    <Compile Include="Weather\Models\Avewind.cs" />
+    <Compile Include="Weather\Models\Date.cs" />
+    <Compile Include="Weather\Models\Forecast.cs" />
+    <Compile Include="Weather\Models\Forecastday.cs" />
+    <Compile Include="Weather\Models\High.cs" />
+    <Compile Include="Weather\Models\Location.cs" />
+    <Compile Include="Weather\Models\Low.cs" />
+    <Compile Include="Weather\Models\Maxwind.cs" />
+    <Compile Include="Weather\Models\NearbyWeatherStations.cs" />
+    <Compile Include="Weather\Models\Pws.cs" />
+    <Compile Include="Weather\Models\QpfAllday.cs" />
+    <Compile Include="Weather\Models\QpfDay.cs" />
+    <Compile Include="Weather\Models\QpfNight.cs" />
+    <Compile Include="Weather\Models\Response.cs" />
+    <Compile Include="Weather\Models\RootObject.cs" />
+    <Compile Include="Weather\Models\Simpleforecast.cs" />
+    <Compile Include="Weather\Models\SnowAllday.cs" />
+    <Compile Include="Weather\Models\SnowDay.cs" />
+    <Compile Include="Weather\Models\SnowNight.cs" />
+    <Compile Include="Weather\Models\Station.cs" />
+    <Compile Include="Weather\Models\TxtForecast.cs" />
+    <Compile Include="Weather\Models\Features.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Module\" />
+    <Folder Include="Weather\Api\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

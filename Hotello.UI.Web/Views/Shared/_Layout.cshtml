@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Hotel Search and Booking Engine" />
+    <meta name="author" content="Patrick Magee"/>
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/bootstrap", "~/Content/themes/bootstrap/css")
+    @RenderSection("css", required: false)
+    <style>
+        body {
+            padding-top: 60px;
+        }
+    </style>
+     <link href="~/Content/hotello.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+    <body>
+        <div class="container" style="height: 100%">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>
+                    Copyright &copy; @DateTime.Now.Year Hotello
+                     <img alt="Affiliate" class="pull-right" src="@Url.Content("~/Content/images/affiliatedwith_EAN.jpg")" />
+                </p>
+               
+            </footer> 
+        </div>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("https://maps.googleapis.com/maps/api/js?key=AIzaSyDm7lXUQTaEvPo-eghcFIo2VjJvyKawKUo&sensor=false&libraries=places,geometry,weather")
+        @RenderSection("scripts", required: false)
+        
+        <script src="~/Scripts/jquery.backstretch.min.js"></script>
+        <script type="text/javascript">
+            // $.backstretch("http://www.publicdomainpictures.net/pictures/30000/velka/pool-and-hotel.jpg");
+        </script>
+    </body>
+</html>

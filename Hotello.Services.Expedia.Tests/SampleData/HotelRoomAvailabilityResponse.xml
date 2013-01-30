@@ -1,0 +1,534 @@
+<HotelRoomAvailabilityResponse xmlns:ns2="http://v3.hotel.wsapi.ean.com/" size="12">
+  <customerSessionId>0ABAA843-1814-A913-C5D2-0F653B9019E8</customerSessionId>
+  <hotelId>386590</hotelId>
+  <arrivalDate>02/11/2013</arrivalDate>
+  <departureDate>02/13/2013</departureDate>
+  <hotelName>Hilton London Heathrow Airport Terminal 5</hotelName>
+  <hotelAddress>Poyle Road</hotelAddress>
+  <hotelCity>Slough</hotelCity>
+  <hotelCountry>GB</hotelCountry>
+  <numberOfRoomsRequested>1</numberOfRoomsRequested>
+  <checkInInstructions>&lt;br /&gt;&lt;br /&gt; &lt;p&gt;&lt;strong&gt;Notifications and Fees:&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;&lt;p&gt;&lt;ul&gt;&lt;li&gt;This property offers transfers from the airport (surcharges may apply). Guests must contact the property with arrival details before travel, using the contact information on the booking confirmation. &lt;/li&gt; &lt;li&gt;Connecting/adjoining rooms may be available, subject to availability. Guests can request connecting/adjoining rooms by contacting the property directly, using the contact information on the booking confirmation. &lt;/li&gt; &lt;/ul&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt; &lt;p&gt;The following fees and deposits are charged by the property at time of service, check-in, or check-out.  &lt;ul&gt;&lt;li&gt;Self parking fee: GBP 12.00 per night&lt;/li&gt;&lt;li&gt;Airport shuttle fee: GBP 4.50 per person (one way)&lt;/li&gt; &lt;/ul&gt;&lt;/p&gt;&lt;p&gt;The above list may not be comprehensive. Fees and deposits may not include tax and are subject to change. &lt;/p&gt;</checkInInstructions>
+  <tripAdvisorRating>4.0</tripAdvisorRating>
+  <tripAdvisorReviewCount>501</tripAdvisorReviewCount>
+  <tripAdvisorRatingUrl>http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.0-12345-4.gif</tripAdvisorRatingUrl>
+  <rateKey>11b227e1-40dd-4928-8232-d05678ce6d22</rateKey>
+  <HotelRoomResponse>
+    <rateCode>200665946</rateCode>
+    <roomTypeCode>200123119</roomTypeCode>
+    <roomTypeDescription>King Hilton Guestroom</roomTypeDescription>
+    <supplierType>E</supplierType>
+    <taxRate>0.0</taxRate>
+    <rateChange>false</rateChange>
+    <nonRefundable>false</nonRefundable>
+    <guaranteeRequired>false</guaranteeRequired>
+    <depositRequired>true</depositRequired>
+    <immediateChargeRequired>true</immediateChargeRequired>
+    <currentAllotment>0</currentAllotment>
+    <propertyId>4447752</propertyId>
+    <rateOccupancyPerRoom>2</rateOccupancyPerRoom>
+    <quotedOccupancy>2</quotedOccupancy>
+    <minGuestAge>0</minGuestAge>
+    <RateInfos size="1">
+      <RateInfo rateChange="false" promo="false" priceBreakdown="true">
+        <RoomGroup>
+          <Room>
+            <numberOfAdults>2</numberOfAdults>
+            <numberOfChildren>0</numberOfChildren>
+          </Room>
+        </RoomGroup>
+        <ChargeableRateInfo total="599.8" nightlyRateTotal="599.8" maxNightlyRate="299.9" currencyCode="USD" commissionableUsdTotal="599.8" averageRate="299.9" averageBaseRate="299.9">
+          <NightlyRatesPerRoom size="2">
+            <NightlyRate promo="false" rate="299.9" baseRate="299.9"/>
+            <NightlyRate promo="false" rate="299.9" baseRate="299.9"/>
+          </NightlyRatesPerRoom>
+        </ChargeableRateInfo>
+      </RateInfo>
+    </RateInfos>
+    <ValueAdds size="1">
+      <ValueAdd id="2048">
+        <description>Free Wireless Internet</description>
+      </ValueAdd>
+    </ValueAdds>
+    <deepLink>http://travel.ian.com/hotels/priceCheck.jsp?cid=55505&amp;locale=en_US&amp;currencyCode=USD&amp;numberOfRooms=1&amp;room-0-adult-total=2&amp;room-0-child-total=0&amp;rateChange=false&amp;rateCode=200665946&amp;roomTypeCodeDescription=King+Hilton+Guestroom&amp;roomTypeCode=200123119&amp;cityLink=Slough&amp;countryLink=GB&amp;resType=hotel&amp;propertyID=4447752&amp;hotelID=386590&amp;supplierType=E&amp;propertyType=H&amp;requestKey=11b227e1-40dd-4928-8232-d05678ce6d22&amp;rateKey=11b227e1-40dd-4928-8232-d05678ce6d22&amp;arrivalMonth=1&amp;arrivalDay=11&amp;arrivalYear=2013&amp;departureMonth=1&amp;departureDay=13&amp;departureYear=2013&amp;nativeNightlyRates=299.9,299.9&amp;nativeCurrencyCode=USD&amp;nativeRoomRate=599.8&amp;displayNightlyRates=299.9,299.9&amp;displayCurrencyCode=USD&amp;displayRoomRate=599.8&amp;chargeableRoomRateTotal=599.8&amp;guarantee=C&amp;directConnect=false&amp;rateFrequency=B&amp;rateIsBase=true</deepLink>
+    <RoomImages size="1">
+      <RoomImage>
+        <url>http://media.expedia.com/hotels/5000000/4450000/4447800/4447752/4447752_23_s.jpg</url>
+      </RoomImage>
+    </RoomImages>
+  </HotelRoomResponse>
+  <HotelRoomResponse>
+    <rateCode>200517243</rateCode>
+    <roomTypeCode>200090242</roomTypeCode>
+    <roomTypeDescription>Queen guest room accessible</roomTypeDescription>
+    <supplierType>E</supplierType>
+    <taxRate>0.0</taxRate>
+    <rateChange>false</rateChange>
+    <nonRefundable>false</nonRefundable>
+    <guaranteeRequired>false</guaranteeRequired>
+    <depositRequired>true</depositRequired>
+    <immediateChargeRequired>true</immediateChargeRequired>
+    <currentAllotment>0</currentAllotment>
+    <propertyId>4447752</propertyId>
+    <rateOccupancyPerRoom>2</rateOccupancyPerRoom>
+    <quotedOccupancy>2</quotedOccupancy>
+    <minGuestAge>0</minGuestAge>
+    <RateInfos size="1">
+      <RateInfo rateChange="false" promo="false" priceBreakdown="true">
+        <RoomGroup>
+          <Room>
+            <numberOfAdults>2</numberOfAdults>
+            <numberOfChildren>0</numberOfChildren>
+          </Room>
+        </RoomGroup>
+        <ChargeableRateInfo total="599.8" nightlyRateTotal="599.8" maxNightlyRate="299.9" currencyCode="USD" commissionableUsdTotal="599.8" averageRate="299.9" averageBaseRate="299.9">
+          <NightlyRatesPerRoom size="2">
+            <NightlyRate promo="false" rate="299.9" baseRate="299.9"/>
+            <NightlyRate promo="false" rate="299.9" baseRate="299.9"/>
+          </NightlyRatesPerRoom>
+        </ChargeableRateInfo>
+      </RateInfo>
+    </RateInfos>
+    <ValueAdds size="1">
+      <ValueAdd id="2048">
+        <description>Free Wireless Internet</description>
+      </ValueAdd>
+    </ValueAdds>
+    <deepLink>http://travel.ian.com/hotels/priceCheck.jsp?cid=55505&amp;locale=en_US&amp;currencyCode=USD&amp;numberOfRooms=1&amp;room-0-adult-total=2&amp;room-0-child-total=0&amp;rateChange=false&amp;rateCode=200517243&amp;roomTypeCodeDescription=Queen+guest+room+accessible&amp;roomTypeCode=200090242&amp;cityLink=Slough&amp;countryLink=GB&amp;resType=hotel&amp;propertyID=4447752&amp;hotelID=386590&amp;supplierType=E&amp;propertyType=H&amp;requestKey=11b227e1-40dd-4928-8232-d05678ce6d22&amp;rateKey=11b227e1-40dd-4928-8232-d05678ce6d22&amp;arrivalMonth=1&amp;arrivalDay=11&amp;arrivalYear=2013&amp;departureMonth=1&amp;departureDay=13&amp;departureYear=2013&amp;nativeNightlyRates=299.9,299.9&amp;nativeCurrencyCode=USD&amp;nativeRoomRate=599.8&amp;displayNightlyRates=299.9,299.9&amp;displayCurrencyCode=USD&amp;displayRoomRate=599.8&amp;chargeableRoomRateTotal=599.8&amp;guarantee=C&amp;directConnect=false&amp;rateFrequency=B&amp;rateIsBase=true</deepLink>
+  </HotelRoomResponse>
+  <HotelRoomResponse>
+    <rateCode>200517466</rateCode>
+    <roomTypeCode>200090278</roomTypeCode>
+    <roomTypeDescription>Twin Guestroom</roomTypeDescription>
+    <supplierType>E</supplierType>
+    <taxRate>0.0</taxRate>
+    <rateChange>false</rateChange>
+    <nonRefundable>false</nonRefundable>
+    <guaranteeRequired>false</guaranteeRequired>
+    <depositRequired>true</depositRequired>
+    <immediateChargeRequired>true</immediateChargeRequired>
+    <currentAllotment>0</currentAllotment>
+    <propertyId>4447752</propertyId>
+    <rateOccupancyPerRoom>2</rateOccupancyPerRoom>
+    <quotedOccupancy>2</quotedOccupancy>
+    <minGuestAge>0</minGuestAge>
+    <RateInfos size="1">
+      <RateInfo rateChange="false" promo="false" priceBreakdown="true">
+        <RoomGroup>
+          <Room>
+            <numberOfAdults>2</numberOfAdults>
+            <numberOfChildren>0</numberOfChildren>
+          </Room>
+        </RoomGroup>
+        <ChargeableRateInfo total="599.8" nightlyRateTotal="599.8" maxNightlyRate="299.9" currencyCode="USD" commissionableUsdTotal="599.8" averageRate="299.9" averageBaseRate="299.9">
+          <NightlyRatesPerRoom size="2">
+            <NightlyRate promo="false" rate="299.9" baseRate="299.9"/>
+            <NightlyRate promo="false" rate="299.9" baseRate="299.9"/>
+          </NightlyRatesPerRoom>
+        </ChargeableRateInfo>
+      </RateInfo>
+    </RateInfos>
+    <ValueAdds size="1">
+      <ValueAdd id="2048">
+        <description>Free Wireless Internet</description>
+      </ValueAdd>
+    </ValueAdds>
+    <deepLink>http://travel.ian.com/hotels/priceCheck.jsp?cid=55505&amp;locale=en_US&amp;currencyCode=USD&amp;numberOfRooms=1&amp;room-0-adult-total=2&amp;room-0-child-total=0&amp;rateChange=false&amp;rateCode=200517466&amp;roomTypeCodeDescription=Twin+Guestroom&amp;roomTypeCode=200090278&amp;cityLink=Slough&amp;countryLink=GB&amp;resType=hotel&amp;propertyID=4447752&amp;hotelID=386590&amp;supplierType=E&amp;propertyType=H&amp;requestKey=11b227e1-40dd-4928-8232-d05678ce6d22&amp;rateKey=11b227e1-40dd-4928-8232-d05678ce6d22&amp;arrivalMonth=1&amp;arrivalDay=11&amp;arrivalYear=2013&amp;departureMonth=1&amp;departureDay=13&amp;departureYear=2013&amp;nativeNightlyRates=299.9,299.9&amp;nativeCurrencyCode=USD&amp;nativeRoomRate=599.8&amp;displayNightlyRates=299.9,299.9&amp;displayCurrencyCode=USD&amp;displayRoomRate=599.8&amp;chargeableRoomRateTotal=599.8&amp;guarantee=C&amp;directConnect=false&amp;rateFrequency=B&amp;rateIsBase=true</deepLink>
+  </HotelRoomResponse>
+  <HotelRoomResponse>
+    <rateCode>200517232</rateCode>
+    <roomTypeCode>200090242</roomTypeCode>
+    <roomTypeDescription>Queen guest room accessible</roomTypeDescription>
+    <supplierType>E</supplierType>
+    <taxRate>38.08</taxRate>
+    <rateChange>false</rateChange>
+    <nonRefundable>false</nonRefundable>
+    <guaranteeRequired>false</guaranteeRequired>
+    <depositRequired>true</depositRequired>
+    <immediateChargeRequired>true</immediateChargeRequired>
+    <currentAllotment>0</currentAllotment>
+    <propertyId>4447752</propertyId>
+    <rateOccupancyPerRoom>2</rateOccupancyPerRoom>
+    <quotedOccupancy>1</quotedOccupancy>
+    <minGuestAge>0</minGuestAge>
+    <RateInfos size="1">
+      <RateInfo rateChange="false" promo="false" priceBreakdown="true">
+        <RoomGroup>
+          <Room>
+            <numberOfAdults>2</numberOfAdults>
+            <numberOfChildren>0</numberOfChildren>
+          </Room>
+        </RoomGroup>
+        <ChargeableRateInfo total="683.58" surchargeTotal="38.08" nightlyRateTotal="645.5" maxNightlyRate="322.75" currencyCode="USD" commissionableUsdTotal="645.5" averageRate="322.75" averageBaseRate="322.75">
+          <NightlyRatesPerRoom size="2">
+            <NightlyRate promo="false" rate="322.75" baseRate="322.75"/>
+            <NightlyRate promo="false" rate="322.75" baseRate="322.75"/>
+          </NightlyRatesPerRoom>
+          <Surcharges size="1">
+            <Surcharge amount="38.08" type="ExtraPersonFee"/>
+          </Surcharges>
+        </ChargeableRateInfo>
+      </RateInfo>
+    </RateInfos>
+    <ValueAdds size="2">
+      <ValueAdd id="2048">
+        <description>Free Wireless Internet</description>
+      </ValueAdd>
+      <ValueAdd id="16777216">
+        <description>Breakfast Buffet</description>
+      </ValueAdd>
+    </ValueAdds>
+    <deepLink>http://travel.ian.com/hotels/priceCheck.jsp?cid=55505&amp;locale=en_US&amp;currencyCode=USD&amp;numberOfRooms=1&amp;room-0-adult-total=2&amp;room-0-child-total=0&amp;rateChange=false&amp;rateCode=200517232&amp;roomTypeCodeDescription=Queen+guest+room+accessible&amp;roomTypeCode=200090242&amp;cityLink=Slough&amp;countryLink=GB&amp;resType=hotel&amp;propertyID=4447752&amp;hotelID=386590&amp;supplierType=E&amp;propertyType=H&amp;requestKey=11b227e1-40dd-4928-8232-d05678ce6d22&amp;rateKey=11b227e1-40dd-4928-8232-d05678ce6d22&amp;arrivalMonth=1&amp;arrivalDay=11&amp;arrivalYear=2013&amp;departureMonth=1&amp;departureDay=13&amp;departureYear=2013&amp;nativeNightlyRates=322.75,322.75&amp;nativeCurrencyCode=USD&amp;nativeRoomRate=683.58&amp;displayNightlyRates=322.75,322.75&amp;displayCurrencyCode=USD&amp;displayRoomRate=683.58&amp;chargeableRoomRateTotal=683.58&amp;chargeableRoomRateTaxes=38.08&amp;guarantee=C&amp;directConnect=false&amp;rateFrequency=B&amp;rateIsBase=true</deepLink>
+  </HotelRoomResponse>
+  <HotelRoomResponse>
+    <rateCode>200517464</rateCode>
+    <roomTypeCode>200090278</roomTypeCode>
+    <roomTypeDescription>Twin Guestroom</roomTypeDescription>
+    <supplierType>E</supplierType>
+    <taxRate>38.08</taxRate>
+    <rateChange>false</rateChange>
+    <nonRefundable>false</nonRefundable>
+    <guaranteeRequired>false</guaranteeRequired>
+    <depositRequired>true</depositRequired>
+    <immediateChargeRequired>true</immediateChargeRequired>
+    <currentAllotment>0</currentAllotment>
+    <propertyId>4447752</propertyId>
+    <rateOccupancyPerRoom>2</rateOccupancyPerRoom>
+    <quotedOccupancy>1</quotedOccupancy>
+    <minGuestAge>0</minGuestAge>
+    <RateInfos size="1">
+      <RateInfo rateChange="false" promo="false" priceBreakdown="true">
+        <RoomGroup>
+          <Room>
+            <numberOfAdults>2</numberOfAdults>
+            <numberOfChildren>0</numberOfChildren>
+          </Room>
+        </RoomGroup>
+        <ChargeableRateInfo total="683.58" surchargeTotal="38.08" nightlyRateTotal="645.5" maxNightlyRate="322.75" currencyCode="USD" commissionableUsdTotal="645.5" averageRate="322.75" averageBaseRate="322.75">
+          <NightlyRatesPerRoom size="2">
+            <NightlyRate promo="false" rate="322.75" baseRate="322.75"/>
+            <NightlyRate promo="false" rate="322.75" baseRate="322.75"/>
+          </NightlyRatesPerRoom>
+          <Surcharges size="1">
+            <Surcharge amount="38.08" type="ExtraPersonFee"/>
+          </Surcharges>
+        </ChargeableRateInfo>
+      </RateInfo>
+    </RateInfos>
+    <ValueAdds size="2">
+      <ValueAdd id="2048">
+        <description>Free Wireless Internet</description>
+      </ValueAdd>
+      <ValueAdd id="16777216">
+        <description>Breakfast Buffet</description>
+      </ValueAdd>
+    </ValueAdds>
+    <deepLink>http://travel.ian.com/hotels/priceCheck.jsp?cid=55505&amp;locale=en_US&amp;currencyCode=USD&amp;numberOfRooms=1&amp;room-0-adult-total=2&amp;room-0-child-total=0&amp;rateChange=false&amp;rateCode=200517464&amp;roomTypeCodeDescription=Twin+Guestroom&amp;roomTypeCode=200090278&amp;cityLink=Slough&amp;countryLink=GB&amp;resType=hotel&amp;propertyID=4447752&amp;hotelID=386590&amp;supplierType=E&amp;propertyType=H&amp;requestKey=11b227e1-40dd-4928-8232-d05678ce6d22&amp;rateKey=11b227e1-40dd-4928-8232-d05678ce6d22&amp;arrivalMonth=1&amp;arrivalDay=11&amp;arrivalYear=2013&amp;departureMonth=1&amp;departureDay=13&amp;departureYear=2013&amp;nativeNightlyRates=322.75,322.75&amp;nativeCurrencyCode=USD&amp;nativeRoomRate=683.58&amp;displayNightlyRates=322.75,322.75&amp;displayCurrencyCode=USD&amp;displayRoomRate=683.58&amp;chargeableRoomRateTotal=683.58&amp;chargeableRoomRateTaxes=38.08&amp;guarantee=C&amp;directConnect=false&amp;rateFrequency=B&amp;rateIsBase=true</deepLink>
+  </HotelRoomResponse>
+  <HotelRoomResponse>
+    <rateCode>200665922</rateCode>
+    <roomTypeCode>200123119</roomTypeCode>
+    <roomTypeDescription>King Hilton Guestroom</roomTypeDescription>
+    <supplierType>E</supplierType>
+    <taxRate>38.08</taxRate>
+    <rateChange>false</rateChange>
+    <nonRefundable>false</nonRefundable>
+    <guaranteeRequired>false</guaranteeRequired>
+    <depositRequired>true</depositRequired>
+    <immediateChargeRequired>true</immediateChargeRequired>
+    <currentAllotment>0</currentAllotment>
+    <propertyId>4447752</propertyId>
+    <rateOccupancyPerRoom>2</rateOccupancyPerRoom>
+    <quotedOccupancy>1</quotedOccupancy>
+    <minGuestAge>0</minGuestAge>
+    <RateInfos size="1">
+      <RateInfo rateChange="false" promo="false" priceBreakdown="true">
+        <RoomGroup>
+          <Room>
+            <numberOfAdults>2</numberOfAdults>
+            <numberOfChildren>0</numberOfChildren>
+          </Room>
+        </RoomGroup>
+        <ChargeableRateInfo total="683.58" surchargeTotal="38.08" nightlyRateTotal="645.5" maxNightlyRate="322.75" currencyCode="USD" commissionableUsdTotal="645.5" averageRate="322.75" averageBaseRate="322.75">
+          <NightlyRatesPerRoom size="2">
+            <NightlyRate promo="false" rate="322.75" baseRate="322.75"/>
+            <NightlyRate promo="false" rate="322.75" baseRate="322.75"/>
+          </NightlyRatesPerRoom>
+          <Surcharges size="1">
+            <Surcharge amount="38.08" type="ExtraPersonFee"/>
+          </Surcharges>
+        </ChargeableRateInfo>
+      </RateInfo>
+    </RateInfos>
+    <ValueAdds size="1">
+      <ValueAdd id="2048">
+        <description>Free Wireless Internet</description>
+      </ValueAdd>
+    </ValueAdds>
+    <deepLink>http://travel.ian.com/hotels/priceCheck.jsp?cid=55505&amp;locale=en_US&amp;currencyCode=USD&amp;numberOfRooms=1&amp;room-0-adult-total=2&amp;room-0-child-total=0&amp;rateChange=false&amp;rateCode=200665922&amp;roomTypeCodeDescription=King+Hilton+Guestroom&amp;roomTypeCode=200123119&amp;cityLink=Slough&amp;countryLink=GB&amp;resType=hotel&amp;propertyID=4447752&amp;hotelID=386590&amp;supplierType=E&amp;propertyType=H&amp;requestKey=11b227e1-40dd-4928-8232-d05678ce6d22&amp;rateKey=11b227e1-40dd-4928-8232-d05678ce6d22&amp;arrivalMonth=1&amp;arrivalDay=11&amp;arrivalYear=2013&amp;departureMonth=1&amp;departureDay=13&amp;departureYear=2013&amp;nativeNightlyRates=322.75,322.75&amp;nativeCurrencyCode=USD&amp;nativeRoomRate=683.58&amp;displayNightlyRates=322.75,322.75&amp;displayCurrencyCode=USD&amp;displayRoomRate=683.58&amp;chargeableRoomRateTotal=683.58&amp;chargeableRoomRateTaxes=38.08&amp;guarantee=C&amp;directConnect=false&amp;rateFrequency=B&amp;rateIsBase=true</deepLink>
+    <RoomImages size="1">
+      <RoomImage>
+        <url>http://media.expedia.com/hotels/5000000/4450000/4447800/4447752/4447752_23_s.jpg</url>
+      </RoomImage>
+    </RoomImages>
+  </HotelRoomResponse>
+  <HotelRoomResponse>
+    <rateCode>200517199</rateCode>
+    <roomTypeCode>200089866</roomTypeCode>
+    <roomTypeDescription>Queen executive accessible</roomTypeDescription>
+    <supplierType>E</supplierType>
+    <taxRate>0.0</taxRate>
+    <rateChange>false</rateChange>
+    <nonRefundable>false</nonRefundable>
+    <guaranteeRequired>false</guaranteeRequired>
+    <depositRequired>true</depositRequired>
+    <immediateChargeRequired>true</immediateChargeRequired>
+    <currentAllotment>0</currentAllotment>
+    <propertyId>4447752</propertyId>
+    <rateOccupancyPerRoom>2</rateOccupancyPerRoom>
+    <quotedOccupancy>2</quotedOccupancy>
+    <minGuestAge>0</minGuestAge>
+    <RateInfos size="1">
+      <RateInfo rateChange="false" promo="false" priceBreakdown="true">
+        <RoomGroup>
+          <Room>
+            <numberOfAdults>2</numberOfAdults>
+            <numberOfChildren>0</numberOfChildren>
+          </Room>
+        </RoomGroup>
+        <ChargeableRateInfo total="790.22" nightlyRateTotal="790.22" maxNightlyRate="395.11" currencyCode="USD" commissionableUsdTotal="790.22" averageRate="395.11" averageBaseRate="395.11">
+          <NightlyRatesPerRoom size="2">
+            <NightlyRate promo="false" rate="395.11" baseRate="395.11"/>
+            <NightlyRate promo="false" rate="395.11" baseRate="395.11"/>
+          </NightlyRatesPerRoom>
+        </ChargeableRateInfo>
+      </RateInfo>
+    </RateInfos>
+    <ValueAdds size="1">
+      <ValueAdd id="2048">
+        <description>Free Wireless Internet</description>
+      </ValueAdd>
+    </ValueAdds>
+    <deepLink>http://travel.ian.com/hotels/priceCheck.jsp?cid=55505&amp;locale=en_US&amp;currencyCode=USD&amp;numberOfRooms=1&amp;room-0-adult-total=2&amp;room-0-child-total=0&amp;rateChange=false&amp;rateCode=200517199&amp;roomTypeCodeDescription=Queen+executive+accessible&amp;roomTypeCode=200089866&amp;cityLink=Slough&amp;countryLink=GB&amp;resType=hotel&amp;propertyID=4447752&amp;hotelID=386590&amp;supplierType=E&amp;propertyType=H&amp;requestKey=11b227e1-40dd-4928-8232-d05678ce6d22&amp;rateKey=11b227e1-40dd-4928-8232-d05678ce6d22&amp;arrivalMonth=1&amp;arrivalDay=11&amp;arrivalYear=2013&amp;departureMonth=1&amp;departureDay=13&amp;departureYear=2013&amp;nativeNightlyRates=395.11,395.11&amp;nativeCurrencyCode=USD&amp;nativeRoomRate=790.22&amp;displayNightlyRates=395.11,395.11&amp;displayCurrencyCode=USD&amp;displayRoomRate=790.22&amp;chargeableRoomRateTotal=790.22&amp;guarantee=C&amp;directConnect=false&amp;rateFrequency=B&amp;rateIsBase=true</deepLink>
+  </HotelRoomResponse>
+  <HotelRoomResponse>
+    <rateCode>200517360</rateCode>
+    <roomTypeCode>200090252</roomTypeCode>
+    <roomTypeDescription>Twin Executive</roomTypeDescription>
+    <supplierType>E</supplierType>
+    <taxRate>0.0</taxRate>
+    <rateChange>false</rateChange>
+    <nonRefundable>false</nonRefundable>
+    <guaranteeRequired>false</guaranteeRequired>
+    <depositRequired>true</depositRequired>
+    <immediateChargeRequired>true</immediateChargeRequired>
+    <currentAllotment>0</currentAllotment>
+    <propertyId>4447752</propertyId>
+    <rateOccupancyPerRoom>2</rateOccupancyPerRoom>
+    <quotedOccupancy>2</quotedOccupancy>
+    <minGuestAge>0</minGuestAge>
+    <RateInfos size="1">
+      <RateInfo rateChange="false" promo="false" priceBreakdown="true">
+        <RoomGroup>
+          <Room>
+            <numberOfAdults>2</numberOfAdults>
+            <numberOfChildren>0</numberOfChildren>
+          </Room>
+        </RoomGroup>
+        <ChargeableRateInfo total="790.22" nightlyRateTotal="790.22" maxNightlyRate="395.11" currencyCode="USD" commissionableUsdTotal="790.22" averageRate="395.11" averageBaseRate="395.11">
+          <NightlyRatesPerRoom size="2">
+            <NightlyRate promo="false" rate="395.11" baseRate="395.11"/>
+            <NightlyRate promo="false" rate="395.11" baseRate="395.11"/>
+          </NightlyRatesPerRoom>
+        </ChargeableRateInfo>
+      </RateInfo>
+    </RateInfos>
+    <ValueAdds size="1">
+      <ValueAdd id="2048">
+        <description>Free Wireless Internet</description>
+      </ValueAdd>
+    </ValueAdds>
+    <deepLink>http://travel.ian.com/hotels/priceCheck.jsp?cid=55505&amp;locale=en_US&amp;currencyCode=USD&amp;numberOfRooms=1&amp;room-0-adult-total=2&amp;room-0-child-total=0&amp;rateChange=false&amp;rateCode=200517360&amp;roomTypeCodeDescription=Twin+Executive&amp;roomTypeCode=200090252&amp;cityLink=Slough&amp;countryLink=GB&amp;resType=hotel&amp;propertyID=4447752&amp;hotelID=386590&amp;supplierType=E&amp;propertyType=H&amp;requestKey=11b227e1-40dd-4928-8232-d05678ce6d22&amp;rateKey=11b227e1-40dd-4928-8232-d05678ce6d22&amp;arrivalMonth=1&amp;arrivalDay=11&amp;arrivalYear=2013&amp;departureMonth=1&amp;departureDay=13&amp;departureYear=2013&amp;nativeNightlyRates=395.11,395.11&amp;nativeCurrencyCode=USD&amp;nativeRoomRate=790.22&amp;displayNightlyRates=395.11,395.11&amp;displayCurrencyCode=USD&amp;displayRoomRate=790.22&amp;chargeableRoomRateTotal=790.22&amp;guarantee=C&amp;directConnect=false&amp;rateFrequency=B&amp;rateIsBase=true</deepLink>
+  </HotelRoomResponse>
+  <HotelRoomResponse>
+    <rateCode>200665895</rateCode>
+    <roomTypeCode>200123106</roomTypeCode>
+    <roomTypeDescription>Executive One King Bed</roomTypeDescription>
+    <supplierType>E</supplierType>
+    <taxRate>0.0</taxRate>
+    <rateChange>false</rateChange>
+    <nonRefundable>false</nonRefundable>
+    <guaranteeRequired>false</guaranteeRequired>
+    <depositRequired>true</depositRequired>
+    <immediateChargeRequired>true</immediateChargeRequired>
+    <currentAllotment>0</currentAllotment>
+    <propertyId>4447752</propertyId>
+    <rateOccupancyPerRoom>2</rateOccupancyPerRoom>
+    <quotedOccupancy>2</quotedOccupancy>
+    <minGuestAge>0</minGuestAge>
+    <RateInfos size="1">
+      <RateInfo rateChange="false" promo="false" priceBreakdown="true">
+        <RoomGroup>
+          <Room>
+            <numberOfAdults>2</numberOfAdults>
+            <numberOfChildren>0</numberOfChildren>
+          </Room>
+        </RoomGroup>
+        <ChargeableRateInfo total="790.22" nightlyRateTotal="790.22" maxNightlyRate="395.11" currencyCode="USD" commissionableUsdTotal="790.22" averageRate="395.11" averageBaseRate="395.11">
+          <NightlyRatesPerRoom size="2">
+            <NightlyRate promo="false" rate="395.11" baseRate="395.11"/>
+            <NightlyRate promo="false" rate="395.11" baseRate="395.11"/>
+          </NightlyRatesPerRoom>
+        </ChargeableRateInfo>
+      </RateInfo>
+    </RateInfos>
+    <ValueAdds size="1">
+      <ValueAdd id="2048">
+        <description>Free Wireless Internet</description>
+      </ValueAdd>
+    </ValueAdds>
+    <deepLink>http://travel.ian.com/hotels/priceCheck.jsp?cid=55505&amp;locale=en_US&amp;currencyCode=USD&amp;numberOfRooms=1&amp;room-0-adult-total=2&amp;room-0-child-total=0&amp;rateChange=false&amp;rateCode=200665895&amp;roomTypeCodeDescription=Executive+One+King+Bed&amp;roomTypeCode=200123106&amp;cityLink=Slough&amp;countryLink=GB&amp;resType=hotel&amp;propertyID=4447752&amp;hotelID=386590&amp;supplierType=E&amp;propertyType=H&amp;requestKey=11b227e1-40dd-4928-8232-d05678ce6d22&amp;rateKey=11b227e1-40dd-4928-8232-d05678ce6d22&amp;arrivalMonth=1&amp;arrivalDay=11&amp;arrivalYear=2013&amp;departureMonth=1&amp;departureDay=13&amp;departureYear=2013&amp;nativeNightlyRates=395.11,395.11&amp;nativeCurrencyCode=USD&amp;nativeRoomRate=790.22&amp;displayNightlyRates=395.11,395.11&amp;displayCurrencyCode=USD&amp;displayRoomRate=790.22&amp;chargeableRoomRateTotal=790.22&amp;guarantee=C&amp;directConnect=false&amp;rateFrequency=B&amp;rateIsBase=true</deepLink>
+    <RoomImages size="1">
+      <RoomImage>
+        <url>http://media.expedia.com/hotels/5000000/4450000/4447800/4447752/4447752_23_s.jpg</url>
+      </RoomImage>
+    </RoomImages>
+  </HotelRoomResponse>
+  <HotelRoomResponse>
+    <rateCode>200515721</rateCode>
+    <roomTypeCode>200089866</roomTypeCode>
+    <roomTypeDescription>Queen executive accessible</roomTypeDescription>
+    <supplierType>E</supplierType>
+    <taxRate>38.08</taxRate>
+    <rateChange>false</rateChange>
+    <nonRefundable>false</nonRefundable>
+    <guaranteeRequired>false</guaranteeRequired>
+    <depositRequired>true</depositRequired>
+    <immediateChargeRequired>true</immediateChargeRequired>
+    <currentAllotment>0</currentAllotment>
+    <propertyId>4447752</propertyId>
+    <rateOccupancyPerRoom>2</rateOccupancyPerRoom>
+    <quotedOccupancy>1</quotedOccupancy>
+    <minGuestAge>0</minGuestAge>
+    <RateInfos size="1">
+      <RateInfo rateChange="false" promo="false" priceBreakdown="true">
+        <RoomGroup>
+          <Room>
+            <numberOfAdults>2</numberOfAdults>
+            <numberOfChildren>0</numberOfChildren>
+          </Room>
+        </RoomGroup>
+        <ChargeableRateInfo total="874.0" surchargeTotal="38.08" nightlyRateTotal="835.92" maxNightlyRate="417.96" currencyCode="USD" commissionableUsdTotal="835.92" averageRate="417.96" averageBaseRate="417.96">
+          <NightlyRatesPerRoom size="2">
+            <NightlyRate promo="false" rate="417.96" baseRate="417.96"/>
+            <NightlyRate promo="false" rate="417.96" baseRate="417.96"/>
+          </NightlyRatesPerRoom>
+          <Surcharges size="1">
+            <Surcharge amount="38.08" type="ExtraPersonFee"/>
+          </Surcharges>
+        </ChargeableRateInfo>
+      </RateInfo>
+    </RateInfos>
+    <ValueAdds size="2">
+      <ValueAdd id="2048">
+        <description>Free Wireless Internet</description>
+      </ValueAdd>
+      <ValueAdd id="16777216">
+        <description>Breakfast Buffet</description>
+      </ValueAdd>
+    </ValueAdds>
+    <deepLink>http://travel.ian.com/hotels/priceCheck.jsp?cid=55505&amp;locale=en_US&amp;currencyCode=USD&amp;numberOfRooms=1&amp;room-0-adult-total=2&amp;room-0-child-total=0&amp;rateChange=false&amp;rateCode=200515721&amp;roomTypeCodeDescription=Queen+executive+accessible&amp;roomTypeCode=200089866&amp;cityLink=Slough&amp;countryLink=GB&amp;resType=hotel&amp;propertyID=4447752&amp;hotelID=386590&amp;supplierType=E&amp;propertyType=H&amp;requestKey=11b227e1-40dd-4928-8232-d05678ce6d22&amp;rateKey=11b227e1-40dd-4928-8232-d05678ce6d22&amp;arrivalMonth=1&amp;arrivalDay=11&amp;arrivalYear=2013&amp;departureMonth=1&amp;departureDay=13&amp;departureYear=2013&amp;nativeNightlyRates=417.96,417.96&amp;nativeCurrencyCode=USD&amp;nativeRoomRate=874.0&amp;displayNightlyRates=417.96,417.96&amp;displayCurrencyCode=USD&amp;displayRoomRate=874.0&amp;chargeableRoomRateTotal=874.0&amp;chargeableRoomRateTaxes=38.08&amp;guarantee=C&amp;directConnect=false&amp;rateFrequency=B&amp;rateIsBase=true</deepLink>
+  </HotelRoomResponse>
+  <HotelRoomResponse>
+    <rateCode>200517357</rateCode>
+    <roomTypeCode>200090252</roomTypeCode>
+    <roomTypeDescription>Twin Executive</roomTypeDescription>
+    <supplierType>E</supplierType>
+    <taxRate>38.08</taxRate>
+    <rateChange>false</rateChange>
+    <nonRefundable>false</nonRefundable>
+    <guaranteeRequired>false</guaranteeRequired>
+    <depositRequired>true</depositRequired>
+    <immediateChargeRequired>true</immediateChargeRequired>
+    <currentAllotment>0</currentAllotment>
+    <propertyId>4447752</propertyId>
+    <rateOccupancyPerRoom>2</rateOccupancyPerRoom>
+    <quotedOccupancy>1</quotedOccupancy>
+    <minGuestAge>0</minGuestAge>
+    <RateInfos size="1">
+      <RateInfo rateChange="false" promo="false" priceBreakdown="true">
+        <RoomGroup>
+          <Room>
+            <numberOfAdults>2</numberOfAdults>
+            <numberOfChildren>0</numberOfChildren>
+          </Room>
+        </RoomGroup>
+        <ChargeableRateInfo total="874.0" surchargeTotal="38.08" nightlyRateTotal="835.92" maxNightlyRate="417.96" currencyCode="USD" commissionableUsdTotal="835.92" averageRate="417.96" averageBaseRate="417.96">
+          <NightlyRatesPerRoom size="2">
+            <NightlyRate promo="false" rate="417.96" baseRate="417.96"/>
+            <NightlyRate promo="false" rate="417.96" baseRate="417.96"/>
+          </NightlyRatesPerRoom>
+          <Surcharges size="1">
+            <Surcharge amount="38.08" type="ExtraPersonFee"/>
+          </Surcharges>
+        </ChargeableRateInfo>
+      </RateInfo>
+    </RateInfos>
+    <ValueAdds size="2">
+      <ValueAdd id="2048">
+        <description>Free Wireless Internet</description>
+      </ValueAdd>
+      <ValueAdd id="16777216">
+        <description>Breakfast Buffet</description>
+      </ValueAdd>
+    </ValueAdds>
+    <deepLink>http://travel.ian.com/hotels/priceCheck.jsp?cid=55505&amp;locale=en_US&amp;currencyCode=USD&amp;numberOfRooms=1&amp;room-0-adult-total=2&amp;room-0-child-total=0&amp;rateChange=false&amp;rateCode=200517357&amp;roomTypeCodeDescription=Twin+Executive&amp;roomTypeCode=200090252&amp;cityLink=Slough&amp;countryLink=GB&amp;resType=hotel&amp;propertyID=4447752&amp;hotelID=386590&amp;supplierType=E&amp;propertyType=H&amp;requestKey=11b227e1-40dd-4928-8232-d05678ce6d22&amp;rateKey=11b227e1-40dd-4928-8232-d05678ce6d22&amp;arrivalMonth=1&amp;arrivalDay=11&amp;arrivalYear=2013&amp;departureMonth=1&amp;departureDay=13&amp;departureYear=2013&amp;nativeNightlyRates=417.96,417.96&amp;nativeCurrencyCode=USD&amp;nativeRoomRate=874.0&amp;displayNightlyRates=417.96,417.96&amp;displayCurrencyCode=USD&amp;displayRoomRate=874.0&amp;chargeableRoomRateTotal=874.0&amp;chargeableRoomRateTaxes=38.08&amp;guarantee=C&amp;directConnect=false&amp;rateFrequency=B&amp;rateIsBase=true</deepLink>
+  </HotelRoomResponse>
+  <HotelRoomResponse>
+    <rateCode>200665876</rateCode>
+    <roomTypeCode>200123106</roomTypeCode>
+    <roomTypeDescription>Executive One King Bed</roomTypeDescription>
+    <supplierType>E</supplierType>
+    <taxRate>38.08</taxRate>
+    <rateChange>false</rateChange>
+    <nonRefundable>false</nonRefundable>
+    <guaranteeRequired>false</guaranteeRequired>
+    <depositRequired>true</depositRequired>
+    <immediateChargeRequired>true</immediateChargeRequired>
+    <currentAllotment>0</currentAllotment>
+    <propertyId>4447752</propertyId>
+    <rateOccupancyPerRoom>2</rateOccupancyPerRoom>
+    <quotedOccupancy>1</quotedOccupancy>
+    <minGuestAge>0</minGuestAge>
+    <RateInfos size="1">
+      <RateInfo rateChange="false" promo="false" priceBreakdown="true">
+        <RoomGroup>
+          <Room>
+            <numberOfAdults>2</numberOfAdults>
+            <numberOfChildren>0</numberOfChildren>
+          </Room>
+        </RoomGroup>
+        <ChargeableRateInfo total="874.0" surchargeTotal="38.08" nightlyRateTotal="835.92" maxNightlyRate="417.96" currencyCode="USD" commissionableUsdTotal="835.92" averageRate="417.96" averageBaseRate="417.96">
+          <NightlyRatesPerRoom size="2">
+            <NightlyRate promo="false" rate="417.96" baseRate="417.96"/>
+            <NightlyRate promo="false" rate="417.96" baseRate="417.96"/>
+          </NightlyRatesPerRoom>
+          <Surcharges size="1">
+            <Surcharge amount="38.08" type="ExtraPersonFee"/>
+          </Surcharges>
+        </ChargeableRateInfo>
+      </RateInfo>
+    </RateInfos>
+    <ValueAdds size="1">
+      <ValueAdd id="2048">
+        <description>Free Wireless Internet</description>
+      </ValueAdd>
+    </ValueAdds>
+    <deepLink>http://travel.ian.com/hotels/priceCheck.jsp?cid=55505&amp;locale=en_US&amp;currencyCode=USD&amp;numberOfRooms=1&amp;room-0-adult-total=2&amp;room-0-child-total=0&amp;rateChange=false&amp;rateCode=200665876&amp;roomTypeCodeDescription=Executive+One+King+Bed&amp;roomTypeCode=200123106&amp;cityLink=Slough&amp;countryLink=GB&amp;resType=hotel&amp;propertyID=4447752&amp;hotelID=386590&amp;supplierType=E&amp;propertyType=H&amp;requestKey=11b227e1-40dd-4928-8232-d05678ce6d22&amp;rateKey=11b227e1-40dd-4928-8232-d05678ce6d22&amp;arrivalMonth=1&amp;arrivalDay=11&amp;arrivalYear=2013&amp;departureMonth=1&amp;departureDay=13&amp;departureYear=2013&amp;nativeNightlyRates=417.96,417.96&amp;nativeCurrencyCode=USD&amp;nativeRoomRate=874.0&amp;displayNightlyRates=417.96,417.96&amp;displayCurrencyCode=USD&amp;displayRoomRate=874.0&amp;chargeableRoomRateTotal=874.0&amp;chargeableRoomRateTaxes=38.08&amp;guarantee=C&amp;directConnect=false&amp;rateFrequency=B&amp;rateIsBase=true</deepLink>
+    <RoomImages size="1">
+      <RoomImage>
+        <url>http://media.expedia.com/hotels/5000000/4450000/4447800/4447752/4447752_23_s.jpg</url>
+      </RoomImage>
+    </RoomImages>
+  </HotelRoomResponse>
+</HotelRoomAvailabilityResponse>

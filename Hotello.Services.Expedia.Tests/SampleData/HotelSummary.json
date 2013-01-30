@@ -1,0 +1,221 @@
+﻿{
+	"HotelSummary": [{
+					"@ubsScore": "0",
+					"@order": "0",
+					"hotelId": 107642,
+					"name": "Marriott London Marble Arch",
+					"address1": "134 George Street",
+					"city": "London",
+					"postalCode": "W1H 5DN",
+					"countryCode": "GB",
+					"airportCode": "LHR",
+					"supplierType": "E",
+					"propertyCategory": 1,
+					"hotelRating": 4,
+					"confidenceRating": 47,
+					"amenityMask": 22511755,
+					"tripAdvisorRating": 4,
+					"tripAdvisorReviewCount": 487,
+					"tripAdvisorRatingUrl": "http:\/\/www.tripadvisor.com\/img\/cdsi\/img2\/ratings\/traveler\/4.0-12345-4.gif",
+					"locationDescription": "Near Marble Arch",
+					"shortDescription": "&lt;p&gt;&lt;b&gt;Location. &lt;\/b&gt; &lt;br \/&gt;Located in central London, Marriott London Marble Arch is a business-friendly hotel within walking distance of Marble Arch and Hyde Park Speakers&apos; Corner. Additional points",
+					"highRate": 359,
+					"lowRate": 287,
+					"rateCurrencyCode": "GBP",
+					"latitude": 51.51637,
+					"longitude": -0.16407,
+					"proximityDistance": 2.8285432,
+					"proximityUnit": "MI",
+					"hotelInDestination": true,
+					"thumbNailUrl": "\/hotels\/1000000\/10000\/2300\/2208\/2208_76_t.jpg",
+					"deepLink": "http:\/\/travel.ian.com\/index.jsp?pageName=hotAvail&amp;cid=55505&amp;hotelID=107642&amp;mode=2&amp;numberOfRooms=2&amp;room-0-adult-total=2&amp;room-0-child-total=2&amp;room-0-child-0-age=14&amp;room-0-child-1-age=16&amp;room-1-adult-total=1&amp;room-1-child-total=0&amp;arrivalMonth=1&amp;arrivalDay=7&amp;departureMonth=2&amp;departureDay=7&amp;showInfo=true&amp;locale=en_GB&amp;currencyCode=GBP",
+					"RoomRateDetailsList": {
+						"RoomRateDetails": {
+							"roomTypeCode": 173217,
+							"rateCode": 200281892,
+							"maxRoomOccupancy": 4,
+							"quotedRoomOccupancy": 2,
+							"minGuestAge": 0,
+							"roomDescription": "Executive Room",
+							"currentAllotment": 0,
+							"propertyAvailable": true,
+							"propertyRestricted": false,
+							"expediaPropertyId": 2208,
+							"rateKey": "a4057084-36ec-4127-bb43-db1234b9aea8",
+							"nonRefundable": false,
+							"RateInfos": {
+								"@size": "1",
+								"RateInfo": {
+									"@rateChange": "true",
+									"@promo": "false",
+									"@priceBreakdown": "true",
+									"RoomGroup": {
+										"Room": [{
+											"numberOfAdults": 2,
+											"numberOfChildren": 2,
+											"childAges": [14,
+											16]
+										},
+										{
+											"numberOfAdults": 1,
+											"numberOfChildren": 0
+										}]
+									},
+									"ChargeableRateInfo": {
+										"@total": "17440.0",
+										"@nightlyRateTotal": "17440.0",
+										"@maxNightlyRate": "359.0",
+										"@currencyCode": "GBP",
+										"@commissionableUsdTotal": "27673.76",
+										"@averageRate": "311.42856",
+										"@averageBaseRate": "311.42856",
+										"NightlyRatesPerRoom": {
+											"@size": "28",
+											"NightlyRate": [{
+												"@promo": "false",
+												"@rate": "287.0",
+												"@baseRate": "287.0"
+											},
+											{
+												"@promo": "false",
+												"@rate": "287.0",
+												"@baseRate": "287.0"
+											},
+											{
+												"@promo": "false",
+												"@rate": "287.0",
+												"@baseRate": "287.0"
+											},
+											{
+												"@promo": "false",
+												"@rate": "287.0",
+												"@baseRate": "287.0"
+											},
+											{
+												"@promo": "false",
+												"@rate": "287.0",
+												"@baseRate": "287.0"
+											},
+											{
+												"@promo": "false",
+												"@rate": "287.0",
+												"@baseRate": "287.0"
+											},
+											{
+												"@promo": "false",
+												"@rate": "287.0",
+												"@baseRate": "287.0"
+											},
+											{
+												"@promo": "false",
+												"@rate": "287.0",
+												"@baseRate": "287.0"
+											},
+											{
+												"@promo": "false",
+												"@rate": "287.0",
+												"@baseRate": "287.0"
+											},
+											{
+												"@promo": "false",
+												"@rate": "287.0",
+												"@baseRate": "287.0"
+											},
+											{
+												"@promo": "false",
+												"@rate": "359.0",
+												"@baseRate": "359.0"
+											},
+											{
+												"@promo": "false",
+												"@rate": "359.0",
+												"@baseRate": "359.0"
+											},
+											{
+												"@promo": "false",
+												"@rate": "359.0",
+												"@baseRate": "359.0"
+											},
+											{
+												"@promo": "false",
+												"@rate": "359.0",
+												"@baseRate": "359.0"
+											},
+											{
+												"@promo": "false",
+												"@rate": "359.0",
+												"@baseRate": "359.0"
+											},
+											{
+												"@promo": "false",
+												"@rate": "359.0",
+												"@baseRate": "359.0"
+											},
+											{
+												"@promo": "false",
+												"@rate": "347.0",
+												"@baseRate": "347.0"
+											},
+											{
+												"@promo": "false",
+												"@rate": "287.0",
+												"@baseRate": "287.0"
+											},
+											{
+												"@promo": "false",
+												"@rate": "287.0",
+												"@baseRate": "287.0"
+											},
+											{
+												"@promo": "false",
+												"@rate": "287.0",
+												"@baseRate": "287.0"
+											},
+											{
+												"@promo": "false",
+												"@rate": "287.0",
+												"@baseRate": "287.0"
+											},
+											{
+												"@promo": "false",
+												"@rate": "287.0",
+												"@baseRate": "287.0"
+											},
+											{
+												"@promo": "false",
+												"@rate": "299.0",
+												"@baseRate": "299.0"
+											},
+											{
+												"@promo": "false",
+												"@rate": "299.0",
+												"@baseRate": "299.0"
+											},
+											{
+												"@promo": "false",
+												"@rate": "329.0",
+												"@baseRate": "329.0"
+											},
+											{
+												"@promo": "false",
+												"@rate": "329.0",
+												"@baseRate": "329.0"
+											},
+											{
+												"@promo": "false",
+												"@rate": "329.0",
+												"@baseRate": "329.0"
+											},
+											{
+												"@promo": "false",
+												"@rate": "329.0",
+												"@baseRate": "329.0"
+											}]
+										}
+									}
+								}
+							}
+						}
+					}
+				}]
+}

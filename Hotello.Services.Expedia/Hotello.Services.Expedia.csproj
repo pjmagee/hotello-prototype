@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3E5CF7FB-8E8E-47E2-9382-A6E7698B628A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Hotello.Services.Expedia</RootNamespace>
+    <AssemblyName>Hotello.Services.Expedia</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.2.2.1-ci9000\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common">
+      <HintPath>..\packages\Ninject.Web.Common.3.0.0.7\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.104.1\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Hotels\Api\AbstractExpediaService.cs" />
+    <Compile Include="Hotels\Models\Amenity.cs" />
+    <Compile Include="Hotels\Models\EanWsError.cs" />
+    <Compile Include="Hotels\Models\HotelImages.cs" />
+    <Compile Include="Hotels\Models\LocationInfos.cs" />
+    <Compile Include="Hotels\Models\PropertyAmenities.cs" />
+    <Compile Include="Hotels\Models\Request\HotelRoomCancellationRequest.cs" />
+    <Compile Include="Hotels\Models\Amenities.cs" />
+    <Compile Include="Hotels\Models\Response\HotelRoomCancellationResponse.cs" />
+    <Compile Include="Hotels\Api\IExpediaService.cs" />
+    <Compile Include="Hotels\Models\NightlyRatesPerRoom.cs" />
+    <Compile Include="Hotels\Models\Options.cs" />
+    <Compile Include="Hotels\Models\Request\PingRequest.cs" />
+    <Compile Include="Hotels\Models\Response\PingResponse.cs" />
+    <Compile Include="Hotels\Api\RestExpediaService.cs" />
+    <Compile Include="Hotels\Models\BedType.cs" />
+    <Compile Include="Hotels\Models\Response\CachedSupplierResponse.cs" />
+    <Compile Include="Hotels\Models\Request\CancelPolicyInfoRequest.cs" />
+    <Compile Include="Hotels\Models\ChargeableRateInfo.cs" />
+    <Compile Include="Hotels\Models\ConvertedRateInfo.cs" />
+    <Compile Include="Hotels\Models\HotelDetails.cs" />
+    <Compile Include="Hotels\Models\HotelImage.cs" />
+    <Compile Include="Hotels\Models\Request\HotelInformationRequest.cs" />
+    <Compile Include="Hotels\Models\Response\HotelInformationResponse.cs" />
+    <Compile Include="Hotels\Models\HotelList.cs" />
+    <Compile Include="Hotels\Models\Request\HotelListRequest.cs" />
+    <Compile Include="Hotels\Models\Response\HotelListResponse.cs" />
+    <Compile Include="Hotels\Models\Request\HotelRoomAvailabilityRequest.cs" />
+    <Compile Include="Hotels\Models\Response\HotelRoomAvailabilityResponse.cs" />
+    <Compile Include="Hotels\Models\Response\HotelRoomResponse.cs" />
+    <Compile Include="Hotels\Models\HotelSummary.cs" />
+    <Compile Include="Hotels\Models\LocationInfo.cs" />
+    <Compile Include="Hotels\Models\Request\LocationInfoRequest.cs" />
+    <Compile Include="Hotels\Models\Response\LocationInfoResponse.cs" />
+    <Compile Include="Hotels\Models\NightlyRate.cs" />
+    <Compile Include="Hotels\Models\PropertyAmenity.cs" />
+    <Compile Include="Hotels\Models\RateInfo.cs" />
+    <Compile Include="Hotels\Models\RateInfos.cs" />
+    <Compile Include="Hotels\Models\PropertyCategory.cs" />
+    <Compile Include="Hotels\Models\RoomTypes.cs" />
+    <Compile Include="Hotels\Models\Suppliers.cs" />
+    <Compile Include="Hotels\Models\Room.cs" />
+    <Compile Include="Hotels\Models\RoomAmenities.cs" />
+    <Compile Include="Hotels\Models\ServerInfo.cs" />
+    <Compile Include="Hotels\Models\SupplierType.cs" />
+    <Compile Include="Hotels\Models\RoomAmenity.cs" />
+    <Compile Include="Hotels\Models\RoomGroup.cs" />
+    <Compile Include="Hotels\Models\RoomRateDetails.cs" />
+    <Compile Include="Hotels\Models\RoomRateDetailsList.cs" />
+    <Compile Include="Hotels\Models\RoomType.cs" />
+    <Compile Include="Hotels\Models\Supplier.cs" />
+    <Compile Include="Hotels\Models\Surcharge.cs" />
+    <Compile Include="Hotels\Models\ValueAdd.cs" />
+    <Compile Include="Hotels\Models\ValueAdds.cs" />
+    <Compile Include="Module\ExpediaServiceProvider.cs" />
+    <Compile Include="Module\ExpediaModule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

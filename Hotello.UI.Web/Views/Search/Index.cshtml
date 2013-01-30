@@ -1,0 +1,592 @@
+﻿@using Hotello.Common
+@using Hotello.Services.Expedia.Hotels.Models
+@using Hotello.UI.Web.Models
+@model Hotello.UI.Web.Models.SearchViewModel
+
+@section css {
+    @Styles.Render("~/Content/rateit.css")
+    @Styles.Render("~/Content/daterangepicker")
+}
+
+@{
+    ViewBag.Title = "Search";
+    
+    IDictionary<string, object> formHtml = new Dictionary<string, object>();
+    formHtml.Add("class", "form-horizontal well");
+
+    IDictionary<string, object> controlLabel = new Dictionary<string, object>();
+    controlLabel.Add("class", "control-label");
+
+    IDictionary<string, object> dateFieldHtml = new Dictionary<string, object>();
+    dateFieldHtml.Add("placeholder", "");
+    dateFieldHtml.Add("class", "datepicker input-small");
+    
+    IDictionary<string, object> adultDropdownHtml = new Dictionary<string, object>();
+    adultDropdownHtml.Add("class", "input-mini adult");
+
+    IDictionary<string, object> childDropdownHtml = new Dictionary<string, object>();
+    childDropdownHtml.Add("class", "input-mini child");
+    
+    IDictionary<string, object> ageDropDownHtml = new Dictionary<string, object>();
+    ageDropDownHtml.Add("class", "input-mini age");
+    
+    IDictionary<string, object> mutliSelectHtml = new Dictionary<string, object>();
+    mutliSelectHtml.Add("multiple", "multiple");
+}
+
+
+<div class="row">
+    <div class="span9">
+        @using (Html.BeginForm("Index", "Search", FormMethod.Post, formHtml))
+        {
+            @Html.AntiForgeryToken()
+   
+
+            <fieldset>
+                <legend>Search for a Hotel</legend>
+        
+                @Html.ValidationSummary(false)
+
+                <!-- ARRIVAL -->
+                <div class="control-group">
+                    @Html.LabelFor(search => search.ArrivalDate, "Check-in Date", controlLabel)
+                    <div class="controls">
+                        <div class="input-append">
+                            @Html.TextBoxFor(search => search.ArrivalDate, dateFieldHtml)
+                            <span class="add-on">
+                                <i class="icon-calendar"></i>
+                            </span>
+                        </div>
+                        @Html.ValidationMessageFor(search => search.ArrivalDate)
+                    </div>   
+                </div>
+
+                <!-- DEPARTURE -->
+                <div class="control-group"> 
+                    @Html.LabelFor(model => model.DepartureDate, "Check-out Date", controlLabel)
+                    <div class="controls">
+                        <div class="input-append">
+                            @Html.TextBoxFor(model => model.DepartureDate, dateFieldHtml)
+                            <span class="add-on">
+                                <i class="icon-calendar"></i>
+                            </span>
+                        </div>
+                        @Html.ValidationMessageFor(model => model.DepartureDate)
+                    </div>           
+                </div>
+        
+                <!-- DESTINATION STRING -->
+                <div class="control-group">
+                    @Html.LabelFor(model => model.Destination, "Destination", controlLabel)
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.Destination, new { @class = "input-xlarge", placeholder = "City, Province, Country" })
+                        <img src="@Url.Content("~/Content/images/powered-by-google-on-white.png")" />
+                        @Html.ValidationMessageFor(model => model.Destination)
+                    </div>      
+                </div>
+                
+                <div class="control-group landmarks">
+                    @Html.LabelFor(model => model.DestinationId, "Close to", controlLabel)
+                    <div class="controls">
+                        <select id="destinationId" name="DestinationId" class="input-xlarge">
+                            <!-- AJAX POPULATED -->
+                        </select>
+                    </div>   
+                </div>
+        
+                <!-- CITY -->
+                <div class="control-group hidden">
+                    @Html.LabelFor(model => model.City, "City", controlLabel)  
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.City, new { @class = "input-medium" })
+                        @Html.ValidationMessageFor(model => model.City)
+                    </div>   
+                </div>
+
+                <!-- PROVINCE -->
+                <div class="control-group hidden">
+                    @Html.LabelFor(model => model.Province, controlLabel)  
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.Province, new { @class = "input-small" })
+                        @Html.ValidationMessageFor(model => model.Province)
+                    </div>   
+                </div>
+
+                <!-- COUNTRY -->
+                <div class="control-group hidden">
+                    @Html.LabelFor(model => model.Country, controlLabel)
+                    <div class="controls">
+                        @Html.DropDownListFor(model => model.Country, new SelectList(new List<string>() { "UK", "US", "DE" }), new { @class = "input-small" })
+                        @Html.ValidationMessageFor(model => model.Country)
+                    </div>   
+                </div>
+
+                <!-- STAR RATING -->
+                <div class="control-group">        
+                    @Html.LabelFor(model => model.MinimumStarRating, "Star Rating between", controlLabel)  
+                    <div class="controls">
+                        
+                        @Html.TextBoxFor(model => model.MinimumStarRating)
+                        @Html.TextBoxFor(model => model.MaximumStarRating)
+                        
+                        <ul class="inline">
+                            <li>
+                                <div id="starMinimum" class="star">
+                                    <!-- Place Holder -->
+                                </div>
+                            </li>
+                            <li>
+                                <span>and</span>
+                            </li>
+                            <li>
+                                <div id="starMaximum" class="star">
+                                    <!-- Place Holder -->
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- ROOMS REQUIRED -->
+                <div class="control-group">
+                    @Html.LabelFor(model => model.NumberOfBedrooms, "Rooms", controlLabel)  
+                    <div class="controls">
+                        @Html.DropDownListFor(model => model.NumberOfBedrooms, SearchViewModel.RoomsSelectList, new { @class = "input-mini" })
+                        @Html.ValidationMessageFor(model => model.NumberOfBedrooms)
+                    </div>   
+                </div>  
+
+              
+                <!-- ROOMS -->
+                <div class="control-group">
+                    <div class="controls">
+                        <ol class="rooms unstyled">
+                            @for (int i = 0; i < Model.RoomViewModels.Count; i++)
+                            {
+                                <!-- ROOM -->
+                                <li class="room">
+                                    <span>Room<span class="room"></span></span>
+                                    <div class="input-prepend">
+                                        <span class="add-on">Adults</span>
+                                        @Html.DropDownListFor(x => Model.RoomViewModels[i].Adults, SearchViewModel.AdultSelectList, "0", adultDropdownHtml)
+                                    </div>
+                           
+                                    <div class="input-prepend">
+                                        <span class="add-on">Children</span>
+                                        @Html.DropDownListFor(x => Model.RoomViewModels[i].Children, SearchViewModel.ChildrenSelectList, "0", childDropdownHtml)
+                                    </div>
+                            
+                                    <!-- AGES -->
+                                    @for (int j = 0; j < Model.RoomViewModels[i].AgeViewModels.Count; j++)
+                                    {
+                                        <!-- AGE -->
+                                        <div class="age input-prepend">
+                                            <span class="add-on">Age</span>
+                                            @Html.DropDownListFor(x => Model.RoomViewModels[i].AgeViewModels[j].Age, SearchViewModel.ChildrenAgesSelectList, "<1", ageDropDownHtml)
+                                        </div>
+                                    }
+                                </li>
+                            }
+                        </ol>
+                    </div>
+                </div>
+             
+                 <div class="control-group">
+                    @Html.LabelFor(model => model.Amenities, controlLabel)  
+                    <div class="controls">
+                        <div class="btn-group">
+                            <a href="#" data-toggle="dropdown" role="menu" class="btn btn-info dropdown-toggle">
+                                Amenities
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                @foreach (var amenity in Enum.GetValues(typeof (Amenity)).Cast<Amenity>())
+                                {
+                                    <li>
+                                        <label class="checkbox">
+                                            <input type="checkbox" id="Amenities_@amenity" value="@((int) amenity)" name="Amenities" />
+                                            @amenity.GetDescription()
+                                        </label>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>    
+
+
+                <!-- PROPERTY CATEGORY -->
+                <div class="control-group hidden">
+                    @Html.LabelFor(model => model.PropertyCategories, "Properties", controlLabel)  
+                    <div class="controls">
+                        @Html.ListBoxFor(model => model.PropertyCategories, Model.CategoriesMultiList, mutliSelectHtml)
+                        @Html.ValidationMessageFor(model => model.PropertyCategories)
+                        <a class="btn btn-info btn-mini">Clear selected options</a>
+                    </div>
+                </div>    
+        
+
+                <!-- SEARCH OPTION -->
+                <div class="control-group hidden">
+                    @Html.LabelFor(model => model.Option, controlLabel)  
+                    <div class="controls">
+                        @Html.DropDownListFor(model => model.Option, Model.OptionsList)
+                        @Html.ValidationMessageFor(model => model.Option)
+                    </div>   
+                </div>   
+        
+
+                <!-- RESULTS PER PAGE -->
+                <div class="control-group hidden">
+                    @Html.LabelFor(model => model.ResultsPerPage, "Results Per Page", controlLabel)  
+                    <div class="controls">
+                        @Html.DropDownListFor(model => model.ResultsPerPage, Model.ResultsPerPageList, new { @class = "span2" })
+                        @Html.ValidationMessageFor(model => model.ResultsPerPage)
+                    </div>   
+                </div>
+        
+                <!-- SUBMIT -->
+                <div class="form-actions">
+            
+                    <button class="btn btn-primary">
+                        <i class="icon-search"></i> Search
+                    </button>
+
+                    <input type="submit" class="hidden" value="Submit" />
+                </div>
+
+            </fieldset>
+        }
+    </div>
+    <div class="span4">
+        
+        
+    </div>
+</div>
+
+
+
+
+@section scripts {
+    
+    @Scripts.Render("~/bundles/jqueryui-bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryrateit")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/daterangepicker")
+
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+
+            // ----------------------------------------------------------------
+            // Form Submit ----------------------------------------------------
+            // ----------------------------------------------------------------
+            $('div.form-actions button').click(function(e) {
+                e.preventDefault();
+                $('div.form-actions input[type="submit"]').click();
+
+            });
+
+            // Keep the checkbox button list open
+            $('.dropdown-menu input, .dropdown-menu label').click(function(e) {
+                e.stopPropagation();
+            });
+
+
+            // ----------------------------------------------------------------
+            // Auto Suggestions -----------------------------------------------
+            // ----------------------------------------------------------------
+
+            // http://api.jqueryui.com/autocomplete/#event-select
+
+            $("#Destination").autocomplete({
+                source: function(request, response) {
+                    $.ajax({
+                        url: '@Url.Action("AutoSuggestDestination", "Places")', // Call the Places controller
+                        type: "GET", // HTTP GET
+                        dataType: "json",
+                        data: {
+                            text: request.term
+                        },
+                        success: function(data) {
+
+                            response($.map(data, function(item) {
+                                return {
+                                    label: item.suggestion,
+                                    value: item.suggestion
+                                };
+                            }));
+                        },
+                        error: function() {
+
+                            return {
+                                label: "There was an error getting suggested locations",
+                                value: ""
+                            };
+                        }
+                    });
+                },
+                select: function(event, ui) {
+
+                    console.log("Selected " + ui.item.value);
+                    populateNearbyLandmarks(ui.item.value); // The selected destination
+
+                },
+                minLength: 3                
+            });
+
+
+            // ----------------------------------------------------------------
+            // Dates ----------------------------------------------------------
+            // ----------------------------------------------------------------
+
+            $("input#ArrivalDate").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                constrainInput: true,
+                numberOfMonths: 3,
+                minDate: 0,
+                dateFormat: 'dd/mm/yy',
+                onClose: function (selectedDate) {
+                    $("input#DepartureDate").datepicker("option", "minDate", selectedDate);
+                }
+            });
+
+            $("input#DepartureDate").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                constrainInput: true,
+                numberOfMonths: 3,
+                minDate: 0,
+                dateFormat: 'dd/mm/yy',
+                onClose: function (selectedDate) {
+                    $("input#ArrivalDate").datepicker("option", "maxDate", selectedDate);
+                }
+            });
+
+            $("input#ArrivalDate").datepicker("setDate", +1);
+            $("input#DepartureDate").datepicker("setDate", +7);
+
+            $.validator.methods.date = function(value, element) {
+
+                try {
+
+                    $.datepicker.parseDate('dd/mm/yy', value);
+                    
+                    return true;
+                    
+                } catch (err) { }
+                
+                return false;
+            };
+
+            // ----------------------------------------------------------------
+            // Ratings --------------------------------------------------------
+            // ----------------------------------------------------------------
+
+            $('div#starMinimum').rateit({
+                min: 0,
+                max: 5,
+                backingfld: '#MinimumStarRating',
+                resetable: false,
+                ispreset: true,
+            });
+            
+            $('div#starMaximum').rateit({
+                min: 0,
+                max: 5,
+                backingfld: '#MaximumStarRating',
+                resetable: false,
+                ispreset: true,
+            });
+            
+            var tooltipvalues = ['Economy', 'Moderate', 'First Class', 'Superior', 'Deluxe'];
+
+            $(".star").bind('over', function (event, value) {
+                $(this).attr('title', tooltipvalues[value - 1]);
+            });
+
+            $('input#MinimumStarRating').hide();
+            $('input#MaximumStarRating').hide();
+
+
+            // ----------------------------------------------------------------
+            // Reset Multi Select List Options --------------------------------
+            // ----------------------------------------------------------------
+
+            $('a.btn-info').click(function() {
+                $(this).parent('div.controls').find('select option:selected').removeAttr('selected');
+            });
+
+            // ----------------------------------------------------------------
+            // Room -----------------------------------------------------------
+            // ----------------------------------------------------------------
+
+            $('ol.rooms > :not(li:first)').hide(); // hide all rooms except first
+
+            function roomSort() {
+
+                var idx = $('select#NumberOfBedrooms').val();
+
+                $('ol.rooms > li:gt(' + (idx - 1) + ')').each(function() {
+                    $(this).slideUp('slow');
+                });
+
+                // Less than the number of rooms wanted, show
+                $('ol.rooms > li:lt(' + (idx) + ')').each(function() {
+                    $(this).slideDown('slow');
+                });
+
+            }
+
+            $('select#NumberOfBedrooms').change(function() {
+
+                var value = $(this).val();
+
+                $('ol.rooms > li:gt(' + (value - 1) + ')').each(function() {
+                    $(this).slideUp('slow');
+                });
+
+                $('ol.rooms > li:lt(' + (value) + ')').each(function() {
+                    $(this).slideDown('slow');
+                });
+
+            });
+            
+            roomSort();
+
+            // ----------------------------------------------------------------
+            // Children -------------------------------------------------------
+            // ----------------------------------------------------------------
+
+            $('div.input-prepend.age').hide(); // Hide all child ages initially
+
+            // Any select list for children amount that changes
+            $('select[name$=".Children"]').change(function() {
+
+                var select = $(this);
+                var children = $(this).val();
+
+                console.log("Children Selected: " + children);
+
+                var ageSelects = $(select.closest('.room').find('.age select'));
+
+                $(select.closest('.room').find('.age select')).each(function() {
+                    $(this).parent('div.age').hide(); // hard hide reset
+                });
+
+                for (var i = 0; i < children; i++) {
+
+                    $(ageSelects[i]).parent('div.age').show();
+                }
+
+            });
+
+            function sortChildRooms() {
+
+                $('select[name$=".Children"]').each(function() {
+
+                    var select = $(this);
+                    var children = $(this).val();
+
+                    console.log("Children Selected: " + children);
+
+                    var ageSelects = $(select.closest('.room').find('.age select'));
+
+                    $(select.closest('.room').find('.age select')).each(function() {
+                        $(this).parent('div.age').hide(); // hard hide reset
+                    });
+
+                    for (var i = 0; i < children; i++) {
+
+                        $(ageSelects[i]).parent('div.age').show();
+                    }
+
+                });
+
+            }
+
+            sortChildRooms();
+
+            // ----------------------------------------------------------------
+            // Form Validation ------------------------------------------------
+            // ----------------------------------------------------------------
+
+            // Fix for Bootstrap CSS Error styling with ASP.NET MVC jquery validation
+
+            $('span.field-validation-valid, span.field-validation-error').each(function() {
+                $(this).addClass('help-inline');
+            });
+
+            // ----------------------------------------------------------------
+            // Amenities ------------------------------------------------------
+            // ----------------------------------------------------------------
+
+            $('a[data-toggle="dropdown"]').tooltip({               
+                placement: 'right',
+                animation: true,
+                html: false,
+                selector: false,
+                title: 'Select upto 3 amenities',
+            });
+
+            $('input[name="Amenities"]:checkbox').click(function() {
+
+                console.log("Checkbox event fired");
+
+                if ($('input[name="Amenities"]:checked').length === 3) {
+                    $('input[name="Amenities"]:not(:checked)').attr("disabled", true);
+                } else {
+                    $('input[name="Amenities"]').removeAttr("disabled");
+                }
+            });            
+
+
+            // ----------------------------------------------------------------
+            // Lankmark Proximity ---------------------------------------------
+            // ----------------------------------------------------------------
+            $('.landmarks').hide();
+
+            function populateNearbyLandmarks(destination) {
+
+                $.ajax({
+                    url: '@Url.Action("Landmarks", "Search")', // Call the Places controller
+                    type: "GET", // HTTP GET
+                    dataType: "json",
+                    data: {
+                        destinationString: destination
+                    },
+                    success: function(data) {
+
+                        if ($('select#destinationId option').length > 0)
+                            $('select#destinationId option').remove();
+
+                        $.each(data, function(index, landmark) {
+
+                            console.log(landmark.destinationId);
+                            console.log(landmark.description);
+
+                            // Select List Option
+                            var option = "<option value='" + landmark.destinationId + "'>" + landmark.description + "</option>";
+                            $('select#destinationId').append(option);
+
+                        });
+
+                        $('select#destinationId').scrollTop(10);
+                        $('.landmarks').fadeIn('slow');
+
+                    },
+                    error: function(e) {
+                        console.log("Error populating landmarks from response: " + e);
+
+                        $('.landmarks').fadeOut('slow');
+                    }
+                });
+            }
+
+        });
+
+    </script>
+
+}

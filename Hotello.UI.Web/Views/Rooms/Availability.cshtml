@@ -1,0 +1,79 @@
+﻿
+@using Hotello.UI.Web.Helpers
+@model Hotello.Services.Expedia.Hotels.Models.Response.HotelRoomAvailabilityResponse
+@{
+    ViewBag.Title = "Availability Response";
+}
+
+<h2>Hotel Rooms Available</h2>
+
+
+<div class="well">
+    
+    <div class="row">
+        <!-- HOTEL INFO AT TOP -->
+        
+        
+        ID: @Model.HotelId
+        Arrival: @Model.ArrivalDate
+        Departure: @Model.DepartureDate
+        
+        Hotel Name: @Model.HotelName
+        Hotel Address: @Model.HotelAddress
+
+    </div>
+    
+    <div class="row">
+        <!-- ROOM SHIZZLE HERE -->
+        
+        <ul class="unstyled">
+        @foreach (var room in Model.HotelRoomResponse.OrEmptyIfNull())
+        {
+            <li>
+                <p>
+                    @room.RoomTypeDescription
+                </p>
+                
+                <p>
+                    @room.RateDescription
+                </p>
+                
+                <p>
+                    @room.PromoDescription
+                </p>
+                
+                <p>
+                    @room.OtherInformation
+                </p>
+                
+                
+                <p>
+                    @room.Policy
+                </p>
+                
+                <p>
+                    @room.QuotedOccupancy
+                </p>
+                
+
+                
+            </li>
+        }
+        </ul>
+        
+        
+        
+        
+        
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+
+</div>
