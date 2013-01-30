@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Hotello.UI.Web.Helpers
+namespace Hotello.Common
 {
     public static class EnumerableExtensions
     {

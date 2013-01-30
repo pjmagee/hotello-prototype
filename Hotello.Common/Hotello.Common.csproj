@@ -43,12 +43,6 @@
     <Compile Include="EnumExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Hotello.Services.Expedia\Hotello.Services.Expedia.csproj">
-      <Project>{3E5CF7FB-8E8E-47E2-9382-A6E7698B628A}</Project>
-      <Name>Hotello.Services.Expedia</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

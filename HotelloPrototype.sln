@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotello.UI.Web.Tests", "Hot
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotello.Core", "Hotello.Core\Hotello.Core.csproj", "{21DD04F1-D7AB-4843-BB5B-7BD954523A2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotello.Services", "Hotello.Services\Hotello.Services.csproj", "{B5470E8E-53E6-497B-B5D2-8A6310144BD0}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotello.Services.Expedia", "Hotello.Services.Expedia\Hotello.Services.Expedia.csproj", "{3E5CF7FB-8E8E-47E2-9382-A6E7698B628A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotello.Services.Google", "Hotello.Services.Google\Hotello.Services.Google.csproj", "{D90EFF01-26CC-4942-8235-E332B3AA52E3}"
@@ -50,10 +48,6 @@ Global
 		{21DD04F1-D7AB-4843-BB5B-7BD954523A2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21DD04F1-D7AB-4843-BB5B-7BD954523A2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21DD04F1-D7AB-4843-BB5B-7BD954523A2C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B5470E8E-53E6-497B-B5D2-8A6310144BD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B5470E8E-53E6-497B-B5D2-8A6310144BD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B5470E8E-53E6-497B-B5D2-8A6310144BD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B5470E8E-53E6-497B-B5D2-8A6310144BD0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3E5CF7FB-8E8E-47E2-9382-A6E7698B628A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3E5CF7FB-8E8E-47E2-9382-A6E7698B628A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E5CF7FB-8E8E-47E2-9382-A6E7698B628A}.Release|Any CPU.ActiveCfg = Release|Any CPU
