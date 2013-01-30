@@ -15,11 +15,13 @@ namespace Hotello.UI.Web.Models
         [Required]
         [Display(Name = "Check-in")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime ArrivalDate { get; set; }
 
         [Required]
         [Display(Name = "Check-out")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DepartureDate { get; set; }
 
         [Required]
