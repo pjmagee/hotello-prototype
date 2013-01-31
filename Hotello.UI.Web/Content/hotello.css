@@ -6,20 +6,11 @@
 
  */
 
-
 .row-hotel-info {
     margin-top: 15px;
 }
 
-.age {
-    margin-right: 2px;
-}
-
-.adult {
-    margin-right: 2px;
-}
-
-.child {
+.age, .adult, .child {
     margin-right: 2px;
 }
 
@@ -27,7 +18,7 @@
     margin: 2px;
 }
 
-.row-hotel-info span.label.label-info {
+span .label .label-info {
     margin-bottom: 5px;
 }
 
@@ -45,6 +36,9 @@ label {
      margin-right: -15px;
  }
 
+ .ui-autocomplete-loading {
+      background:url('images/ajax-loader.gif') no-repeat right center
+ }
 
 #map_canvas {
     height: 300px;
@@ -63,11 +57,9 @@ label {
 }
 
 .hotel-image img {
-
     width: auto;
     height: 250px;
     max-height: 250px;
-
 }
 
 [class*=" .sprite-glyphicons_"] {

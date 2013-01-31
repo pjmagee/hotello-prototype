@@ -37,8 +37,8 @@ namespace Hotello.UI.Web.Controllers
 
             HotelRoomAvailabilityRequest availabilityRequest = new HotelRoomAvailabilityRequest();
             availabilityRequest.HotelId = id;
-            availabilityRequest.ArrivalDate = model.ArrivalDate;
-            availabilityRequest.DepartureDate = model.DepartureDate;
+            availabilityRequest.ArrivalDate = model.CheckinDate;
+            availabilityRequest.DepartureDate = model.CheckoutDate;
             availabilityRequest.IncludeRoomImages = true;
             availabilityRequest.IncludeDetails = true;
             availabilityRequest.SupplierType = "E";
@@ -57,8 +57,10 @@ namespace Hotello.UI.Web.Controllers
 
             if (hotelRoomAvailabilityResponse.EanWsError != null)
             {
-                // TODO: handle Ean Ws Error
+                Error(hotelRoomAvailabilityResponse.EanWsError.PresentationMessage);
             }
+
+            Information("Room Availability is currently under construction ;-) ");
 
             return View(hotelRoomAvailabilityResponse);
         }

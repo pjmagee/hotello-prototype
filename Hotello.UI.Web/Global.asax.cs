@@ -23,6 +23,8 @@ namespace Hotello.UI.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            BootstrapBundleConfig.RegisterBundles(BundleTable.Bundles);
+            ExampleLayoutsRouteConfig.RegisterRoutes(RouteTable.Routes);
         }
     }
 }

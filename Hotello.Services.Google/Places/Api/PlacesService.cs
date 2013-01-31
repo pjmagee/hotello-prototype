@@ -34,7 +34,7 @@ namespace Hotello.Services.Google.Places.Api
             request.RequestFormat = DataFormat.Json;
             request.AddParameter("key", _apiKey);
 
-            var restResponse = client.Execute<T>(request);
+            IRestResponse<T> restResponse = client.Execute<T>(request);
             return restResponse.Data;
         }
 
@@ -70,7 +70,7 @@ namespace Hotello.Services.Google.Places.Api
             if (autocompletionRequest.Types.HasValue())
                 request.AddParameter("types", autocompletionRequest.Types);
 
-            var autocompletionResponse = Execute<AutocompletionResponse>(request);
+            AutocompletionResponse autocompletionResponse = Execute<AutocompletionResponse>(request);
 
             return autocompletionResponse;
         }

@@ -2,6 +2,13 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotello.UI.Web", "Hotello.UI.Web\Hotello.UI.Web.csproj", "{A08AEF41-0591-46F2-98D9-42B2D4F13EA9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BB877816-3FF7-4400-90FF-B861CD1D54AA} = {BB877816-3FF7-4400-90FF-B861CD1D54AA}
+		{21998635-A483-463B-9B7A-414A5C9B0A2B} = {21998635-A483-463B-9B7A-414A5C9B0A2B}
+		{40190C3D-B4D4-4D1E-B198-26598F7E6A2B} = {40190C3D-B4D4-4D1E-B198-26598F7E6A2B}
+		{4ABE99EE-2B04-4BF9-B543-F98955AA1CE9} = {4ABE99EE-2B04-4BF9-B543-F98955AA1CE9}
+		{21DD04F1-D7AB-4843-BB5B-7BD954523A2C} = {21DD04F1-D7AB-4843-BB5B-7BD954523A2C}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotello.UI.Web.Tests", "Hotello.UI.Web.Tests\Hotello.UI.Web.Tests.csproj", "{7F18281A-3744-447E-A4C5-2D6F9FCA4741}"
 EndProject
@@ -24,6 +31,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotello.Common", "Hotello.Common\Hotello.Common.csproj", "{1B4033FB-5F82-4A0A-99F8-0876E0196EFE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotello.Services.Wunderground", "Hotello.Services.Wunderground\Hotello.Services.Wunderground.csproj", "{4ABE99EE-2B04-4BF9-B543-F98955AA1CE9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1B4033FB-5F82-4A0A-99F8-0876E0196EFE} = {1B4033FB-5F82-4A0A-99F8-0876E0196EFE}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotello.Services.GeoIp", "Hotello.Services.GeoIp\Hotello.Services.GeoIp.csproj", "{8856ED1F-49BE-469B-9B48-64BF6522CD48}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -41,6 +51,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{C0C8A2
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotello.UI.Web.Twitter.Bootstrap.MVC4.Sample", "Hotello.UI.Web.Twitter.Bootstrap.MVC4.Sample\Hotello.UI.Web.Twitter.Bootstrap.MVC4.Sample.csproj", "{BDC6B44D-C9C9-4EF0-B800-33CF7B5B62F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -92,6 +104,10 @@ Global
 		{40190C3D-B4D4-4D1E-B198-26598F7E6A2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40190C3D-B4D4-4D1E-B198-26598F7E6A2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40190C3D-B4D4-4D1E-B198-26598F7E6A2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDC6B44D-C9C9-4EF0-B800-33CF7B5B62F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDC6B44D-C9C9-4EF0-B800-33CF7B5B62F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDC6B44D-C9C9-4EF0-B800-33CF7B5B62F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDC6B44D-C9C9-4EF0-B800-33CF7B5B62F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

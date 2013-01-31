@@ -8,7 +8,7 @@ using Hotello.Services.Expedia.Hotels.Models;
 using Hotello.Services.Expedia.Hotels.Models.Request;
 using Hotello.Services.Expedia.Hotels.Models.Response;
 using Hotello.Services.GeoIp;
-using Hotello.UI.Web.Helpers;
+using Hotello.UI.Web.Attributes;
 using Hotello.UI.Web.Models;
 using Ninject;
 using PagedList;
@@ -50,6 +50,8 @@ namespace Hotello.UI.Web.Controllers
                     })),
             };
 
+            Information("Hello :)");
+
             return View(model);
         }
 
@@ -63,28 +65,29 @@ namespace Hotello.UI.Web.Controllers
                     // Build the request
 
                     HotelListRequest request = new HotelListRequest();
-                    request.DepartureDate = model.DepartureDate;
-                    request.ArrivalDate = model.ArrivalDate;
+
+                    // Arriving on...
+                    request.ArrivalDate = new DateTime(model.CheckinDate.Year, model.CheckinDate.Month, model.CheckinDate.Day);
+                    // Departing on...
+                    request.DepartureDate = new DateTime(model.CheckoutDate.Year, model.CheckoutDate.Month, model.CheckoutDate.Day);
+                    
+                    // At this address
                     request.City = model.City;
                     request.StateProvinceCode = model.Province;
                     request.CountryCode = model.Country;
+
+                    // Or this location
                     request.DestinationString = model.Destination;
+
+                    // Or hotels around this destination
                     request.DestinationId = model.DestinationId;
+
+                    // With ratings of the following
                     request.MaxStarRating = model.MaximumStarRating;
                     request.MinStarRating = model.MinimumStarRating;
+
+                    // And to cater this many rooms/adults/children
                     request.NumberOfBedRooms = model.NumberOfBedrooms;
-                    request.Sort = "PRICE";
-
-                    if (model.Amenities != null)
-                    {
-                        request.Amenities = model.Amenities.Select(a => (Amenity)Enum.Parse(typeof(Amenity), Convert.ToString(a))).ToList();
-                    }
-
-                    if (model.PropertyCategories != null)
-                    {
-                        request.PropertyCategories = model.PropertyCategories.Select(c => (PropertyCategory)Enum.Parse(typeof(PropertyCategory), Convert.ToString(c))).ToList();
-                    }
-
                     request.RoomGroup = model.RoomViewModels
                         .Where(room => room.Adults > 0 || room.Children > 0)
                         .Select(room => new Room()
@@ -94,15 +97,30 @@ namespace Hotello.UI.Web.Controllers
                             ChildAges = room.AgeViewModels.Select(a => a.Age != null ? a.Age.Value : 0).ToList(),
                         })
                         .ToList();
+                    
+                    // Sort the request by prices
+                    request.Sort = "PRICE";
+
+                    // Hotel should have these chosen amenities in the results
+                    if (model.Amenities != null)
+                    {
+                        request.Amenities = model.Amenities.Select(a => (Amenity)Enum.Parse(typeof(Amenity), Convert.ToString(a))).ToList();
+                    }
+
+                    // Hotel should be this kind of property
+                    if (model.PropertyCategories != null)
+                    {
+                        request.PropertyCategories = model.PropertyCategories.Select(c => (PropertyCategory)Enum.Parse(typeof(PropertyCategory), Convert.ToString(c))).ToList();
+                    }
+
 
                     // Response
-
                     HotelListResponse response = _expediaService.GetHotelAvailabilityList(request);
 
                     if (response.EanWsError != null)
                     {
-                        //TODO:  Handle Ean Ws Error
-                        return HttpNotFound(response.EanWsError.PresentationMessage);
+                        Information(response.EanWsError.PresentationMessage);
+                        return View(model);
                     }
 
                     Session.Timeout = 10;
@@ -132,6 +150,7 @@ namespace Hotello.UI.Web.Controllers
 
                 if (hotelListResponse != null)
                 {
+                    // This is where we update our current list of results with more from the remote ip with the specific key
                     if (cacheKey != null && cacheLocation != null)
                     {
                         HotelListRequest request = new HotelListRequest();
@@ -155,10 +174,30 @@ namespace Hotello.UI.Web.Controllers
                     int pageSize = 10;
                     int pageNumber = (page ?? 1);
 
-                    return View("Results", hotelListResponse.HotelList.HotelSummary.ToPagedList(pageNumber, pageSize));
+                    IPagedList<HotelSummary> hotelSummaries = hotelListResponse.HotelList.HotelSummary.ToPagedList(pageNumber, pageSize);
+
+                    if (!hotelSummaries.HasNextPage && (bool) Session["MoreResultsAvailable"])
+                    {
+                        MvcHtmlString htmlString = new MvcHtmlString(
+                            @"<a class=""btn btn-small btn-info btn-block"" href=" +
+                            Url.Action("Results",
+                                       new
+                                           {
+                                               cacheKey = Session["CacheKey"],
+                                               cacheLocation = Session["CacheLocation"],
+                                               page = hotelSummaries.PageNumber + 1
+                                           }) +
+                            @"><i class=""icon-home""></i> More Results Available!</a>");
+                        
+                        Information(htmlString);
+                    }
+
+                    return View("Results", hotelSummaries);
                 }    
             }
-            return View();
+
+            Information("Session Expired");
+            return RedirectToAction("Index");
         }
 
         [Ajax]

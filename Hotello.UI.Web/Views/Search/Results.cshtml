@@ -2,7 +2,10 @@
 @using System.Text
 @using Hotello.Common
 @using Hotello.Services.Expedia.Hotels.Models
-@model PagedList.IPagedList<HotelSummary>
+@using Microsoft.Security.Application
+@using PagedList
+
+@model IPagedList<HotelSummary>
 
 @{
     ViewBag.Title = "Hotel Results";
@@ -10,58 +13,16 @@
     const string googleApiKey = "AIzaSyDm7lXUQTaEvPo-eghcFIo2VjJvyKawKUo";
 }
 
-@section css {
-    @Styles.Render("~/Content/rateit.css")
-}
-
 <div class="well">
-    
+
     <h2>Hotel Search Results</h2>
-    
-    <div class="pagination"> 
-        <ul>
-            
-            @if (Model.HasPreviousPage)
-            {
-                <li>@Html.ActionLink("<<", "Results", new {page = 1})</li>
-                <li>@Html.ActionLink("<", "Results", new {page = Model.PageNumber - 1})</li>
-            }
-            else
-            {
-                <li class="disabled"><span>&lt;</span></li>
-                <li class="disabled"><span>&lt;&lt;</span></li>
-            }
-            
-
-            @for (int i = 1; i <= Model.PageCount; i++)
-            {
-                <li class="@(i == Model.PageNumber ? "active" : "")">
-                    @Html.ActionLink(i.ToString(CultureInfo.InvariantCulture), "Results", new { page = i })
-                </li>
-            }
-            
-            @if (Model.HasNextPage)
-            {
-                <li>
-                    @Html.ActionLink(">", "Results", new { page = Model.PageNumber + 1 })
-                </li>
-                <li>
-                    @Html.ActionLink(">>", "Results", new { page = Model.PageCount })
-                </li>
-            }
-            else
-            {
-                <li class="disabled"><span>&gt;</span></li>
-                <li class="disabled"><span>&gt;&gt;</span></li>
-            }
-
-        </ul>
-    </div>
+        
+    @Html.Partial("_pagination", Model)
 
     @foreach (var hotel in Model.OrEmptyIfNull())
-    {
+    {               
         <div class="well" style="background-color: white">
-        
+
             <!-- Hotel Name and expedia star rating -->
             <div class="row">
                 <div class="span12">
@@ -69,26 +30,44 @@
                     <div class="rateit" data-rateit-value="@hotel.HotelRating" data-rateit-min="0" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
                 </div>
             </div>
-            
+            <br />
+
             <!-- Hotel Properties -->
-            <div class="row row-hotel-info">
-            
+            <div class="row">
+                
                 <!-- Thumbnail -->
                 <div class="span1">
                     <img class="img-rounded" width="150" height="150" alt="Hotel Thumbnail" src="@string.Format(@"http://images.travelnow.com/{0}", hotel.ThumbNailUrl)" title="@hotel.HotelId" />
                     <p>
-                        <a class="hidden" href="@hotel.DeepLink">Deep Link</a>
+                        <a class="hide" href="@hotel.DeepLink">Deep Link</a>
                     </p>
                 </div>
-            
+                
                 <!-- Address -->
                 <div class="span2">
-                    <span class="label label-info"><i class="icon-home"></i> Address</span> <span class="label label-info"><i class="icon-plane"></i> @hotel.AirportCode</span>
+                    <span class="label label-info">
+                        <i class="icon-home"></i> Address
+                    </span>
+                    <span class="label label-info" title="Nearest Airport (IATA Code)">
+                        <i class="icon-plane"></i> @hotel.AirportCode
+                    </span>
                     <address>
-                        @hotel.Address1<br/>
-                        @hotel.Address2<br/>
-                        @hotel.City<br/>
-                        @hotel.PostalCode<br/>
+                        @if (!string.IsNullOrEmpty(hotel.Address1))
+                        {
+                            @hotel.Address1<br />
+                        }
+                        @if (!string.IsNullOrEmpty(hotel.Address2))
+                        {
+                            @hotel.Address2<br />
+                        }
+                        @if (!string.IsNullOrEmpty(hotel.City))
+                        {
+                            @hotel.City<br />
+                        }
+                        @if (!string.IsNullOrEmpty(hotel.PostalCode))
+                        {
+                            @hotel.PostalCode<br />
+                        }
                     </address>
                     <p>
                         <!-- ADDITIONAL -->
@@ -96,76 +75,93 @@
                 </div>
                 
                 <!-- Short Description -->
-                <div class="span2" title="Click on Hotel Details to view more...">
-                    @Html.Raw(Server.HtmlDecode(hotel.ShortDescription)) ...
+                <div class="span2">
+                    <span class="label label-info">
+                        <i class="icon-info-sign"></i> Summary
+                    </span>
+                   
+                    @Html.Raw(Sanitizer.GetSafeHtmlFragment(Server.HtmlDecode(hotel.ShortDescription).Replace("<b>Location. </b>", string.Empty)))
                 </div>
-                
+  
                 <!-- Google Map -->
                 <div class="span2">
                     <p>
                         @{
-                            var url = new StringBuilder()
-                                .Append("http://maps.googleapis.com/maps/api/staticmap?")
-                                .Append(string.Format("center={0},{1}", hotel.Latitude, hotel.Longitude))
-                                .Append(string.Format("&zoom=15&size=150x150&sensor=false"))
-                                .Append(string.Format("&key={0}", googleApiKey))
-                                .Append("&markers=").Append(Server.UrlEncode(string.Format("size:small|color:blue|{0},{1}", hotel.Latitude, hotel.Longitude)))
-                                .ToString();
+                        var url = new StringBuilder()
+                            .Append("http://maps.googleapis.com/maps/api/staticmap?")
+                            .Append(string.Format("center={0},{1}", hotel.Latitude, hotel.Longitude))
+                            .Append(string.Format("&zoom=15&size=150x150&sensor=false"))
+                            .Append(string.Format("&key={0}", googleApiKey))
+                            .Append("&markers=").Append(Server.UrlEncode(string.Format("size:small|color:blue|{0},{1}", hotel.Latitude, hotel.Longitude)))
+                            .ToString();
                         }
 
                         <img title="@hotel.Latitude, @hotel.Longitude" src="@url" alt="Google Map" class="img-rounded" height="150" width="150" />
                     </p>
-                </div>
-
-                <!-- Hotel Price / Info Link -->
+                </div> 
+                
                 <div class="span4">
                     
                     <div class="row">
-                        
-                        <!-- POPULAR AMENITIES TO SHOW -->
+                        <!-- Hotel Amenities -->
                         <div class="pull-left">
-                            <ul class="unstyled">
-                                @foreach (var amenity in hotel.Amenities.GetFlags().ToList())
+                            <ul class="unstyled" style="margin-left: 10px;">
+                                @foreach (var amenity in hotel.Amenities.GetFlags())
                                 {
-                                    <li>
-                                        <span><i class="icon-ok-sign"></i> @amenity.GetDescription()</span>
-                                    </li>
+                                    // Only the popular amenities, otherwise we end up listing to much crap
+                                    switch (amenity)
+                                    {
+                                        case Amenities.Breakfast:
+                                        case Amenities.FitnessCenter:
+                                        case Amenities.FreeParking:
+                                        case Amenities.IndoorPool:
+                                        case Amenities.Internet:
+                                        case Amenities.OutdoorPool:
+                                        case Amenities.PetsAllowed:
+                                        case Amenities.HandicappedParking:
+                                        case Amenities.Restauraunt:
+                                        case Amenities.BusinessCenter:
+                                        case Amenities.Babysitting:
+                                            {
+                                                <li>
+                                                    <span><i class="icon-ok-sign"></i> @amenity.GetDescription()</span>
+                                                </li>
+                                            }
+                                            break;
+                                    }
                                 }
                             </ul>
                         </div>
-                        
-                        <!-- PRICE RATES -->
+                        <!-- Hotel Price -->
                         <div class="pull-right">
-                            
-                            <span>From</span>
-                            <h4><span>@culture.NumberFormat.CurrencySymbol</span>@hotel.HighRate.ToString("0.##")<small> per night</small></h4>
-
+                            <span>Avg</span>
+                            <h3>
+                                <span>@culture.NumberFormat.CurrencySymbol</span>@hotel.HighRate.ToString("0.##")<small> per night</small>
+                            </h3>
                         </div>
-
                     </div>
 
                     <div class="row">
-                        
-                        <div class="span2">
-                            <!-- HOTEL GALLERY AJAX CALL -->
-                            <a href="#gallery" id="@hotel.HotelId" data-toggle="modal" class="btn btn-small btn-info btn-block">
-                                <i class="icon-camera"></i> Photo Gallery
-                            </a>  
+                        <!-- HOTEL GALLERY AJAX CALL -->
+                        <div class="buttons" style="margin-top: 150px;">
+                            <div class="span2">
+                            <a href="#gallery" id="@hotel.HotelId" data-toggle="modal" class="btn btn-small btn-info">
+                                Photo Gallery <i class="icon-camera"></i>
+                            </a>
                         </div>
-                            
+                        <!-- DETAILS LINK -->
                         <div class="span2">
-                            <!-- DETAILS LINK -->
-                            <a href="@Url.Action("Information", "Hotels", new RouteValueDictionary { { "id", hotel.HotelId } })" class="btn btn-small btn-info btn-block">
+                            <a href="@Url.Action("Information", "Hotels", new RouteValueDictionary { { "id", hotel.HotelId } })" class="btn btn-small btn-info">
                                 <span>Hotel Details </span><i class="icon-arrow-right"></i>
                             </a>
                         </div>
-                    
+                        </div>
+                        
                     </div>
                 </div>
-             
-            </div>   
-        
-        </div>  
+
+            </div>
+        </div>
     }
     <!-- End Hotel Results -->
 
@@ -176,54 +172,18 @@
 
         if (!Model.HasNextPage && moreResults)
         {
-            <!-- GET MORE RESULTS -->
-            <a class="btn btn-primary" href="@Url.Action("Results", new { cacheKey = Session["CacheKey"], cacheLocation = Session["CacheLocation"], page = Model.PageNumber + 1 })">
-                <i class="icon-search"></i> More Results Available!
-            </a>
+            <div class="row-fluid">
+                <a class="btn btn-small btn-success btn-block" href="@Url.Action("Results", new { cacheKey = Session["CacheKey"], cacheLocation = Session["CacheLocation"], page = Model.PageNumber + 1 })">
+                    <i class="icon-home"></i> More Results Available!
+                </a>
+            </div>
         }
     }
-    
-    <div class="pagination">
-        
-        <ul>
-           @if (Model.HasPreviousPage)
-            {
-                <li>@Html.ActionLink("<<", "Results", new {page = 1})</li>
-                <li>@Html.ActionLink("<", "Results", new {page = Model.PageNumber - 1})</li>
-            }
-            else
-            {
-                <li class="disabled"><span>&lt;</span></li>
-                <li class="disabled"><span>&lt;&lt;</span></li>
-            }
-            
 
-            @for (int i = 1; i <= Model.PageCount; i++)
-            {
-                <li class="@(i == Model.PageNumber ? "active" : "")">
-                    @Html.ActionLink(i.ToString(CultureInfo.InvariantCulture), "Results", new { page = i })
-                </li>
-            }
-            
-            @if (Model.HasNextPage)
-            {
-                <li>
-                    @Html.ActionLink(">", "Results", new { page = Model.PageNumber + 1 })
-                </li>
-                <li>
-                    @Html.ActionLink(">>", "Results", new { page = Model.PageCount })
-                </li>
-            }
-            else
-            {
-                <li class="disabled"><span>&gt;</span></li>
-                <li class="disabled"><span>&gt;&gt;</span></li>
-            }
-        </ul>
-    </div>
+    @Html.Partial("_pagination", Model)
+
+
 </div>
-
-
 
 <!-- HOTEL GALLERY MODAL -->
 <div id="gallery" class="modal hide fade" tabindex="-1" role="dialog">
@@ -244,21 +204,26 @@
     </div>
 </div>
 
-@section scripts { 
-    
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/jqueryrateit")
+@section Scripts {
+
     <script type="text/javascript">
         
         /*
-         http://stackoverflow.com/questions/13391566/twitter-bootstrap-carousel-different-height-images-cause-bouncing-arrows    
-         
+        http://stackoverflow.com/questions/13391566/twitter-bootstrap-carousel-different-height-images-cause-bouncing-arrows            
          */
 
-        $(document).ready(function() {
+        $(document).ready(function () {
 
             // Rate it Initilization
             $('.rateit').rateit();
+            
+            var tooltipvalues = ['Economy', 'Moderate', 'First Class', 'Superior', 'Deluxe'];
+
+            $.each($(".rateit"), function(index, item) {
+
+                $(this).attr('title', tooltipvalues[$(item).rateit('value') - 1]);
+                
+            });
 
             // Register Click event
             $("a[href='#gallery']").click(function () {
@@ -270,24 +235,23 @@
                     data: {
                         id: $(this).attr('id')
                     },
-                    success: function(data) {
+                    success: function (data) {
                         $('.carousel-inner').html(''); // Clear any previous content, i.e from clicking on another hotel gallery
-                        $.map(data, function(item) {
+                        $.map(data, function (item) {
                             var html =
                                 "<div class='item hotel-image'>" +
                                     "<img alt='' title='" + item.name + "' src='" + item.Url + "' class='img-polaroid hotel-image' style='float:none; margin-left: auto; margin-right: auto;' />" +
                                     "<div class='carousel-caption'>" +
-                                    "<h4>" + (item.caption != "" ?  item.Caption : "") + "</h4>" +
+                                    "<h4>" + (item.caption != "" ? item.Caption : "") + "</h4>" +
                                     "</div>" +
                                     "</div>";
 
                             $('.carousel-inner').append(html);
-                            
-                            $('.item').find('h4').each(function() {
+
+                            $('.item').find('h4').each(function () {
                                 if ($(this).val() === "") {
                                     $(this).parent('.carousel-caption').hide(); // nothing to show...
                                 }
-                                    
                             });
                         });
 

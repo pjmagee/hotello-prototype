@@ -1,14 +1,14 @@
 ﻿using System.Diagnostics;
 using System.Reflection;
-using System.Web.Mvc;
 using Hotello.Services.Expedia.Hotels.Api;
-using Hotello.UI.Web.Filters;
+using Hotello.UI.Web.Attributes;
 
 namespace Hotello.UI.Web.Controllers
 {
     [SessionFilter]
-    public abstract class AbstractExpediaController : Controller
+    public abstract class AbstractExpediaController : BootstrapBaseController
     {
+        // Our injected service per http scope request
         protected AbstractExpediaService _expediaService;
 
         /// <summary>
@@ -20,12 +20,10 @@ namespace Hotello.UI.Web.Controllers
         {
             Debug.WriteLine(MethodBase.GetCurrentMethod().Name + " Called by " + this.GetType().Name);
 
-            // From our last expedia response
-            _expediaService.CustomerSessionId = ViewBag.CustomerSessionId;
-
-            // Http context info for expedia request
+            _expediaService.CustomerSessionId = Session["CustomerSessionId"] as string;
             _expediaService.CustomerIpAddress = HttpContext.Request.UserHostAddress;
             _expediaService.CustomerUserAgent = HttpContext.Request.UserAgent;
+
         }
     }
 }

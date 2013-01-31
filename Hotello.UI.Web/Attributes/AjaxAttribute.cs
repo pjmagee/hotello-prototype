@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Web.Mvc;
 
-namespace Hotello.UI.Web.Helpers
+namespace Hotello.UI.Web.Attributes
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class AjaxAttribute : ActionMethodSelectorAttribute

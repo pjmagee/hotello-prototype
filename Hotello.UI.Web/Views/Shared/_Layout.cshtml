@@ -1,40 +1,68 @@
-﻿<!DOCTYPE html>
+﻿@using Hotello.UI.Web.NavigationRoutes
+<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="description" content="Hotel Search and Booking Engine" />
-    <meta name="author" content="Patrick Magee"/>
-    <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/bootstrap", "~/Content/themes/bootstrap/css")
-    @RenderSection("css", required: false)
-    <style>
-        body {
-            padding-top: 60px;
-        }
-    </style>
-     <link href="~/Content/hotello.css" rel="stylesheet" />
-    @Scripts.Render("~/bundles/modernizr")
-</head>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="description" content="Hotel Search and Booking Engine" />
+        <meta name="author" content="Patrick Magee"/>
+        <title>@ViewBag.Title</title>       
+        @Styles.Render("~/content/css")
+        @RenderSection("Styles", required: false)
+        <style>
+            body {
+                padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+            }
+        </style>
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+
     <body>
-        <div class="container" style="height: 100%">
+        
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="#">Hotello</a>
+                    <div class="nav-collapse">
+                        <ul class="nav">
+                            @Html.Navigation()
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>   
+             
+        <div class="container">
+            <!-- ALERTS -->
+            @Html.Partial("_alerts")
             @RenderBody()
+
             <hr />
             <footer>
-                <p>
-                    Copyright &copy; @DateTime.Now.Year Hotello
-                     <img alt="Affiliate" class="pull-right" src="@Url.Content("~/Content/images/affiliatedwith_EAN.jpg")" />
-                </p>
-               
+                <div class="span2">
+                    <p>Copyright &copy; @DateTime.Now.ToString("yyyy") Hotello</p>
+                </div>
+                <div class="span4">
+                    <img src="@Url.Content("~/Content/images/affiliatedwith_EAN.jpg")" alt="Expedia Affiliate Network" title="Affiliated with Expedia Affiliate Network" />
+                </div>
+                <div class="span4">
+                    <a href="http://www.w3.org/html/logo/">
+                        <img src="http://www.w3.org/html/logo/badge/html5-badge-h-css3-semantics.png" width="165" height="64" alt="HTML5 Powered with CSS3 / Styling, and Semantics" title="HTML5 Powered with CSS3 / Styling, and Semantics" />
+                    </a>
+                </div>
             </footer> 
         </div>
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("https://maps.googleapis.com/maps/api/js?key=AIzaSyDm7lXUQTaEvPo-eghcFIo2VjJvyKawKUo&sensor=false&libraries=places,geometry,weather")
-        @RenderSection("scripts", required: false)
         
-        <script src="~/Scripts/jquery.backstretch.min.js"></script>
-        <script type="text/javascript">
-            // $.backstretch("http://www.publicdomainpictures.net/pictures/30000/velka/pool-and-hotel.jpg");
-        </script>
+        <!-- Le javascript
+            ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        @Scripts.Render("~/js")
+        @Scripts.Render("https://maps.googleapis.com/maps/api/js?key=AIzaSyDm7lXUQTaEvPo-eghcFIo2VjJvyKawKUo&amp;sensor=false&amp;libraries=places,geometry,weather"))
+        @RenderSection("Scripts", required: false)
     </body>
 </html>

@@ -64,8 +64,5 @@ namespace Hotello.UI.Web.Controllers
 
             return Json(response.HotelImages.HotelImage, JsonRequestBehavior.AllowGet);
         }
-
-
-       
     }
 }

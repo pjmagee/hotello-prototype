@@ -50,6 +50,10 @@ namespace Hotello.UI.Web.App_Start
                         "~/Content/bootstrap.css",
                         "~/Content/bootstrap-responsive.css"));
 
+            // Bootstrap Overrides, Hotello Specific
+            bundles.Add(new StyleBundle("~/Content/hotello").Include(
+                        "~/Content/hotello.css"));
+
             bundles.Add(new StyleBundle("~/Content/daterangepicker").Include(
                         "~/Content/ui.daterangepicker.css"));
 

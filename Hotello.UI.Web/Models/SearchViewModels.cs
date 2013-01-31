@@ -10,25 +10,20 @@ namespace Hotello.UI.Web.Models
 {
     public class SearchViewModel
     {
-        // Required for Hotel availability
+        [Required]
+        public DateTime CheckinDate { get; set; }
 
         [Required]
-        [Display(Name = "Check-in")]
-        public DateTime ArrivalDate { get; set; }
-
-        [Required]
-        [Display(Name = "Check-out")]
-        public DateTime DepartureDate { get; set; }
+        public DateTime CheckoutDate { get; set; }
 
         [Required]
         public int NumberOfBedrooms { get; set; }
 
         public List<RoomViewModel> RoomViewModels { get; set; }
 
-        // Destination Search Method 1
+
         [Required]
         public string Destination { get; set; }
-
 
         public string DestinationId { get; set; }
 
@@ -46,6 +41,7 @@ namespace Hotello.UI.Web.Models
         public List<int> PropertyCategories { get; set; }
         public List<int> Amenities { get; set; }
         
+
         // Optional requirements
         public int ResultsPerPage { get; set; }
         public int Option { get; set; }
@@ -211,15 +207,7 @@ namespace Hotello.UI.Web.Models
     {
         public int? Adults { get; set; }
         public int? Children { get; set; }
-
         public List<AgeViewModel> AgeViewModels { get; set; }
-    }
-    
-    public class AmenityCheckBox
-    {
-        public string Text { get; set; }
-        public string Value { get; set; }
-        public bool Checked { get; set; }
     }
 
 }

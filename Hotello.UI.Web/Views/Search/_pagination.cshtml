@@ -1,0 +1,155 @@
+﻿@using System.Globalization
+@model PagedList.IPagedList<Hotello.Services.Expedia.Hotels.Models.HotelSummary>
+
+
+@{
+    const int limit = 10; // 10 items per page limit
+    int lastPage = Convert.ToInt16(Math.Ceiling(Convert.ToDouble(Model.TotalItemCount)/Convert.ToDouble(limit)));
+    int counter = 0;
+    const int adjacents = 2;
+    int lpm1 = lastPage - 1;
+}
+
+@* 
+    Thanks to this fellow, seriously...
+    http://www.hoffsays.com/2011/12/29/c-digg-style-pagination/
+    Modified quite a bit for my own requirements.
+*@
+
+<div class="pagination pagination-mini">
+    <ul>
+            
+        @if (Model.HasPreviousPage)
+        {
+            <li>@Html.ActionLink("<<", "Results", new { page = 1 })</li>
+            <li>@Html.ActionLink("<", "Results", new { page = Model.PageNumber - 1 })</li>
+        }
+        else
+        {
+            <li class="disabled"><span>&lt;</span></li>
+            <li class="disabled"><span>&lt;&lt;</span></li>
+        }
+
+        @if (lastPage < 7 + (adjacents * 2))
+        {
+            for (counter = 1; counter <= lastPage; counter++)
+            {
+                if (counter == Model.PageNumber)
+                {
+                    <li class="active">
+                        @Html.ActionLink(counter.ToString(CultureInfo.InvariantCulture), "Results", new { page = counter })
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        @Html.ActionLink(counter.ToString(CultureInfo.InvariantCulture), "Results", new { page = counter })
+                    </li>
+                }
+            }
+        }
+        else if (lastPage >= 7 + (adjacents * 2)) // enough to hide some
+        {
+                
+            if (Model.PageNumber < 1 + (adjacents * 3))
+            {
+                for (counter = 1; counter < 4 + (adjacents * 2); counter++)
+                {
+                    if (counter == Model.PageNumber)
+                    {
+                        <li class="active">
+                            @Html.ActionLink(counter.ToString(CultureInfo.InvariantCulture), "Results", new { page = counter })
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            @Html.ActionLink(counter.ToString(CultureInfo.InvariantCulture), "Results", new { page = counter })
+                        </li>
+                    }
+
+                }
+                <li class="disabled"><span>...</span></li>
+                <li>
+                    @Html.ActionLink(lpm1.ToString().ToString(CultureInfo.InvariantCulture), "Results", new { page = lpm1.ToString() })
+                </li>
+                <li>
+                    @Html.ActionLink(lastPage.ToString().ToString(CultureInfo.InvariantCulture), "Results", new { page = lastPage })
+                </li>
+            }
+            else if (lastPage - (adjacents * 2) > Model.PageNumber && Model.PageNumber > (adjacents * 2))
+            {
+                <li>
+                    @Html.ActionLink(1.ToString().ToString(CultureInfo.InvariantCulture), "Results", new { page = 1 })
+                </li>
+                <li>
+                    @Html.ActionLink(2.ToString().ToString(CultureInfo.InvariantCulture), "Results", new { page = 2 })
+                </li>
+                <li class="disabled"><span>...</span></li>
+               
+                for (counter = Model.PageNumber - adjacents; counter <= Model.PageNumber + adjacents; counter++)
+                {
+                    if (counter == Model.PageNumber)
+                    {
+                        <li class="active">
+                            @Html.ActionLink(counter.ToString(CultureInfo.InvariantCulture), "Results", new { page = counter })
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            @Html.ActionLink(counter.ToString(CultureInfo.InvariantCulture), "Results", new { page = counter })
+                        </li>
+                    }
+                }
+                <li class="disabled"><span>...</span></li>
+                <li>
+                    @Html.ActionLink(lpm1.ToString().ToString(CultureInfo.InvariantCulture), "Results", new { page = lpm1.ToString() })
+                </li>
+                <li>
+                    @Html.ActionLink(lastPage.ToString().ToString(CultureInfo.InvariantCulture), "Results", new { page = lastPage })
+                </li>
+            }
+            else
+            {
+                <li>
+                    @Html.ActionLink(1.ToString().ToString(CultureInfo.InvariantCulture), "Results", new { page = 1 })
+                </li>
+                <li>
+                    @Html.ActionLink(2.ToString().ToString(CultureInfo.InvariantCulture), "Results", new { page = 2 })
+                </li>
+                <li class="disabled"><span>...</span></li>
+                for (counter = lastPage - (1 + (adjacents * 3)); counter <= lastPage; counter++)
+                {
+                    if (counter == Model.PageNumber)
+                    {
+                        <li class="active">
+                            @Html.ActionLink(counter.ToString(CultureInfo.InvariantCulture), "Results", new { page = counter })
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            @Html.ActionLink(counter.ToString(CultureInfo.InvariantCulture), "Results", new { page = counter })
+                        </li>
+                    }
+                }
+            }
+            
+            if (Model.HasNextPage)
+            {
+                <li>
+                    @Html.ActionLink(">", "Results", new { page = Model.PageNumber + 1 })
+                </li>
+                <li>
+                    @Html.ActionLink(">>", "Results", new { page = Model.PageCount })
+                </li>
+            }
+            else
+            {
+                <li class="disabled"><span>&gt;</span></li>
+                <li class="disabled"><span>&gt;&gt;</span></li>
+            }
+        }
+    </ul>
+</div>

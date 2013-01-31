@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web.Mvc;
 using Hotello.Services.Google.Places.Api;
 using Hotello.Services.Google.Places.Models.Autocomplete;
+using Hotello.UI.Web.Attributes;
 using Hotello.UI.Web.Helpers;
 using Ninject;
 
@@ -36,12 +37,10 @@ namespace Hotello.UI.Web.Controllers
             AutocompletionRequest autocompletionRequest = new AutocompletionRequest();
             autocompletionRequest.Sensor = false;
             autocompletionRequest.Input = text;
+            autocompletionRequest.Types = "geocode";
             AutocompletionResponse autocompletionResponse = _placesService.Autocomplete(autocompletionRequest);
 
-            IEnumerable<Prediction> predictions = autocompletionResponse.Predictions
-                .Where(prediction => prediction.Types.Any(type => type.Equals("geocode")));
-
-            var terms = predictions.Select(prediction => new { destination = prediction.Description, suggestion = prediction.Description });
+            var terms = autocompletionResponse.Predictions.Select(prediction => new { destination = prediction.Description, suggestion = prediction.Description });
 
             return Json(terms.ToList(), JsonRequestBehavior.AllowGet);
         }

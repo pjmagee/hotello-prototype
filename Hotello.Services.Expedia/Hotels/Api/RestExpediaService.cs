@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
-using Hotello.Services.Expedia.Hotels.Models;
 using Hotello.Services.Expedia.Hotels.Models.Request;
 using Hotello.Services.Expedia.Hotels.Models.Response;
 using RestSharp;
 using RestSharp.Deserializers;
 using RestSharp.Extensions;
-using RestSharp.Serializers;
 using RestSharp.Validation;
 
 namespace Hotello.Services.Expedia.Hotels.Api
