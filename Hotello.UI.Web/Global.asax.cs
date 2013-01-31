@@ -24,7 +24,6 @@ namespace Hotello.UI.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             BootstrapBundleConfig.RegisterBundles(BundleTable.Bundles);
-            ExampleLayoutsRouteConfig.RegisterRoutes(RouteTable.Routes);
         }
     }
 }
