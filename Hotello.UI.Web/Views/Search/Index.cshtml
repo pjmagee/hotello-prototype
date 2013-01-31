@@ -8,7 +8,7 @@
     ViewBag.Title = "Search";
 
     IDictionary<string, object> formHtml = new Dictionary<string, object>();
-    formHtml.Add("class", "form-horizontal well");
+    formHtml.Add("class", "form form-horizontal well");
 
     IDictionary<string, object> controlLabel = new Dictionary<string, object>();
     controlLabel.Add("class", "control-label");
@@ -75,12 +75,17 @@
                     </div>
                     
                 </div>
-                <div class="control-group landmarks">
+                <!-- LANDMARKS -->
+                <div class="control-group">
                     @Html.LabelFor(model => model.DestinationId, "Close to", controlLabel)
                     <div class="controls">
-                        <select id="destinationId" name="DestinationId" class="input-xlarge">
-                            <!-- AJAX POPULATED -->
-                        </select>
+                        <div class="input-append">
+                            <select id="destinationId" name="DestinationId" class="input-xlarge">
+                                <!-- AJAX POPULATED -->
+                            </select>
+                            <span class="add-on ui-autocomplete-loading hide" style="background-position: center; background-color: white;"></span>
+                        </div>
+                        
                     </div>
                 </div>
                 <!-- CITY -->
@@ -173,7 +178,7 @@
                     <div class="controls">
                         <div class="btn-group">
                             <a href="#amenities" data-toggle="dropdown" class="btn btn-info dropdown-toggle">
-                                Amenities<span class="caret"></span>
+                                Amenities <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
                                 @foreach (var amenity in Enum.GetValues(typeof(Amenity)).Cast<Amenity>())
@@ -299,7 +304,7 @@
 
             // http://api.jqueryui.com/autocomplete/#event-select
 
-            $("#Destination").autocomplete({
+            $("input#Destination").autocomplete({
                 source: function (request, response) {
                     $.ajax({
                         url: '@Url.Action("AutoSuggestDestination", "Places")', // Call the Places controller
@@ -327,10 +332,8 @@
                     });
                 },
                 select: function (event, ui) {
-
                     console.log("Selected " + ui.item.value);
-                    populateNearbyLandmarks(ui.item.value); // The selected destination
-
+                    populateNearbyLandmarks(ui.item.value);
                 },
                 minLength: 3
             });
@@ -560,17 +563,28 @@
             // Lankmark Proximity ---------------------------------------------
             // ----------------------------------------------------------------
 
-            if ($('select#destinationId option').length > 0) {
+            $('#destinationId').closest('.controls').find('span.add-on');
+
+            if ($('input#Destination').val().length > 0) {
                 
-                // I assume we do nothing
-                console.log("Options were already populated, form must of refreshed");
+                console.log("Pre-populating any landmarks...");
+                populateNearbyLandmarks($('input#Destination').val());
 
             } else {
-                $('select#destinationId').append($("<option></option>").attr("value", "").text("Enter a destination for landmarks"));
-            }
 
+                console.log("No destination selected...");
+                $('select#destinationId').append($("<option></option>").attr("value", "").text("Enter a destination"));
+            }
+            
             function populateNearbyLandmarks(destination) {
 
+                // Set the loading text
+                $('select#destinationId').html("<option value=''>" + 'Checking for landmarks...' + "</option>");
+                
+                // Start the loading gif
+                $('#destinationId').closest('div.controls').find('span.add-on').show();
+
+                // Request
                 $.ajax({
                     url: '@Url.Action("Landmarks", "Search")',
                     type: "GET", // HTTP GET
@@ -580,9 +594,7 @@
                     },
                     success: function (data) {
 
-                        if ($('select#destinationId option').length > 0) {
-                            $('select#destinationId option').remove(); // Remove pre-existing options
-                        }
+                        $('select#destinationId option').remove();
                         
                         if (data.length > 0) {
 
@@ -592,29 +604,28 @@
                                 $('select#destinationId').append(option);
                             });
 
-                            $('select#destinationId').prepend("<option value='' selected='selected'>Near a landmark?</option>");
+                            $('select#destinationId').prepend("<option value='' selected='selected'>No thanks</option>");
                             $('select#destinationId').scrollTop(10);
 
                         } else {
-                            $('select#destinationId').append($("<option></option>").attr("value", "").text("No landmarks available"));
+                            
+                            $('select#destinationId').html($("<option></option>").attr("value", "").text("No landmarks available"));
+                            
                         }
                             
                         $('select#destinationId').effect("highlight", {
                             color: '#3a87ad' // Bootstrap Info 
-                        }, 1000);
+                        }, 500);
 
                     },
                     error: function (e) {
-                        
                         console.log("Error populating landmarks from response: " + e);
-                        
-                        if ($('select#destinationId option').length > 0) {
-
-                            $('select#destinationId option').remove(); // Remove pre-existing options
-                            $('select#destinationId').append($("<option></option>").attr("value", "").text("No landmarks available"));
-                        }
+                        $('select#destinationId').html($("<option></option>").attr("value", "").text("No landmarks available"));
                     }
                 });
+                
+                // Stop the loading gif
+                $('#destinationId').closest('.controls').find('span.add-on').hide();
             }
 
         });
