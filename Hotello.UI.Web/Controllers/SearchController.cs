@@ -50,8 +50,6 @@ namespace Hotello.UI.Web.Controllers
                     })),
             };
 
-            Information("Hello :)");
-
             return View(model);
         }
 

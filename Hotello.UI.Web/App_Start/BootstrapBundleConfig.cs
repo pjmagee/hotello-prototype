@@ -14,13 +14,15 @@ namespace Hotello.UI.Web.App_Start
                 "~/Scripts/jquery.validate.unobtrusive-custom-for-bootstrap.js",
                 "~/Scripts/jquery-ui-1.9.2.custom.min.js",
                 "~/Scripts/jquery.rateit.js",
-                "~/Scripts/daterangepicker/date*"
+                "~/Scripts/daterangepicker/date.js",
+                "~/Scripts/daterangepicker/daterangepicker.jQuery.js"
                 ));
 
             bundles.Add(new StyleBundle("~/content/css").Include(
                 "~/Content/bootstrap.css",
                 "~/Content/hotello.css",
                 "~/Content/rateit.css",
+                "~/Content/ui.daterangepicker.css",
                 "~/Content/themes/bootstrap/jquery-ui-1.9.2.custom.css"));
 
             bundles.Add(new StyleBundle("~/content/css-responsive").Include("~/Content/bootstrap-responsive.css"));
