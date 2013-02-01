@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -140,7 +141,7 @@ namespace Hotello.UI.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Results(string cacheLocation, string cacheKey, int? page)
+        public ActionResult Results(string cacheLocation, string cacheKey, int? page, string sortOrder, string currentFilter, string searchString)
         {
             if (Session["Response"] != null)
             {
@@ -169,25 +170,59 @@ namespace Hotello.UI.Web.Controllers
                         }
                     }
 
+
+                    IEnumerable<HotelSummary> hotelSummaries = hotelListResponse.HotelList.HotelSummary;
+                    ViewBag.SortParam = String.IsNullOrEmpty(sortOrder);
+                    ViewBag.CurrentFilter = searchString;
+
+                    // Filtering 
+                    if (!String.IsNullOrEmpty(searchString))
+                    {
+                        hotelSummaries = hotelSummaries.Where(s => s.Name.ToUpper().Contains(searchString.ToUpper()));
+                    }
+
+                    // Sorting
+                    switch (sortOrder)
+                    {
+                        case "Price desc":
+                            hotelSummaries = hotelSummaries.OrderByDescending(s => s.HighRate);
+                            break;
+
+                        case "Price asce":
+                            hotelSummaries = hotelSummaries.OrderBy(s => s.HighRate);
+                            break;
+
+                        case "Rating desc":
+                            hotelSummaries = hotelSummaries.OrderByDescending(s => s.HotelRating);
+                            break;
+
+                        case "Rating asce":
+                            hotelSummaries = hotelSummaries.OrderBy(s => s.HotelRating);
+                            break;
+
+                        default:
+                            hotelSummaries = hotelSummaries.OrderBy(s => s.Name);
+                            break;
+                    }
+
+
                     int pageSize = 10;
                     int pageNumber = (page ?? 1);
 
-                    IPagedList<HotelSummary> hotelSummaries = hotelListResponse.HotelList.HotelSummary.ToPagedList(pageNumber, pageSize);
+                    IPagedList<HotelSummary> pagedList = hotelSummaries.ToPagedList(pageNumber, pageSize);
 
-                    if (!hotelSummaries.HasNextPage && (bool) Session["MoreResultsAvailable"])
+                    if (!pagedList.HasNextPage && (bool)Session["MoreResultsAvailable"])
                     {
                         string info = "<p>Hey, we have more results for you! Would you like to see more results?</p>";
                         info += "<br/>";
                         info += "<a class='btn btn-small btn-info btn-block'";
-                        info += " href='" + Url.Action("Results", new { cacheKey = Session["CacheKey"], cacheLocation = Session["CacheLocation"], page = hotelSummaries.PageNumber + 1 }) + "'";
+                        info += " href='" + Url.Action("Results", new { cacheKey = Session["CacheKey"], cacheLocation = Session["CacheLocation"], page = pagedList.PageNumber + 1 }) + "'";
                         info += ">Yes, I want to see more!</a>";
-
-                        MvcHtmlString htmlString = new MvcHtmlString(info);
                         
-                        Information(htmlString);
+                        Information(new MvcHtmlString(info));
                     }
 
-                    return View("Results", hotelSummaries);
+                    return View("Results", pagedList);
                 }    
             }
 

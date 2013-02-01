@@ -135,21 +135,21 @@
                     }
                 }
             }
-            
-            if (Model.HasNextPage)
-            {
-                <li>
-                    @Html.ActionLink(">", "Results", new { page = Model.PageNumber + 1 })
-                </li>
-                <li>
-                    @Html.ActionLink(">>", "Results", new { page = Model.PageCount })
-                </li>
-            }
-            else
-            {
-                <li class="disabled"><span>&gt;</span></li>
-                <li class="disabled"><span>&gt;&gt;</span></li>
-            }
+        }
+        
+        @if (Model.HasNextPage)
+        {
+            <li>
+                @Html.ActionLink(">", "Results", new {page = Model.PageNumber + 1})
+            </li>
+            <li>
+                @Html.ActionLink(">>", "Results", new {page = Model.PageCount})
+            </li>
+        }
+        else
+        {
+            <li class="disabled"><span>&gt;</span></li>
+            <li class="disabled"><span>&gt;&gt;</span></li>
         }
     </ul>
 </div>

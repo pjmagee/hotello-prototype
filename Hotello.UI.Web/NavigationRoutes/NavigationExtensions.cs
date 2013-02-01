@@ -27,6 +27,7 @@ namespace Hotello.UI.Web.NavigationRoutes
     {
         public static List<INavigationRouteFilter> Filters=new List<INavigationRouteFilter>();
     }
+
     public static class NavigationViewExtensions
     {
         
