@@ -24,11 +24,11 @@ namespace Hotello.Services.Expedia.Tests
         public void JsonAmenitiesBitmaskFromHotelSummary()
         {
             // Arrange
-            var doc = File.ReadAllText(PathFor("HotelSummary.json"));
+            string doc = File.ReadAllText(PathFor("HotelSummary.json"));
 
             // Act
-            var json = new JsonDeserializer {RootElement = "HotelSummary"};
-            var output = json.Deserialize<List<HotelSummary>>(new RestResponse {Content = doc});
+            JsonDeserializer jsonDeserializer = new JsonDeserializer { RootElement = "HotelSummary" };
+            List<HotelSummary> output = jsonDeserializer.Deserialize<List<HotelSummary>>(new RestResponse { Content = doc });
 
             // Assert
             Assert.NotNull(output);
@@ -39,11 +39,11 @@ namespace Hotello.Services.Expedia.Tests
         public void JsonHotelInformationResponse()
         {
             // Arrange
-            var doc = File.ReadAllText(PathFor("HotelInformationResponse.json"));
+            string doc = File.ReadAllText(PathFor("HotelInformationResponse.json"));
 
             // Act
-            var json = new JsonDeserializer { RootElement = "HotelInformationResponse" };
-            var output = json.Deserialize<HotelInformationResponse>(new RestResponse { Content = doc });
+            JsonDeserializer jsonDeserializer = new JsonDeserializer { RootElement = "HotelInformationResponse" };
+            HotelInformationResponse output = jsonDeserializer.Deserialize<HotelInformationResponse>(new RestResponse { Content = doc });
 
             // Assert
             Assert.NotNull(output);
@@ -63,6 +63,21 @@ namespace Hotello.Services.Expedia.Tests
             Assert.NotNull(output.PropertyAmenities);
 
             Assert.NotNull(output.Suppliers);
+
+        }
+
+        [Test(Description = "Can deserialise room availability response")]
+        public void JsonRoomAvailabilityResponse()
+        {
+            // Arrange
+            string doc = File.ReadAllText(PathFor("HotelRoomAvailabilityResponse.json"));
+            
+            // Act
+            JsonDeserializer jsonDeserializer = new JsonDeserializer() {RootElement = "HotelRoomAvailabilityResponse"};
+            HotelRoomAvailabilityResponse output = jsonDeserializer.Deserialize<HotelRoomAvailabilityResponse>(new RestResponse() {Content = doc});
+
+            // Assert
+            Assert.NotNull(output);
 
         }
 

@@ -213,6 +213,7 @@ namespace Hotello.UI.Web.Controllers
                             destinationId = info.DestinationId,
                             description = info.Description
                         })
+                        .OrderBy(arg => arg.description) // Order by landmark description
                         .ToList();
 
                 return Json(landmarks, JsonRequestBehavior.AllowGet);

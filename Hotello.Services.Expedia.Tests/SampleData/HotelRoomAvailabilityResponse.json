@@ -1,0 +1,457 @@
+{
+	"HotelRoomAvailabilityResponse": {
+		"@size": "2",
+		"customerSessionId": "0ABAA82F-AB14-F091-3C92-39165B392CFE",
+		"hotelId": 105443,
+		"arrivalDate": "02\/02\/2013",
+		"departureDate": "02\/08\/2013",
+		"hotelName": "Delta London Armouries",
+		"hotelAddress": "325 Dundas St",
+		"hotelCity": "London",
+		"hotelStateProvince": "ON",
+		"hotelCountry": "CA",
+		"numberOfRoomsRequested": 1,
+		"checkInInstructions": "<br \/><br \/> <p><strong>Notifications and Fees:<\/strong><br \/><\/p><p><ul><li>There are no room charges for children 18 years old and younger who occupy the same room as their parents or guardians, using existing bedding. <\/li><li>All guests staying in hotel guestrooms must be registered with the hotel. <\/li>  <\/ul><\/p><p><\/p><p><\/p> <p>The following fees and deposits are charged by the property at time of service, check-in, or check-out.  <ul><li>Self parking fee: CAD 12.00 per day (in\/out privileges)<\/li><li>Valet parking fee: CAD 20.00 per day (in\/out privileges)<\/li><li>Pet fee: CAD 35 per room (varies based on length of stay)<\/li> <li>Pet deposit: CAD 35.00 per stay<\/li><li>Deposit: CAD 75 per night<\/li><li>Late check-out fee: CAD 85.00<\/li><li>Buffet breakfast fee: CAD 13.00 for adults and CAD 7.50 for children (approximately)<\/li> <li>Rollaway bed fee: CAD 15.00 per night<\/li> <\/ul><\/p><p>The above list may not be comprehensive. Fees and deposits may not include tax and are subject to change. <\/p>",
+		"tripAdvisorRating": 4.5,
+		"tripAdvisorReviewCount": 261,
+		"tripAdvisorRatingUrl": "http:\/\/www.tripadvisor.com\/img\/cdsi\/img2\/ratings\/traveler\/4.5-12345-4.gif",
+		"HotelRoomResponse": [{
+			"rateCode": 298857,
+			"RoomType": {
+				"@roomCode": "129346",
+				"@roomTypeId": "277925",
+				"description": "Premier Room Two Queen Beds",
+				"descriptionLong": "<strong><ul><li>Two Queen Beds<\/li><\/ul><\/strong>Measuring 300 square feet (27.9 square meters), this room overlooks the city. The pillowtop bed and blackout drapes\/curtains help ensure a restful night. The private bathroom has a shower\/tub combination, as well as complimentary toiletries, a hair dryer, and a makeup\/shaving mirror. Complimentary wired and wireless Internet access keeps you connected, and the 37-inch LCD television is offered for your entertainment. A coffee\/tea maker and a refrigerator are supplied while a microwave can be requested. Air conditioning, a cordless phone, and a desk with ergonomic chair are conveniently included. This Non-Smoking room is pet-friendly. <p><\/p>",
+				"roomAmenities": {
+					"@size": "30",
+					"RoomAmenity": [{
+						"@amenityId": "11814735",
+						"amenity": "Air conditioning "
+					},
+					{
+						"@amenityId": "13551343",
+						"amenity": "Bathrobes (on request) "
+					},
+					{
+						"@amenityId": "13551341",
+						"amenity": "Blackout drapes\/curtains "
+					},
+					{
+						"@amenityId": "7880146",
+						"amenity": "Cable television service "
+					},
+					{
+						"@amenityId": "14930144",
+						"amenity": "City view "
+					},
+					{
+						"@amenityId": "7442250",
+						"amenity": "Climate control "
+					},
+					{
+						"@amenityId": "7442253",
+						"amenity": "Clock radio "
+					},
+					{
+						"@amenityId": "7442240",
+						"amenity": "Coffee\/tea maker "
+					},
+					{
+						"@amenityId": "7442241",
+						"amenity": "Complimentary toiletries "
+					},
+					{
+						"@amenityId": "14930143",
+						"amenity": "Cribs\/infant beds (complimentary) "
+					},
+					{
+						"@amenityId": "7442252",
+						"amenity": "Desk "
+					},
+					{
+						"@amenityId": "7442246",
+						"amenity": "Electronic check-out "
+					},
+					{
+						"@amenityId": "8421820",
+						"amenity": "Free Wi-Fi "
+					},
+					{
+						"@amenityId": "14930145",
+						"amenity": "Free wired high-speed Internet "
+					},
+					{
+						"@amenityId": "7442254",
+						"amenity": "Hair dryer "
+					},
+					{
+						"@amenityId": "7442255",
+						"amenity": "Iron\/ironing board "
+					},
+					{
+						"@amenityId": "13551342",
+						"amenity": "LCD television "
+					},
+					{
+						"@amenityId": "14930146",
+						"amenity": "Makeup\/shaving mirror "
+					},
+					{
+						"@amenityId": "7442247",
+						"amenity": "Microwave (on request) "
+					},
+					{
+						"@amenityId": "13551340",
+						"amenity": "Non-smoking only "
+					},
+					{
+						"@amenityId": "7442249",
+						"amenity": "Pay movies "
+					},
+					{
+						"@amenityId": "14930148",
+						"amenity": "Phone "
+					},
+					{
+						"@amenityId": "9547092",
+						"amenity": "Pillowtop mattress "
+					},
+					{
+						"@amenityId": "14930147",
+						"amenity": "Private bathroom "
+					},
+					{
+						"@amenityId": "7442242",
+						"amenity": "Refrigerator "
+					},
+					{
+						"@amenityId": "7442239",
+						"amenity": "Rollaway\/extra beds available "
+					},
+					{
+						"@amenityId": "7442245",
+						"amenity": "Shower\/tub combination "
+					},
+					{
+						"@amenityId": "7442244",
+						"amenity": "Turndown service (on request) "
+					},
+					{
+						"@amenityId": "7442248",
+						"amenity": "Voice mail "
+					},
+					{
+						"@amenityId": "7442257",
+						"amenity": "Wake-up calls "
+					}]
+				}
+			},
+			"supplierType": "E",
+			"propertyId": 27978,
+			"rateOccupancyPerRoom": 4,
+			"quotedOccupancy": 2,
+			"minGuestAge": 0,
+			"RateInfos": {
+				"@size": "1",
+				"RateInfo": {
+					"@rateChange": "true",
+					"@promo": "false",
+					"@priceBreakdown": "true",
+					"RoomGroup": {
+						"Room": {
+							"numberOfAdults": 1,
+							"numberOfChildren": 0,
+							"rateKey": "83a3410f-98ce-450e-9bd9-ea04facdbfcc"
+						}
+					},
+					"ChargeableRateInfo": {
+						"@total": "708.6",
+						"@surchargeTotal": "81.5",
+						"@nightlyRateTotal": "627.10004",
+						"@maxNightlyRate": "105.57",
+						"@currencyCode": "GBP",
+						"@commissionableUsdTotal": "994.45",
+						"@averageRate": "104.51667",
+						"@averageBaseRate": "104.51667",
+						"NightlyRatesPerRoom": {
+							"@size": "6",
+							"NightlyRate": [{
+								"@promo": "false",
+								"@rate": "105.57",
+								"@baseRate": "105.57"
+							},
+							{
+								"@promo": "false",
+								"@rate": "99.25",
+								"@baseRate": "99.25"
+							},
+							{
+								"@promo": "false",
+								"@rate": "105.57",
+								"@baseRate": "105.57"
+							},
+							{
+								"@promo": "false",
+								"@rate": "105.57",
+								"@baseRate": "105.57"
+							},
+							{
+								"@promo": "false",
+								"@rate": "105.57",
+								"@baseRate": "105.57"
+							},
+							{
+								"@promo": "false",
+								"@rate": "105.57",
+								"@baseRate": "105.57"
+							}]
+						},
+						"Surcharges": {
+							"@size": "1",
+							"Surcharge": {
+								"@amount": "81.5",
+								"@type": "TaxAndServiceFee"
+							}
+						}
+					},
+					"nonRefundable": false,
+					"rateType": "MerchantStandard",
+					"currentAllotment": 1,
+					"guaranteeRequired": false,
+					"depositRequired": true,
+					"taxRate": 81.5
+				}
+			},
+			"ValueAdds": {
+				"@size": "1",
+				"ValueAdd": {
+					"@id": "2048",
+					"description": "Free Wireless Internet"
+				}
+			},
+			"deepLink": "http:\/\/travel.ian.com\/hotels\/priceCheck.jsp?cid=55505&amp;locale=en_GB&amp;currencyCode=GBP&amp;numberOfRooms=1&amp;room-0-adult-total=1&amp;room-0-child-total=0&amp;rateChange=true&amp;rateCode=298857&amp;roomTypeCodeDescription=Premier+Room+Two+Queen+Beds&amp;roomTypeCode=129346&amp;cityLink=London&amp;stateProvinceLink=ON&amp;countryLink=CA&amp;resType=hotel&amp;propertyID=27978&amp;hotelID=105443&amp;supplierType=E&amp;propertyType=H&amp;requestKey=83a3410f-98ce-450e-9bd9-ea04facdbfcc&amp;rateKey=83a3410f-98ce-450e-9bd9-ea04facdbfcc&amp;arrivalMonth=1&amp;arrivalDay=2&amp;arrivalYear=2013&amp;departureMonth=1&amp;departureDay=8&amp;departureYear=2013&amp;nativeNightlyRates=105.57,99.25,105.57,105.57,105.57,105.57&amp;nativeCurrencyCode=GBP&amp;nativeRoomRate=708.6&amp;displayNightlyRates=105.57,99.25,105.57,105.57,105.57,105.57&amp;displayCurrencyCode=GBP&amp;displayRoomRate=708.6&amp;chargeableRoomRateTotal=708.6&amp;chargeableRoomRateTaxes=81.5&amp;guarantee=C&amp;directConnect=false&amp;rateFrequency=B&amp;rateIsBase=true"
+		},
+		{
+			"rateCode": 298859,
+			"RoomType": {
+				"@roomCode": "129347",
+				"@roomTypeId": "277944",
+				"description": "Premier Room One Queen and One Sofa Bed",
+				"descriptionLong": "<strong><ul><li>One Queen and One Sofa Bed<\/li><\/ul><\/strong>Measuring 300 square feet (27.9 square meters), this room overlooks the city. The pillowtop bed and blackout drapes\/curtains help ensure a restful night. The private bathroom has a shower\/tub combination, as well as complimentary toiletries, a hair dryer, and a makeup\/shaving mirror. Complimentary wired and wireless Internet access keeps you connected, and the 37-inch LCD television is offered for your entertainment. A coffee\/tea maker and a refrigerator are supplied while a microwave can be requested. Air conditioning, a cordless phone, and a desk with ergonomic chair are conveniently included. This Non-Smoking room is pet-friendly. <p><\/p>",
+				"roomAmenities": {
+					"@size": "30",
+					"RoomAmenity": [{
+						"@amenityId": "11814736",
+						"amenity": "Air conditioning "
+					},
+					{
+						"@amenityId": "13551347",
+						"amenity": "Bathrobes (on request) "
+					},
+					{
+						"@amenityId": "13551345",
+						"amenity": "Blackout drapes\/curtains "
+					},
+					{
+						"@amenityId": "7880157",
+						"amenity": "Cable television service "
+					},
+					{
+						"@amenityId": "14930153",
+						"amenity": "City view "
+					},
+					{
+						"@amenityId": "7442474",
+						"amenity": "Climate control "
+					},
+					{
+						"@amenityId": "7442486",
+						"amenity": "Clock radio "
+					},
+					{
+						"@amenityId": "7442471",
+						"amenity": "Coffee\/tea maker "
+					},
+					{
+						"@amenityId": "7442480",
+						"amenity": "Complimentary toiletries "
+					},
+					{
+						"@amenityId": "14930154",
+						"amenity": "Cribs\/infant beds (complimentary) "
+					},
+					{
+						"@amenityId": "7442473",
+						"amenity": "Desk "
+					},
+					{
+						"@amenityId": "7442479",
+						"amenity": "Electronic check-out "
+					},
+					{
+						"@amenityId": "8421821",
+						"amenity": "Free Wi-Fi "
+					},
+					{
+						"@amenityId": "14930152",
+						"amenity": "Free wired high-speed Internet "
+					},
+					{
+						"@amenityId": "7442475",
+						"amenity": "Hair dryer "
+					},
+					{
+						"@amenityId": "7442487",
+						"amenity": "Iron\/ironing board "
+					},
+					{
+						"@amenityId": "13551346",
+						"amenity": "LCD television "
+					},
+					{
+						"@amenityId": "14930151",
+						"amenity": "Makeup\/shaving mirror "
+					},
+					{
+						"@amenityId": "7442493",
+						"amenity": "Microwave (on request) "
+					},
+					{
+						"@amenityId": "13551344",
+						"amenity": "Non-smoking only "
+					},
+					{
+						"@amenityId": "7442489",
+						"amenity": "Pay movies "
+					},
+					{
+						"@amenityId": "14930149",
+						"amenity": "Phone "
+					},
+					{
+						"@amenityId": "9547093",
+						"amenity": "Pillowtop mattress "
+					},
+					{
+						"@amenityId": "14930150",
+						"amenity": "Private bathroom "
+					},
+					{
+						"@amenityId": "7442484",
+						"amenity": "Refrigerator "
+					},
+					{
+						"@amenityId": "7442490",
+						"amenity": "Rollaway\/extra beds available "
+					},
+					{
+						"@amenityId": "7442495",
+						"amenity": "Shower\/tub combination "
+					},
+					{
+						"@amenityId": "7442481",
+						"amenity": "Turndown service (on request) "
+					},
+					{
+						"@amenityId": "7442478",
+						"amenity": "Voice mail "
+					},
+					{
+						"@amenityId": "7442477",
+						"amenity": "Wake-up calls "
+					}]
+				}
+			},
+			"supplierType": "E",
+			"propertyId": 27978,
+			"rateOccupancyPerRoom": 4,
+			"quotedOccupancy": 2,
+			"minGuestAge": 0,
+			"RateInfos": {
+				"@size": "1",
+				"RateInfo": {
+					"@rateChange": "true",
+					"@promo": "false",
+					"@priceBreakdown": "true",
+					"RoomGroup": {
+						"Room": {
+							"numberOfAdults": 1,
+							"numberOfChildren": 0,
+							"rateKey": "83a3410f-98ce-450e-9bd9-ea04facdbfcc"
+						}
+					},
+					"ChargeableRateInfo": {
+						"@total": "708.6",
+						"@surchargeTotal": "81.5",
+						"@nightlyRateTotal": "627.10004",
+						"@maxNightlyRate": "105.57",
+						"@currencyCode": "GBP",
+						"@commissionableUsdTotal": "994.45",
+						"@averageRate": "104.51667",
+						"@averageBaseRate": "104.51667",
+						"NightlyRatesPerRoom": {
+							"@size": "6",
+							"NightlyRate": [{
+								"@promo": "false",
+								"@rate": "105.57",
+								"@baseRate": "105.57"
+							},
+							{
+								"@promo": "false",
+								"@rate": "99.25",
+								"@baseRate": "99.25"
+							},
+							{
+								"@promo": "false",
+								"@rate": "105.57",
+								"@baseRate": "105.57"
+							},
+							{
+								"@promo": "false",
+								"@rate": "105.57",
+								"@baseRate": "105.57"
+							},
+							{
+								"@promo": "false",
+								"@rate": "105.57",
+								"@baseRate": "105.57"
+							},
+							{
+								"@promo": "false",
+								"@rate": "105.57",
+								"@baseRate": "105.57"
+							}]
+						},
+						"Surcharges": {
+							"@size": "1",
+							"Surcharge": {
+								"@amount": "81.5",
+								"@type": "TaxAndServiceFee"
+							}
+						}
+					},
+					"nonRefundable": false,
+					"rateType": "MerchantStandard",
+					"currentAllotment": 4,
+					"guaranteeRequired": false,
+					"depositRequired": true,
+					"taxRate": 81.5
+				}
+			},
+			"ValueAdds": {
+				"@size": "1",
+				"ValueAdd": {
+					"@id": "2048",
+					"description": "Free Wireless Internet"
+				}
+			},
+			"deepLink": "http:\/\/travel.ian.com\/hotels\/priceCheck.jsp?cid=55505&amp;locale=en_GB&amp;currencyCode=GBP&amp;numberOfRooms=1&amp;room-0-adult-total=1&amp;room-0-child-total=0&amp;rateChange=true&amp;rateCode=298859&amp;roomTypeCodeDescription=Premier+Room+One+Queen+and+One+Sofa+Bed&amp;roomTypeCode=129347&amp;cityLink=London&amp;stateProvinceLink=ON&amp;countryLink=CA&amp;resType=hotel&amp;propertyID=27978&amp;hotelID=105443&amp;supplierType=E&amp;propertyType=H&amp;requestKey=83a3410f-98ce-450e-9bd9-ea04facdbfcc&amp;rateKey=83a3410f-98ce-450e-9bd9-ea04facdbfcc&amp;arrivalMonth=1&amp;arrivalDay=2&amp;arrivalYear=2013&amp;departureMonth=1&amp;departureDay=8&amp;departureYear=2013&amp;nativeNightlyRates=105.57,99.25,105.57,105.57,105.57,105.57&amp;nativeCurrencyCode=GBP&amp;nativeRoomRate=708.6&amp;displayNightlyRates=105.57,99.25,105.57,105.57,105.57,105.57&amp;displayCurrencyCode=GBP&amp;displayRoomRate=708.6&amp;chargeableRoomRateTotal=708.6&amp;chargeableRoomRateTaxes=81.5&amp;guarantee=C&amp;directConnect=false&amp;rateFrequency=B&amp;rateIsBase=true",
+			"RoomImages": {
+				"@size": "1",
+				"RoomImage": {
+					"url": "http:\/\/media.expedia.com\/hotels\/1000000\/30000\/28000\/27978\/27978_91_s.jpg"
+				}
+			}
+		}]
+	}
+}

@@ -34,25 +34,25 @@ namespace Hotello.UI.Web.Controllers
                 return RedirectToAction("Index", "Search");
             }
             
-            HotelRoomAvailabilityRequest availabilityRequest = new HotelRoomAvailabilityRequest();
-            availabilityRequest.HotelId = id;
-            availabilityRequest.ArrivalDate = model.CheckinDate;
-            availabilityRequest.DepartureDate = model.CheckoutDate;
-            availabilityRequest.IncludeRoomImages = true;
-            availabilityRequest.IncludeDetails = true;
-            availabilityRequest.SupplierType = "E";
+            HotelRoomAvailabilityRequest request = new HotelRoomAvailabilityRequest();
+            request.HotelId = id;
+            request.ArrivalDate = model.CheckinDate;
+            request.DepartureDate = model.CheckoutDate;
+            request.IncludeRoomImages = true;
+            request.IncludeDetails = true;
+            request.SupplierType = "E";
+            request.NumberOfBedrooms = model.NumberOfBedrooms;
+            request.RoomGroup = model.RoomViewModels
+                        .Where(room => room.Adults > 0 || room.Children > 0)
+                        .Select(room => new Room()
+                        {
+                            NumberOfAdults = room.Adults.HasValue ? room.Adults.Value : 0,
+                            NumberOfChildren = room.Children.HasValue ? room.Children.Value : 0,
+                            ChildAges = room.AgeViewModels.Select(a => a.Age != null ? a.Age.Value : 0).ToList(),
+                        })
+                        .ToList();
 
-            availabilityRequest.RoomGroup = model.RoomViewModels
-                .Where(room => room.Adults > 0 || room.Children > 0)
-                .Select(room => new Room()
-                {
-                    NumberOfAdults = room.Adults.HasValue ? room.Adults.Value : 0, // The number of adults requested, or 0
-                    NumberOfChildren = room.Children.HasValue ? room.Children.Value : 0, // The number of children requested, or 0
-                    ChildAges = room.AgeViewModels.Select(a => a.Age != null ? a.Age.Value : 0).ToList(), // The ages, or 0
-
-                }).ToList();
-
-            HotelRoomAvailabilityResponse hotelRoomAvailabilityResponse = _expediaService.GetHotelRoomAvailability(availabilityRequest);
+            HotelRoomAvailabilityResponse hotelRoomAvailabilityResponse = _expediaService.GetHotelRoomAvailability(request);
 
             if (hotelRoomAvailabilityResponse.EanWsError != null)
             {

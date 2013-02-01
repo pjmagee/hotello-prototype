@@ -60,9 +60,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AmenityMaskTests.cs" />
-    <Compile Include="HotelInformationRequestTests.cs" />
-    <Compile Include="HotelListRequestTests.cs" />
+    <Compile Include="AmenityTests.cs" />
+    <Compile Include="HotelInformationTests.cs" />
+    <Compile Include="HotelListTests.cs" />
+    <Compile Include="HotelRoomAvailabilityTests.cs" />
     <Compile Include="JsonTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestBuildingTests.cs" />
@@ -90,7 +91,12 @@
     <None Include="SampleData\HotelInformationResponse.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SampleData\HotelRoomAvailabilityResponse.xml" />
+    <None Include="SampleData\HotelRoomAvailabilityResponse.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SampleData\HotelRoomAvailabilityResponse.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SampleData\HotelSummary.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -6,7 +6,7 @@ namespace Hotello.Services.Expedia.Hotels.Models
     [Flags]
     public enum Amenities
     {
-        None = 0,
+        None = 0x0000000,
         [Description("Business Center")] BusinessCenter = 0x0000001,
         [Description("Gym")] FitnessCenter = 0x0000002,
         [Description("Hot Tub")] HotTubOnSite = 0x0000004,

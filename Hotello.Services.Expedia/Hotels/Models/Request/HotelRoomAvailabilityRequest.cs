@@ -46,7 +46,7 @@ namespace Hotello.Services.Expedia.Hotels.Models.Request
         /// This parameter is valid for condos/vacation rentals only. 
         /// Specifies the number of bedrooms requested - 4 maximum.
         /// </summary>
-        public int? NumberOfBedrooms { get; set; }
+        public int NumberOfBedrooms { get; set; }
 
         /// <summary>
         /// 

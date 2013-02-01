@@ -11,7 +11,7 @@ using NUnit.Framework;
 namespace Hotello.Services.Expedia.Tests
 {
     [TestFixture]
-    public class HotelListRequestTests
+    public class HotelListTests
     {
         private RestExpediaService expediaService;
 
@@ -33,7 +33,7 @@ namespace Hotello.Services.Expedia.Tests
         }
 
         [Test(Description = "Search request with City and Country code returns results")]
-        public void Request_HotelListMethodOneUK()
+        public void HotelListRequestMethodOneUk()
         {
             // Arrange
             HotelListRequest hotelListRequest = new HotelListRequest();
@@ -48,7 +48,7 @@ namespace Hotello.Services.Expedia.Tests
         }
 
         [Test(Description = "Search request with City, Country and State returns results")]
-        public void RequestHotelListMethodOneUS()
+        public void HotelListRequestMethodOneUs()
         {
             // Arrange
             HotelListRequest hotelListRequest = new HotelListRequest();
@@ -64,7 +64,7 @@ namespace Hotello.Services.Expedia.Tests
         }
 
         [Test(Description = "Search request with City, Country, Dates and Rooms returns results")]
-        public void RequestHotelListBasicAvailability()
+        public void HotelListRequestBasicAvailability()
         {
             // Arrange
             HotelListRequest hotelListRequest = new HotelListRequest();
@@ -87,7 +87,7 @@ namespace Hotello.Services.Expedia.Tests
 
 
         [Test(Description = "Search request with City, Country, and Property Category all Inclusive returns results")]
-        public void RequestHotelListWithAllInclusiveFilter()
+        public void HotelListRequestWithAllInclusiveFilter()
         {
             // Arrange
             HotelListRequest hotelListRequest = new HotelListRequest();
@@ -115,7 +115,7 @@ namespace Hotello.Services.Expedia.Tests
         }
 
         [Test(Description = "Search request with Swimming Pool amenity brings back results with swimming")]
-        public void RequestHotelListWithAmenitiesFilter()
+        public void HotelListRequestWithAmenitiesFilter()
         {
             // Arrange
             HotelListRequest hotelListRequest = new HotelListRequest();
