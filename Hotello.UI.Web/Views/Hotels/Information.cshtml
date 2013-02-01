@@ -57,11 +57,13 @@
                 <span class="label label-info"><i class="icon-exclamation-sign"></i>Information</span>
                 <p>@Model.HotelDetails.PropertyInformation</p>
             </div>
-
-            <div class="row" style="margin-left: 10px;">
+            @if (!String.IsNullOrEmpty(Model.HotelSummary.TripAdvisorRatingUrl))
+            {
+                <div class="row" style="margin-left: 10px;">
                 <h4>TripAdvisor <small>rating based on <span>@Model.HotelSummary.TripAdvisorReviewCount</span> reviews</small></h4>
                 <img src="@Model.HotelSummary.TripAdvisorRatingUrl" />
-            </div>
+                </div>
+            }
         </div>
     </div>
 

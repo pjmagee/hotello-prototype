@@ -122,7 +122,6 @@ namespace Hotello.UI.Web.Controllers
                         return View(model);
                     }
 
-                    Session.Timeout = 10;
                     Session["form"] = model;
                     Session["Response"] = response;
                     Session["CustomerSessionId"] = response.CustomerSessionId;
