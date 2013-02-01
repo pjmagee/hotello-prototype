@@ -30,11 +30,10 @@ namespace Hotello.UI.Web.Controllers
 
             if (model == null)
             {
-                // TODO: Please enter desired destination, dates and rooms
-
+                Information("Please enter your criteria for room availability");
                 return RedirectToAction("Index", "Search");
             }
-
+            
             HotelRoomAvailabilityRequest availabilityRequest = new HotelRoomAvailabilityRequest();
             availabilityRequest.HotelId = id;
             availabilityRequest.ArrivalDate = model.CheckinDate;

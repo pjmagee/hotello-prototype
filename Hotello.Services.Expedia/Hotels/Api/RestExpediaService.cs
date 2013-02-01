@@ -35,9 +35,8 @@ namespace Hotello.Services.Expedia.Hotels.Api
         {
             var client = new RestClient();
             client.BaseUrl = new Uri(BaseUrl).AbsoluteUri;
-            
-            client.ClearHandlers(); 
-            client.AddHandler("application/json", new JsonDeserializer());
+            client.ClearHandlers();
+            client.AddHandler("application/json",  new JsonDeserializer());
             client.AddDefaultParameter("Accept-Encoding", "gzip,deflate", ParameterType.HttpHeader);
             
             request.AddParameter("apiKey", ApiKey);
@@ -73,14 +72,16 @@ namespace Hotello.Services.Expedia.Hotels.Api
 
             RestRequest restRequest = new RestRequest();
             restRequest.Resource = "list";
-            restRequest.Method = Method.POST;
+            restRequest.Method = Method.GET;
             restRequest.RootElement = "HotelListResponse";
+            restRequest.RequestFormat = DataFormat.Json;
+            restRequest.DateFormat = "MMddyyyy";
 
             if (hotelListRequest.ArrivalDate.HasValue)
-                restRequest.AddParameter("arrivalDate", hotelListRequest.ArrivalDate.Value.ToString("MM/dd/yyyy"));
+                restRequest.AddParameter("arrivalDate", hotelListRequest.ArrivalDate.Value.ToShortDateString(), ParameterType.GetOrPost);
 
             if (hotelListRequest.DepartureDate.HasValue)
-                restRequest.AddParameter("departureDate", hotelListRequest.DepartureDate.Value.ToString("MM/dd/yyyy"));
+                restRequest.AddParameter("departureDate", hotelListRequest.DepartureDate.Value.ToShortDateString(), ParameterType.GetOrPost);
 
             if (hotelListRequest.CacheKey.HasValue() && hotelListRequest.CacheLocation.HasValue())
             {
@@ -92,16 +93,20 @@ namespace Hotello.Services.Expedia.Hotels.Api
                 return Execute<HotelListResponse>(restRequest);
             }
 
-            if (hotelListRequest.DestinationString.HasValue())
+            // If I gave you a destination id, use that
+            if (hotelListRequest.DestinationId.HasValue()) 
             {
-                restRequest.AddParameter("destinationString", hotelListRequest.DestinationString);
+                restRequest.AddParameter("destinationId", hotelListRequest.DestinationId); 
             }
-            else if (hotelListRequest.DestinationId.HasValue())
+            else if (hotelListRequest.DestinationString.HasValue())
             {
-                restRequest.AddParameter("destinationId", hotelListRequest.DestinationId);
+                // otherwise, use the destination string I gave
+                restRequest.AddParameter("destinationString", hotelListRequest.DestinationString);
             }
             else
             {
+                // if destination id nor destination string have values, try and use city, state, county params
+
                 if (hotelListRequest.City.HasValue())
                     restRequest.AddParameter("city", hotelListRequest.City);
 
@@ -112,8 +117,9 @@ namespace Hotello.Services.Expedia.Hotels.Api
                     restRequest.AddParameter("stateProvinceCode", hotelListRequest.StateProvinceCode);
             }
 
-
+            // Default this to 200 per request
             restRequest.AddParameter("numberOfResults", 200);
+
             restRequest.AddParameter("supplierType", "E"); // Expedia Collect  
 
             HandleFilteringMethods(restRequest, hotelListRequest);
@@ -214,15 +220,17 @@ namespace Hotello.Services.Expedia.Hotels.Api
         {
             Require.Argument("roomAvailabilityRequest", roomAvailabilityRequest);
 
-            var restRequest = new RestRequest();
-            restRequest.Resource = "avail";
-            restRequest.Method = Method.GET;
-            restRequest.RootElement = "HotelRoomAvailabilityResponse";
-            restRequest.AddParameter("options", "ROOM_TYPES,ROOM_AMENITIES");
-            restRequest.AddParameter("hotelId", roomAvailabilityRequest.HotelId);
-            restRequest.AddParameter("arrivalDate", roomAvailabilityRequest.ArrivalDate.ToString("MM/dd/yyyy"));
-            restRequest.AddParameter("departureDate", roomAvailabilityRequest.DepartureDate.ToString("MM/dd/yyyy"));
-            restRequest.AddParameter("includeRoomImages", true); 
+            var request = new RestRequest();
+            request.Resource = "avail";
+            request.Method = Method.GET;
+            request.RequestFormat = DataFormat.Json;
+            request.DateFormat = "MMddyyyy";
+            request.RootElement = "HotelRoomAvailabilityResponse";
+            request.AddParameter("options", "ROOM_TYPES,ROOM_AMENITIES");
+            request.AddParameter("hotelId", roomAvailabilityRequest.HotelId);
+            request.AddParameter("arrivalDate", roomAvailabilityRequest.ArrivalDate.ToShortDateString());
+            request.AddParameter("departureDate", roomAvailabilityRequest.DepartureDate.ToShortDateString());
+            request.AddParameter("includeRoomImages", true); 
 
             if (roomAvailabilityRequest.RoomGroup != null)
             {
@@ -232,11 +240,11 @@ namespace Hotello.Services.Expedia.Hotels.Api
                     parameter.Name = "room" + (roomAvailabilityRequest.RoomGroup.IndexOf(room) + 1);
                     parameter.Type = ParameterType.GetOrPost;
                     parameter.Value = room.NumberOfAdults + (room.ChildAges == null || room.ChildAges.Count < 1 ? "" : "," + String.Join(",", room.ChildAges.ToArray()));
-                    restRequest.AddParameter(parameter);
+                    request.AddParameter(parameter);
                 }
             }
 
-            return Execute<HotelRoomAvailabilityResponse>(restRequest);
+            return Execute<HotelRoomAvailabilityResponse>(request);
         }
 
         public override LocationInfoResponse GetGeoSearch(LocationInfoRequest locationInfoRequest)

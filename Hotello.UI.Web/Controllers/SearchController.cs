@@ -176,16 +176,13 @@ namespace Hotello.UI.Web.Controllers
 
                     if (!hotelSummaries.HasNextPage && (bool) Session["MoreResultsAvailable"])
                     {
-                        MvcHtmlString htmlString = new MvcHtmlString(
-                            @"<a class=""btn btn-small btn-info btn-block"" href=" +
-                            Url.Action("Results",
-                                       new
-                                           {
-                                               cacheKey = Session["CacheKey"],
-                                               cacheLocation = Session["CacheLocation"],
-                                               page = hotelSummaries.PageNumber + 1
-                                           }) +
-                            @"><i class=""icon-home""></i> More Results Available!</a>");
+                        string info = "<p>Hey, we have more results for you! Would you like to see more results?</p>";
+                        info += "<br/>";
+                        info += "<a class='btn btn-small btn-info btn-block'";
+                        info += " href='" + Url.Action("Results", new { cacheKey = Session["CacheKey"], cacheLocation = Session["CacheLocation"], page = hotelSummaries.PageNumber + 1 }) + "'";
+                        info += ">Yes, I want to see more!</a>";
+
+                        MvcHtmlString htmlString = new MvcHtmlString(info);
                         
                         Information(htmlString);
                     }
