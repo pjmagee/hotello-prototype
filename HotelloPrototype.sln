@@ -52,8 +52,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{C0C8A2
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotello.UI.Web.Twitter.Bootstrap.MVC4.Sample", "Hotello.UI.Web.Twitter.Bootstrap.MVC4.Sample\Hotello.UI.Web.Twitter.Bootstrap.MVC4.Sample.csproj", "{BDC6B44D-C9C9-4EF0-B800-33CF7B5B62F2}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -104,10 +102,6 @@ Global
 		{40190C3D-B4D4-4D1E-B198-26598F7E6A2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40190C3D-B4D4-4D1E-B198-26598F7E6A2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40190C3D-B4D4-4D1E-B198-26598F7E6A2B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BDC6B44D-C9C9-4EF0-B800-33CF7B5B62F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BDC6B44D-C9C9-4EF0-B800-33CF7B5B62F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BDC6B44D-C9C9-4EF0-B800-33CF7B5B62F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BDC6B44D-C9C9-4EF0-B800-33CF7B5B62F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

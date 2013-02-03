@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Management;
 using System.Net.Http;
 using NUnit.Framework;
 

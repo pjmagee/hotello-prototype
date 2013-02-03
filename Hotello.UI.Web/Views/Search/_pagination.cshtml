@@ -37,13 +37,13 @@
                 if (counter == Model.PageNumber)
                 {
                     <li class="active">
-                        @Html.ActionLink(counter.ToString(CultureInfo.InvariantCulture), "Results", new { page = counter })
+                        @Html.ActionLink(counter.ToString(), "Results", new { page = counter })
                     </li>
                 }
                 else
                 {
                     <li>
-                        @Html.ActionLink(counter.ToString(CultureInfo.InvariantCulture), "Results", new { page = counter })
+                        @Html.ActionLink(counter.ToString(), "Results", new { page = counter })
                     </li>
                 }
             }
@@ -58,32 +58,32 @@
                     if (counter == Model.PageNumber)
                     {
                         <li class="active">
-                            @Html.ActionLink(counter.ToString(CultureInfo.InvariantCulture), "Results", new { page = counter })
+                            @Html.ActionLink(counter.ToString(), "Results", new { page = counter })
                         </li>
                     }
                     else
                     {
                         <li>
-                            @Html.ActionLink(counter.ToString(CultureInfo.InvariantCulture), "Results", new { page = counter })
+                            @Html.ActionLink(counter.ToString(), "Results", new { page = counter })
                         </li>
                     }
 
                 }
                 <li class="disabled"><span>...</span></li>
                 <li>
-                    @Html.ActionLink(lpm1.ToString().ToString(CultureInfo.InvariantCulture), "Results", new { page = lpm1.ToString() })
+                    @Html.ActionLink(lpm1.ToString(), "Results", new { page = lpm1.ToString() })
                 </li>
                 <li>
-                    @Html.ActionLink(lastPage.ToString().ToString(CultureInfo.InvariantCulture), "Results", new { page = lastPage })
+                    @Html.ActionLink(lastPage.ToString(), "Results", new { page = lastPage })
                 </li>
             }
             else if (lastPage - (adjacents * 2) > Model.PageNumber && Model.PageNumber > (adjacents * 2))
             {
                 <li>
-                    @Html.ActionLink(1.ToString().ToString(CultureInfo.InvariantCulture), "Results", new { page = 1 })
+                    @Html.ActionLink(1.ToString(), "Results", new { page = 1 })
                 </li>
                 <li>
-                    @Html.ActionLink(2.ToString().ToString(CultureInfo.InvariantCulture), "Results", new { page = 2 })
+                    @Html.ActionLink(2.ToString(), "Results", new { page = 2 })
                 </li>
                 <li class="disabled"><span>...</span></li>
                
@@ -92,31 +92,31 @@
                     if (counter == Model.PageNumber)
                     {
                         <li class="active">
-                            @Html.ActionLink(counter.ToString(CultureInfo.InvariantCulture), "Results", new { page = counter })
+                            @Html.ActionLink(counter.ToString(), "Results", new { page = counter })
                         </li>
                     }
                     else
                     {
                         <li>
-                            @Html.ActionLink(counter.ToString(CultureInfo.InvariantCulture), "Results", new { page = counter })
+                            @Html.ActionLink(counter.ToString(), "Results", new { page = counter })
                         </li>
                     }
                 }
                 <li class="disabled"><span>...</span></li>
                 <li>
-                    @Html.ActionLink(lpm1.ToString().ToString(CultureInfo.InvariantCulture), "Results", new { page = lpm1.ToString() })
+                    @Html.ActionLink(lpm1.ToString(), "Results", new { page = lpm1.ToString() })
                 </li>
                 <li>
-                    @Html.ActionLink(lastPage.ToString().ToString(CultureInfo.InvariantCulture), "Results", new { page = lastPage })
+                    @Html.ActionLink(lastPage.ToString(), "Results", new { page = lastPage })
                 </li>
             }
             else
             {
                 <li>
-                    @Html.ActionLink(1.ToString().ToString(CultureInfo.InvariantCulture), "Results", new { page = 1 })
+                    @Html.ActionLink(1.ToString(), "Results", new { page = 1 })
                 </li>
                 <li>
-                    @Html.ActionLink(2.ToString().ToString(CultureInfo.InvariantCulture), "Results", new { page = 2 })
+                    @Html.ActionLink(2.ToString(), "Results", new { page = 2 })
                 </li>
                 <li class="disabled"><span>...</span></li>
                 for (counter = lastPage - (1 + (adjacents * 3)); counter <= lastPage; counter++)
@@ -124,13 +124,13 @@
                     if (counter == Model.PageNumber)
                     {
                         <li class="active">
-                            @Html.ActionLink(counter.ToString(CultureInfo.InvariantCulture), "Results", new { page = counter })
+                            @Html.ActionLink(counter.ToString(), "Results", new { page = counter })
                         </li>
                     }
                     else
                     {
                         <li>
-                            @Html.ActionLink(counter.ToString(CultureInfo.InvariantCulture), "Results", new { page = counter })
+                            @Html.ActionLink(counter.ToString(), "Results", new { page = counter })
                         </li>
                     }
                 }

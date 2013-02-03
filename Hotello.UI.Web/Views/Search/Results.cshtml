@@ -2,6 +2,7 @@
 @using System.Text
 @using Hotello.Common
 @using Hotello.Services.Expedia.Hotels.Models
+@using Hotello.UI.Web.Models
 @using Microsoft.Security.Application
 @using PagedList
 
@@ -19,35 +20,46 @@
     <div class="row-fluid">
         
         <div class="span6">
-            <h2 class="pull-left">Hotel Search Results
+            <h2 class="pull-left">Available Hotels
                 <small>@Model.TotalItemCount results</small>
             </h2>
         </div>
         
-        
         <div class="span6">
-            @using (Html.BeginForm("Results", "Search", FormMethod.Get, htmlAttributes: new {@class = "form-search pull-right"}))
+            @using (Html.BeginForm("Results", "Search", FormMethod.Get, new {@class = "form-search pull-right"}))
             {
-                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, htmlAttributes: new {@class = "input-medium search-query", placeholder = "hotel name..."})
+                @Html.Hidden("SortOrder", ViewBag.SortOrder as string)
+                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new {@class = "input-medium search-query", placeholder = "hotel name..."})
                 <button class="btn btn-small btn-info" type="submit">Search</button>
             }
         </div>
     </div>
     
-    
-   
+    <div class="row-fluid">
+        <div class="pull-left">
+            @Html.Partial("_pagination", Model)
+        </div>
+        <div class="pull-right">
+            @Html.DropDownList("Sort", ResultsViewModel.ResultsOrderList)
+        </div>
+    </div>
         
-    @Html.Partial("_pagination", Model)
+    
 
     @foreach (var hotel in Model.OrEmptyIfNull())
     {               
         <div class="well" style="background-color: white">
 
             <!-- Hotel Name and expedia star rating -->
-            <div class="row">
-                <div class="span12">
+            <div class="row-fluid">
+                <div class="span6">
                     <span title="@hotel.HotelId"><b>@Server.HtmlDecode(hotel.Name)</b></span>
                     <div class="rateit" data-rateit-value="@hotel.HotelRating" data-rateit-min="0" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+                </div>
+                <div class="span6">
+                    <h3 class="pull-right" style="margin-top: -10px; margin-bottom: -25px;">
+                        <small>Averaging </small><span>@culture.NumberFormat.CurrencySymbol</span>@hotel.HighRate.ToString("0.##")<small> / night </small>
+                    </h3>
                 </div>
             </div>
             <br />
@@ -153,28 +165,27 @@
                             </ul>
                         </div>
                         <!-- Hotel Price -->
-                        <div class="pull-right">
-                            <span>Avg</span>
-                            <h3>
-                                <span>@culture.NumberFormat.CurrencySymbol</span>@hotel.HighRate.ToString("0.##")<small> per night</small>
-                            </h3>
-                        </div>
+                        
                     </div>
+                    
+                    <div class="pull-right" style="margin-top: -60px; position: relative">
+                            
+                        </div>
 
-                    <div class="row">
+                    <div class="row" style="margin-bottom: -10px">
                         <!-- HOTEL GALLERY AJAX CALL -->
-                        <div class="buttons" style="margin-top: 150px;">
+                        <div class="buttons" style="margin-top: 150px; margin-bottom: 0px;">
                             <div class="span2">
                             <a href="#gallery" id="@hotel.HotelId" data-toggle="modal" class="btn btn-small btn-info">
                                 Photo Gallery <i class="icon-camera"></i>
                             </a>
-                        </div>
-                        <!-- DETAILS LINK -->
-                        <div class="span2">
-                            <a href="@Url.Action("Information", "Hotels", new RouteValueDictionary { { "id", hotel.HotelId } })" class="btn btn-small btn-info">
-                                <span>Hotel Details </span><i class="icon-arrow-right"></i>
-                            </a>
-                        </div>
+                            </div>
+                            <!-- DETAILS LINK -->
+                            <div class="span2">
+                                <a href="@Url.Action("Information", "Hotels", new RouteValueDictionary { { "id", hotel.HotelId } })" class="btn btn-small btn-info">
+                                    <span>Hotel Details </span><i class="icon-arrow-right"></i>
+                                </a>
+                            </div>
                         </div>
                         
                     </div>
@@ -183,25 +194,9 @@
             </div>
         </div>
     }
+
     <!-- End Hotel Results -->
-
-    <!-- Paging -->
-    @if (Session["CacheKey"] != null && Session["CacheLocation"] != null && Session["MoreResultsAvailable"] != null)
-    {
-        bool moreResults = Session["MoreResultsAvailable"] is bool && (bool)Session["MoreResultsAvailable"];
-
-        if (!Model.HasNextPage && moreResults)
-        {
-            <div class="row-fluid">
-                <a class="btn btn-small btn-success btn-block" href="@Url.Action("Results", new { cacheKey = Session["CacheKey"], cacheLocation = Session["CacheLocation"], page = Model.PageNumber + 1 })">
-                    <i class="icon-home"></i> More Results Available!
-                </a>
-            </div>
-        }
-    }
-
     @Html.Partial("_pagination", Model)
-
 
 </div>
 
@@ -210,6 +205,7 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h3>Hotel Gallery</h3>
+        
     </div>
     <div class="modal-body">
         <div id="myCarousel" class="carousel slide">
@@ -218,10 +214,13 @@
             <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
             <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
         </div>
+        <p>Note: It is the responsibility of the hotel to ensure accuracy of photos.</p>
     </div>
     <div class="modal-footer">
+         
         <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
     </div>
+   
 </div>
 
 @section Scripts {
@@ -243,6 +242,14 @@
 
                 $(this).attr('title', tooltipvalues[$(item).rateit('value') - 1]);
                 
+            });
+
+
+            $('select#Sort').val($('input#SortOrder').val());
+            
+            $('select#Sort').change(function (e) {
+                $('input#SortOrder').attr('value', $(this).val());
+                $('form[method="get"]').submit();
             });
 
             // Register Click event

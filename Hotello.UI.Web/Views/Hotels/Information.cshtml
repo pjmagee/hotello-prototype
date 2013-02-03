@@ -34,7 +34,7 @@
                     @foreach (var image in Model.HotelImages.HotelImage)
                     {
                         <div class="item hotel-image">
-                            <img class="img-polaroid hotel-image" src="@image.Url" alt="Hotel Image" style="margin-left: auto; margin-right: auto;" />
+                            <img class="img-polaroid hotel-image" src="@image.Url" alt="Hotel Image" style="/*margin-left: auto; margin-right: auto;*/" />
                         </div>
                     }
                 </div>
@@ -71,6 +71,7 @@
     <div class="row">
 
         <div class="span12" style="margin-top: 15px;">
+            <h4>Photos <small>click to go to it</small></h4>
             <!-- LIST OF IMAGE THUMBNAILS -->
             <ul class="thumbnails inline unstyled">
                 @foreach (var image in Model.HotelImages.HotelImage)
@@ -85,15 +86,15 @@
 
     <!-- ROW -->
     <div class="row">
-        <div class="span12">
+        <div>
             <div class="pull-right">
-
                 <!-- INNER ROW PRICE -->
                 <div class="row">
                     <span>From</span>
-                    <h1><span>@culture.NumberFormat.CurrencySymbol</span>@Model.HotelSummary.LowRate.ToString("0.##")<small> per night</small></h1>
+                    <h1 style="margin-top: -5px;">
+                        <span>@culture.NumberFormat.CurrencySymbol</span>@Model.HotelSummary.LowRate.ToString("0.##")<small> / night</small>
+                    </h1>
                 </div>
-
                 <!-- INNER ROW AVAILABILITY CHECK -->
                 <div class="row">
                     <button id="availability" class="btn btn-info">
@@ -124,14 +125,14 @@
 
             <!-- TABS NAVIGATION -->
             <ul id="tabs" class="nav nav-tabs">
-                <li><a href="#description" data-toggle="tab"><i class="icon-info-sign"></i>Description</a></li>
-                <li><a href="#amenities" data-toggle="tab"><i class="icon-list"></i>Amenities</a></li>
-                <li><a href="#area" data-toggle="tab"><i class="icon-info-sign"></i>Area Info</a></li>
-                <li><a href="#rooms" data-toggle="tab"><i class="icon-info-sign"></i>Room Info</a></li>
-                <li><a href="#driving" data-toggle="tab"><i class="icon-road"></i>Directions</a></li>
-                <li><a href="#checkin" data-toggle="tab"><i class="icon-tags"></i>Check-in</a></li>
-                <li><a href="#map" data-toggle="tab"><i class="icon-map-marker"></i>Map</a></li>
-                <li><a href="#tour" data-toggle="tab"><i class="icon-camera"></i>Virtual Tour</a></li>
+                <li><a href="#description" data-toggle="tab"><i class="icon-info-sign"></i> Description</a></li>
+                <li><a href="#amenities" data-toggle="tab"><i class="icon-list"></i> Amenities</a></li>
+                <li><a href="#area" data-toggle="tab"><i class="icon-info-sign"></i> Area Info</a></li>
+                <li><a href="#rooms" data-toggle="tab"><i class="icon-info-sign"></i> Room Info</a></li>
+                <li><a href="#driving" data-toggle="tab"><i class="icon-road"></i> Directions</a></li>
+                <li><a href="#checkin" data-toggle="tab"><i class="icon-tags"></i> Check-in</a></li>
+                <li><a href="#map" data-toggle="tab"><i class="icon-map-marker"></i> Google Map</a></li>
+                <li><a href="#tour" data-toggle="tab"><i class="icon-camera"></i> Virtual Tour</a></li>
             </ul>
 
             <!-- TAB CONTENT -->
@@ -196,15 +197,17 @@
 
             </div>
         </div>
-
     </div>
 
     <div class="row">
+        
         @using (Html.BeginForm("Availability", "Rooms", new { id = summary.HotelId }, FormMethod.Get))
         {
-            <input class="hidden" type="submit" />
+            <input class="hide" type="submit" />
         }
+
     </div>
+
 </div>
 
 

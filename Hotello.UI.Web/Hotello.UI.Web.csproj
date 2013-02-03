@@ -170,6 +170,7 @@
     <Compile Include="Attributes\AjaxAttribute.cs" />
     <Compile Include="Helpers\HtmlHelperExtensions.cs" />
     <Compile Include="Models\HomeInputModel.cs" />
+    <Compile Include="Models\ResultsViewModel.cs" />
     <Compile Include="Models\SearchViewModels.cs" />
     <Compile Include="NavigationRoutes\INavigationRouteFilter.cs" />
     <Compile Include="NavigationRoutes\NamedRoute.cs" />

@@ -34,9 +34,11 @@ namespace Hotello.UI.Web.Controllers
         [HttpGet]
         public ActionResult Information(int id)
         {
-            HotelInformationRequest hotelInformationRequest = new HotelInformationRequest();
-            hotelInformationRequest.Options = new List<Options>();
-            hotelInformationRequest.HotelId = id;
+            HotelInformationRequest hotelInformationRequest = new HotelInformationRequest
+                {
+                    Options = new List<Options>(),
+                    HotelId = id
+                };
 
             HotelInformationResponse hotelInformationResponse = _expediaService.GetHotelInformation(hotelInformationRequest);
 

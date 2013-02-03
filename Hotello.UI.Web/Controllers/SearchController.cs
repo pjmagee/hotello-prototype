@@ -171,7 +171,7 @@ namespace Hotello.UI.Web.Controllers
 
 
                     IEnumerable<HotelSummary> hotelSummaries = hotelListResponse.HotelList.HotelSummary;
-                    ViewBag.SortParam = String.IsNullOrEmpty(sortOrder);
+                    ViewBag.SortOrder = sortOrder;
                     ViewBag.CurrentFilter = searchString;
 
                     // Filtering 
@@ -184,23 +184,38 @@ namespace Hotello.UI.Web.Controllers
                     switch (sortOrder)
                     {
                         case "Price desc":
-                            hotelSummaries = hotelSummaries.OrderByDescending(s => s.HighRate);
+                            hotelSummaries = hotelSummaries
+                                .OrderByDescending(s => s.HighRate)
+                                .ThenByDescending(s => s.HotelRating);
+
                             break;
 
                         case "Price asce":
-                            hotelSummaries = hotelSummaries.OrderBy(s => s.HighRate);
+                            hotelSummaries = hotelSummaries
+                                .OrderBy(s => s.HighRate)
+                                .ThenByDescending(s => s.HighRate);
+
                             break;
 
                         case "Rating desc":
-                            hotelSummaries = hotelSummaries.OrderByDescending(s => s.HotelRating);
+                            hotelSummaries = hotelSummaries
+                                .OrderByDescending(s => s.HotelRating)
+                                .ThenByDescending(s => s.HighRate);
+
                             break;
 
                         case "Rating asce":
-                            hotelSummaries = hotelSummaries.OrderBy(s => s.HotelRating);
+                            hotelSummaries = hotelSummaries
+                                .OrderBy(s => s.HotelRating)
+                                .ThenByDescending(s => s.HighRate);
+
                             break;
 
                         default:
-                            hotelSummaries = hotelSummaries.OrderBy(s => s.Name);
+                            hotelSummaries = hotelSummaries
+                                .OrderBy(s => s.Name)
+                                .ThenByDescending(s => s.HighRate);
+
                             break;
                     }
 
