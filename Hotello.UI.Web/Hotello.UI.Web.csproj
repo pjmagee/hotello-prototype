@@ -163,11 +163,11 @@
     <Compile Include="Controllers\PlacesController.cs" />
     <Compile Include="Controllers\RoomsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
-    <Compile Include="Attributes\SessionFilterAttribute.cs" />
+    <Compile Include="Filters\SessionFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Attributes\AjaxAttribute.cs" />
+    <Compile Include="Helpers\AjaxAttribute.cs" />
     <Compile Include="Helpers\HtmlHelperExtensions.cs" />
     <Compile Include="Models\HomeInputModel.cs" />
     <Compile Include="Models\ResultsViewModel.cs" />

@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using Hotello.UI.Web.Controllers;
 
-namespace Hotello.UI.Web.Attributes
+namespace Hotello.UI.Web.Filters
 {
     public class SessionFilterAttribute : ActionFilterAttribute
     {

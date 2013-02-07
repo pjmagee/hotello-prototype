@@ -2,6 +2,7 @@
 using System.Reflection;
 using Hotello.Services.Expedia.Hotels.Api;
 using Hotello.UI.Web.Attributes;
+using Hotello.UI.Web.Filters;
 
 namespace Hotello.UI.Web.Controllers
 {

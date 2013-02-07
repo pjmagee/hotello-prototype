@@ -7,6 +7,7 @@ using Hotello.Services.Expedia.Hotels.Models;
 using Hotello.Services.Expedia.Hotels.Models.Request;
 using Hotello.Services.Expedia.Hotels.Models.Response;
 using Hotello.Services.GeoIp;
+using Hotello.UI.Web.Attributes;
 using Ninject;
 
 namespace Hotello.UI.Web.Controllers
@@ -57,7 +58,10 @@ namespace Hotello.UI.Web.Controllers
             return View(response);
         }
 
+
+        [Ajax]
         [HttpGet]
+        [OutputCache(Duration = 60 * 5, Location = OutputCacheLocation.ServerAndClient, NoStore = true, VaryByParam = "id")]
         public ActionResult Images(int id)
         {
             HotelInformationRequest request = new HotelInformationRequest();
