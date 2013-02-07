@@ -5,6 +5,9 @@
 
 
 @{
+
+    Layout = "../Shared/_Layout.cshtml";
+    
     ViewBag.Title = "Search";
 
     IDictionary<string, object> formHtml = new Dictionary<string, object>();
@@ -137,11 +140,14 @@
                     <div class="controls">
                         @Html.DropDownListFor(model => model.NumberOfBedrooms, SearchViewModel.RoomsSelectList, new { @class = "input-mini" })
                         @Html.ValidationMessageFor(model => model.NumberOfBedrooms)
+                        @Html.ValidationMessage("RoomViewModels")
                     </div>
+                    
                 </div>
                 <!-- ROOMS -->
                 <div class="control-group">
                     <div class="controls">
+                       
                         <ol class="rooms unstyled">
                             @for (int i = 0; i < Model.RoomViewModels.Count; i++)
                             {
@@ -222,7 +228,7 @@
                 <!-- SUBMIT -->
                 <div class="form-actions">
                     <button class="btn btn-primary">
-                        <i class="icon-search"></i>Search
+                        <i class="icon-search"></i> Search
                     </button>
                     <input type="submit" class="hidden" value="Submit" />
                 </div>
@@ -236,6 +242,8 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
+
+            $('div#searchForm').show();
 
             //Globalize.culture('en-GB');
 
@@ -293,10 +301,10 @@
             // ----------------------------------------------------------------
             // Form Submit ----------------------------------------------------
             // ----------------------------------------------------------------
-            $('div.form-actions button').click(function (e) {
-                e.preventDefault();
-                $('div.form-actions input[type="submit"]').click();
-            });
+            //$('div.form-actions button').click(function (e) {
+            //    e.preventDefault();
+            //    $('div.form-actions input[type="submit"]').click();
+            //});
 
             // ----------------------------------------------------------------
             // Auto Suggestions -----------------------------------------------
@@ -304,7 +312,7 @@
 
             // http://api.jqueryui.com/autocomplete/#event-select
 
-            $("input#Destination").autocomplete({
+            @*$("input#Destination").autocomplete({
                 source: function (request, response) {
                     $.ajax({
                         url: '@Url.Action("AutoSuggestDestination", "Places")', // Call the Places controller
@@ -628,7 +636,7 @@
                 
                 // Stop the loading gif
                 $('#destinationId').closest('.controls').find('span.add-on').hide();
-            }
+            }*@
 
         });
 

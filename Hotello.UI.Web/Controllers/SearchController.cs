@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.UI;
 using Hotello.Services.Expedia.Hotels.Api;
 using Hotello.Services.Expedia.Hotels.Models;
 using Hotello.Services.Expedia.Hotels.Models.Request;
@@ -35,21 +36,30 @@ namespace Hotello.UI.Web.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var model = new SearchViewModel
+            SearchViewModel model;
+
+            if (Session["form"] == null)
             {
-                NumberOfBedrooms = 1, // Default to 1 bedroom?
-                RoomViewModels = new List<RoomViewModel>(Enumerable.Range(1, 4) // From 1 to 4 rooms
-                    .Select(room => new RoomViewModel()
-                    {
-                        Adults = null,
-                        Children = null,
-                        AgeViewModels = new List<AgeViewModel>(Enumerable.Range(1, 3).Select(i =>
-                            new AgeViewModel()
-                            {
-                                Age = null,
-                            }))
-                    })),
-            };
+                model = new SearchViewModel
+                {
+                    NumberOfBedrooms = 1, // Default to 1 bedroom?
+                    RoomViewModels = new List<RoomViewModel>(Enumerable.Range(1, 4) // From 1 to 4 rooms
+                        .Select((room, idx) => new RoomViewModel()
+                        {
+                            Adults = idx == 1 ? 1 : 0,
+                            Children = null,
+                            AgeViewModels = new List<AgeViewModel>(Enumerable.Range(1, 3).Select(i =>
+                                new AgeViewModel()
+                                {
+                                    Age = null,
+                                }))
+                        })),
+                };
+            }
+            else
+            {
+                model = Session["form"] as SearchViewModel;
+            }
 
             return View(model);
         }
@@ -57,6 +67,12 @@ namespace Hotello.UI.Web.Controllers
         [HttpPost]
         public ActionResult Index(SearchViewModel model)
         {
+
+            if (!model.RoomViewModels.Any(viewModel => viewModel.Adults > 0 || viewModel.Children > 0))
+            {
+                ModelState.AddModelError("RoomViewModels", "You must enter at least 1 guest.");
+            }
+
             if (ModelState.IsValid)
             {
                 try
@@ -129,7 +145,9 @@ namespace Hotello.UI.Web.Controllers
                     Session["CacheKey"] = response.CacheKey;
                     Session["CacheLocation"] = response.CacheLocation;
 
-                    return View("Results", response.HotelList.HotelSummary.ToPagedList(1, 10));
+                    return RedirectToAction("Results");
+
+                    // return Results(response.HotelList.HotelSummary.ToPagedList(1, 10));
                 }
                 catch (Exception)
                 {
@@ -139,11 +157,18 @@ namespace Hotello.UI.Web.Controllers
             return View(model);
         }
 
+
         [HttpGet]
+        [OutputCache(Location = OutputCacheLocation.Client, Duration = 60, NoStore = true, VaryByParam = "cacheKey;page")]
         public ActionResult Results(string cacheLocation, string cacheKey, int? page, string sortOrder, string currentFilter, string searchString)
         {
             if (Session["Response"] != null)
             {
+                if (Request.Url != null)
+                {
+                    Session["ResultUrl"] = Request.Url.PathAndQuery;
+                }
+
                 HotelListResponse hotelListResponse = Session["Response"] as HotelListResponse;
 
                 if (hotelListResponse != null)

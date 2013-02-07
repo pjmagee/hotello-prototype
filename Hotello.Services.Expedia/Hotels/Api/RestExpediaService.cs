@@ -75,7 +75,7 @@ namespace Hotello.Services.Expedia.Hotels.Api
             request.Method = Method.GET;
             request.RootElement = "HotelListResponse";
             request.RequestFormat = DataFormat.Json;
-            request.DateFormat = "MMddyyyy";
+            request.DateFormat = "mmddyyyy";
 
             if (hotelListRequest.CacheKey.HasValue() && hotelListRequest.CacheLocation.HasValue())
             {
@@ -87,11 +87,11 @@ namespace Hotello.Services.Expedia.Hotels.Api
 
             // This check-in date
             if (hotelListRequest.ArrivalDate.HasValue)
-                request.AddParameter("arrivalDate", hotelListRequest.ArrivalDate.Value.ToShortDateString(), ParameterType.GetOrPost);
+                request.AddParameter("arrivalDate", hotelListRequest.ArrivalDate.Value.ToShortDateString());
 
             // This check-out date
             if (hotelListRequest.DepartureDate.HasValue)
-                request.AddParameter("departureDate", hotelListRequest.DepartureDate.Value.ToShortDateString(), ParameterType.GetOrPost);
+                request.AddParameter("departureDate", hotelListRequest.DepartureDate.Value.ToShortDateString());
 
             // If I gave you a destination id, use that
             if (hotelListRequest.DestinationId.HasValue()) 

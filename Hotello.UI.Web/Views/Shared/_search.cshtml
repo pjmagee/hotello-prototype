@@ -1,0 +1,208 @@
+﻿
+
+@using Hotello.Common
+@using Hotello.Services.Expedia.Hotels.Models
+@using Hotello.UI.Web.Models
+@model SearchViewModel
+
+@{
+    IDictionary<string, object> formHtml = new Dictionary<string, object>();
+    formHtml.Add("class", "form form-horizontal well");
+
+    IDictionary<string, object> controlLabel = new Dictionary<string, object>();
+    controlLabel.Add("class", "control-label");
+
+    IDictionary<string, object> dateFieldHtml = new Dictionary<string, object>();
+    dateFieldHtml.Add("class", "input-small");
+
+    IDictionary<string, object> adultDropdownHtml = new Dictionary<string, object>();
+    adultDropdownHtml.Add("class", "input-mini adult");
+
+    IDictionary<string, object> childDropdownHtml = new Dictionary<string, object>();
+    childDropdownHtml.Add("class", "input-mini child");
+
+    IDictionary<string, object> ageDropDownHtml = new Dictionary<string, object>();
+    ageDropDownHtml.Add("class", "input-mini age");
+
+    IDictionary<string, object> mutliSelectHtml = new Dictionary<string, object>();
+    mutliSelectHtml.Add("multiple", "multiple");
+}
+
+
+<div id="searchForm" style="display: none">
+    
+    @using (Html.BeginForm("Index", "Search", FormMethod.Post, formHtml))
+    {
+        @Html.AntiForgeryToken()
+        <fieldset>
+            <legend>Search for a Hotel</legend>
+            @Html.ValidationSummary(true)
+            <!-- ARRIVAL -->
+            <div class="control-group">
+                @Html.LabelFor(search => search.CheckinDate, "Check-in Date", controlLabel)
+                <div class="controls">
+                    <div class="input-append">
+                        @Html.TextBoxFor(search => search.CheckinDate, dateFieldHtml)
+                        <span class="add-on">
+                            <i class="icon-calendar"></i>
+                        </span>
+                    </div>
+                    @Html.ValidationMessageFor(search => search.CheckinDate)
+                </div>
+            </div>
+            <!-- DEPARTURE -->
+            <div class="control-group">
+                @Html.LabelFor(model => model.CheckoutDate, "Check-out Date", controlLabel)
+                <div class="controls">
+                    <div class="input-append">
+                        @Html.TextBoxFor(model => model.CheckoutDate, dateFieldHtml)
+                        <span class="add-on">
+                            <i class="icon-calendar"></i>
+                        </span>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.CheckoutDate)
+                </div>
+            </div>
+            <!-- DESTINATION STRING -->
+            <div class="control-group">
+                @Html.LabelFor(model => model.Destination, "Destination", controlLabel)
+                <div class="controls">
+                    @Html.TextBoxFor(model => model.Destination, new { @class = "input-xlarge", placeholder = "City, Province, Country" })
+                    @Html.ValidationMessageFor(model => model.Destination)
+                    <br />
+                    <img src="@Url.Content("~/Content/images/powered-by-google-on-white.png")" title="Powered by Google" alt="Powered by Google" />
+                </div>
+                    
+            </div>
+            <!-- LANDMARKS -->
+            <div class="control-group">
+                @Html.LabelFor(model => model.DestinationId, "Close to", controlLabel)
+                <div class="controls">
+                    <div class="input-append">
+                        <select id="destinationId" name="DestinationId" class="input-xlarge">
+                            <!-- AJAX POPULATED -->
+                        </select>
+                        <span class="add-on ui-autocomplete-loading hide" style="background-position: center; background-color: white;"></span>
+                    </div>
+                        
+                </div>
+            </div>
+            <!-- STAR RATING -->
+            <div class="control-group">
+                @Html.LabelFor(model => model.MinimumStarRating, "Star Rating between", controlLabel)
+                <div class="controls">
+                    @Html.TextBoxFor(model => model.MinimumStarRating)
+                    @Html.TextBoxFor(model => model.MaximumStarRating)
+                    <ul class="inline">
+                        <li>
+                            <div id="starMinimum" class="star"><!-- Place Holder --></div>
+                        </li>
+                        <li>
+                            <span>and</span>
+                        </li>
+                        <li>
+                            <div id="starMaximum" class="star"><!-- Place Holder --></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- ROOMS REQUIRED -->
+            <div class="control-group">
+                @Html.LabelFor(model => model.NumberOfBedrooms, "Rooms", controlLabel)
+                <div class="controls">
+                    @Html.DropDownListFor(model => model.NumberOfBedrooms, SearchViewModel.RoomsSelectList, new { @class = "input-mini" })
+                    @Html.ValidationMessageFor(model => model.NumberOfBedrooms)
+                </div>
+            </div>
+            <!-- ROOMS -->
+            <div class="control-group">
+                <div class="controls">
+                    <ol class="rooms unstyled">
+                        @for (int i = 0; i < Model.RoomViewModels.Count; i++)
+                        {
+                            <!-- ROOM -->
+                            <li class="room">
+                                <span>Room<span class="room"></span></span>
+                                <!-- ADULTS -->
+                                <div class="input-prepend">
+                                    <span class="add-on">Adults</span>
+                                    @Html.DropDownListFor(x => Model.RoomViewModels[i].Adults, SearchViewModel.AdultSelectList, "0", adultDropdownHtml)
+                                </div>
+                                <!-- CHILDREN -->
+                                <div class="input-prepend">
+                                    <span class="add-on">Children</span>
+                                    @Html.DropDownListFor(x => Model.RoomViewModels[i].Children, SearchViewModel.ChildrenSelectList, "0", childDropdownHtml)
+                                </div>
+                                <!-- AGES -->
+                                @for (int j = 0; j < Model.RoomViewModels[i].AgeViewModels.Count; j++)
+                                {
+                                    <!-- AGE -->
+                                    <div class="age input-prepend">
+                                        <span class="add-on">Age</span>
+                                        @Html.DropDownListFor(x => Model.RoomViewModels[i].AgeViewModels[j].Age, SearchViewModel.ChildrenAgesSelectList, "<1", ageDropDownHtml)
+                                    </div>
+                                }
+                            </li>
+                        }
+                    </ol>
+                </div>
+            </div>
+            <!-- AMENITIES -->
+            <div class="control-group">
+                <label class="control-label">Amenities</label>
+                <div class="controls">
+                    <div class="btn-group">
+                        <a href="#amenities" data-toggle="dropdown" class="btn btn-info dropdown-toggle">
+                            Amenities <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            @foreach (var amenity in Enum.GetValues(typeof(Amenity)).Cast<Amenity>())
+                            {
+                                <li>
+                                    <label class="checkbox">
+                                        <input type="checkbox" id="Amenities_@amenity" value="@((int)amenity)" name="Amenities" />
+                                        @amenity.GetDescription()
+                                    </label>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            @*            <!-- PROPERTY CATEGORY -->
+            <div class="control-group hide">
+                @Html.LabelFor(model => model.PropertyCategories, "Properties", controlLabel)
+                <div class="controls">
+                    @Html.ListBoxFor(model => model.PropertyCategories, Model.CategoriesMultiList, mutliSelectHtml)
+                    @Html.ValidationMessageFor(model => model.PropertyCategories)
+                    <a class="btn btn-info btn-mini">Clear selected options</a>
+                </div>
+            </div>
+            <!-- SEARCH OPTION -->
+            <div class="control-group hide">
+                @Html.LabelFor(model => model.Option, controlLabel)
+                <div class="controls">
+                    @Html.DropDownListFor(model => model.Option, Model.OptionsList)
+                    @Html.ValidationMessageFor(model => model.Option)
+                </div>
+            </div>
+            <!-- RESULTS PER PAGE -->
+            <div class="control-group hide">
+                @Html.LabelFor(model => model.ResultsPerPage, "Results Per Page", controlLabel)
+                <div class="controls">
+                    @Html.DropDownListFor(model => model.ResultsPerPage, Model.ResultsPerPageList, new { @class = "span2" })
+                    @Html.ValidationMessageFor(model => model.ResultsPerPage)
+                </div>
+            </div>*@
+
+            <!-- SUBMIT -->
+            <div class="form-actions">
+                <button class="btn btn-primary">
+                    <i class="icon-search"></i>Search
+                </button>
+                <input type="submit" class="hide" value="Submit" />
+            </div>
+        </fieldset>
+    }  
+</div>

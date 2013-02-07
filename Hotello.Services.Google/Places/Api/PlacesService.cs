@@ -38,7 +38,7 @@ namespace Hotello.Services.Google.Places.Api
             return restResponse.Data;
         }
 
-        public virtual SearchResponse Search(SearchRequest searchRequest)
+        public virtual  SearchResponse Search(SearchRequest searchRequest)
         {
             throw new System.NotImplementedException();
         }
@@ -62,8 +62,7 @@ namespace Hotello.Services.Google.Places.Api
         {
             RestRequest request = new RestRequest();
             request.Resource = "autocomplete/json";
-            
-            
+
             request.AddParameter("input", autocompletionRequest.Input);
             request.AddParameter("sensor", "false");
 

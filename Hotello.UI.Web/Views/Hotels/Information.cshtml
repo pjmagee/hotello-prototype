@@ -19,7 +19,15 @@
     <!-- ROW -->
     <div class="row">
         <div class="span12">
-            <h2 class="pull-left">@Server.HtmlDecode(Model.HotelSummary.Name)<small></small></h2>
+            
+            @if (!string.IsNullOrEmpty(Session["ResultUrl"] as string))
+            {
+                <a class="btn btn-info pull-left" style="margin-right: 10px;" href="@Session["ResultUrl"]" title="Return to your results">
+                    <i class="icon-arrow-left"></i> Back to results
+                </a>
+            }
+
+            <h2 id="name" style="margin-top: -5px;">@Server.HtmlDecode(Model.HotelSummary.Name)<small></small></h2>
         </div>
     </div>
 
@@ -97,7 +105,7 @@
                 </div>
                 <!-- INNER ROW AVAILABILITY CHECK -->
                 <div class="row">
-                    <button id="availability" class="btn btn-info">
+                    <button id="availability" class="btn btn-success">
                         <span>Check Room Availability <i class="icon-arrow-right"></i></span>
                     </button>
                 </div>
@@ -248,7 +256,7 @@
             var marker = new google.maps.Marker({
                 position: new google.maps.LatLng(lat, lon),
                 draggable: false,
-                title: $('h2.pull-left').text()
+                title: $('h2#name').text()
             });
 
             marker.setMap(map);

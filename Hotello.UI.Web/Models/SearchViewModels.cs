@@ -21,7 +21,6 @@ namespace Hotello.UI.Web.Models
 
         public List<RoomViewModel> RoomViewModels { get; set; }
 
-
         [Required]
         public string Destination { get; set; }
 

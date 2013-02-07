@@ -6,9 +6,10 @@
 @using Microsoft.Security.Application
 @using PagedList
 
+
 @model IPagedList<HotelSummary>
 
-@{
+@{   
     ViewBag.Title = "Hotel Results";
     var culture = new CultureInfo("en-GB");
     const string googleApiKey = "AIzaSyDm7lXUQTaEvPo-eghcFIo2VjJvyKawKUo";
@@ -182,7 +183,23 @@
                             </div>
                             <!-- DETAILS LINK -->
                             <div class="span2">
-                                <a href="@Url.Action("Information", "Hotels", new RouteValueDictionary { { "id", hotel.HotelId } })" class="btn btn-small btn-info">
+                                
+                                @{
+                                    string seoName = hotel.Name.Replace('-', ' ').Replace("  ", " ").Replace(' ', '-');
+                                    string city = hotel.City;
+                                    string country = hotel.CountryCode;
+
+                                    var route = new RouteValueDictionary
+                                        {
+                                            {"id", hotel.HotelId},
+                                            {"name", seoName},
+                                            {"city", city},
+                                            {"country", country}
+                                        };
+                                    
+                                }
+
+                                <a href="@Url.Action("Information", "Hotels", route)" class="btn btn-small btn-info">
                                     <span>Hotel Details </span><i class="icon-arrow-right"></i>
                                 </a>
                             </div>
@@ -214,7 +231,7 @@
             <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
             <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
         </div>
-        <p>Note: It is the responsibility of the hotel to ensure accuracy of photos.</p>
+        <p style="text-align: center">Note: It is the responsibility of the hotel to ensure accuracy of photos.</p>
     </div>
     <div class="modal-footer">
          

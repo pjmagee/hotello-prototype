@@ -646,6 +646,7 @@
     <Content Include="Scripts\globalize.js" />
     <Content Include="Scripts\jquery.rateit.js" />
     <Content Include="Scripts\jquery.rateit.min.js" />
+    <Content Include="Scripts\jquery.sticky.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery-1.9.0.min.map" />
@@ -684,6 +685,7 @@
     <Content Include="Views\Shared\_alerts.cshtml" />
     <Content Include="Views\Home\_ViewStart.cshtml" />
     <Content Include="Views\Search\_pagination.cshtml" />
+    <Content Include="Views\Shared\_search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

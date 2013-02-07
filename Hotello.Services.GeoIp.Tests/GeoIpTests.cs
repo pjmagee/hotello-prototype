@@ -11,7 +11,7 @@ namespace Hotello.Services.GeoIp.Tests
     {
 
 
-        [Test(Description = "Should return geo data from my IP Address")]
+        [Test(Description = "Should return geo data from the Http request IP Address")]
         public void FreeGeoFromIpTest()
         {
             HttpClient client = new HttpClient();

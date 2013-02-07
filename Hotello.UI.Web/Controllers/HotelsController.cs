@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using System.Web.UI;
 using Hotello.Services.Expedia.Hotels.Api;
 using Hotello.Services.Expedia.Hotels.Models;
 using Hotello.Services.Expedia.Hotels.Models.Request;
@@ -32,22 +33,28 @@ namespace Hotello.UI.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Information(int id)
+        [OutputCache(Duration = 60 * 5, Location = OutputCacheLocation.ServerAndClient, NoStore = true, VaryByParam = "id")]
+        public ActionResult Information(int id, string name)
         {
-            HotelInformationRequest hotelInformationRequest = new HotelInformationRequest
+           HotelInformationRequest hotelInformationRequest = new HotelInformationRequest
                 {
                     Options = new List<Options>(),
                     HotelId = id
                 };
 
-            HotelInformationResponse hotelInformationResponse = _expediaService.GetHotelInformation(hotelInformationRequest);
+            HotelInformationResponse response = _expediaService.GetHotelInformation(hotelInformationRequest);
 
-            if (hotelInformationResponse.EanWsError != null)
+            if (response.EanWsError != null)
             {
-                // TODO: Complete Ean Ws Error Handling
+               Error(response.EanWsError.PresentationMessage);
             }
 
-            return View(hotelInformationResponse);
+            if(string.IsNullOrEmpty(name))
+            {
+                name = response.HotelSummary.Name;
+            }
+            
+            return View(response);
         }
 
         [HttpGet]

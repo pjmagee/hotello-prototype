@@ -20,7 +20,7 @@ namespace Hotello.UI.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                model.Id = _models.Count==0?1:_models.Select(x => x.Id).Max() + 1;
+                model.Id = _models.Count == 0 ? 1 : _models.Select(x => x.Id).Max() + 1;
                 _models.Add(model);
                 Success("Your information was saved!");
                 return RedirectToAction("Index");

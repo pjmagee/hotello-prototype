@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Hotello.UI.Web.App_Start;
+using Hotello.UI.Web.Models;
 
 namespace Hotello.UI.Web
 {
@@ -24,6 +25,9 @@ namespace Hotello.UI.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             BootstrapBundleConfig.RegisterBundles(BundleTable.Bundles);
+
+           // ModelBinders.Binders.Add(typeof(DateTime), new UkDateTimeModelBinder());
+           // ModelBinders.Binders.Add(typeof(DateTime?), new UkDateTimeModelBinder());
         }
     }
 }
