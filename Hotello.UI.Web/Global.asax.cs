@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Http;
+﻿using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Hotello.UI.Web.App_Start;
-using Hotello.UI.Web.Models;
 
 namespace Hotello.UI.Web
 {
@@ -19,15 +14,10 @@ namespace Hotello.UI.Web
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            BootstrapBundleConfig.RegisterBundles(BundleTable.Bundles);
-
-           // ModelBinders.Binders.Add(typeof(DateTime), new UkDateTimeModelBinder());
-           // ModelBinders.Binders.Add(typeof(DateTime?), new UkDateTimeModelBinder());
         }
     }
 }

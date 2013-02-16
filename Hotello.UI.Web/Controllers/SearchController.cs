@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -10,23 +9,28 @@ using Hotello.Services.Expedia.Hotels.Models;
 using Hotello.Services.Expedia.Hotels.Models.Request;
 using Hotello.Services.Expedia.Hotels.Models.Response;
 using Hotello.Services.GeoIp;
-using Hotello.UI.Web.Attributes;
 using Hotello.UI.Web.Models;
 using Ninject;
 using PagedList;
+using Hotello.UI.Web.Helpers;
 
 namespace Hotello.UI.Web.Controllers
 {
-    public class SearchController : AbstractExpediaController
+    public class SearchController : BaseExpediaController
     {
         private readonly IGeoLookupService _lookUpService;
 
         [Inject]
         public SearchController(AbstractExpediaService expediaService, IGeoLookupService lookupService)
         {
-            if (expediaService == null)
+            if (expediaService == null) // Guard clause
             {
                 throw new ArgumentNullException("expediaService");
+            }
+
+            if (lookupService == null) // Guard clause
+            {
+                throw new ArgumentNullException("lookupService");
             }
 
             _expediaService = expediaService;
@@ -38,27 +42,13 @@ namespace Hotello.UI.Web.Controllers
         {
             SearchViewModel model;
 
-            if (Session["form"] == null)
+            if (Session.IsNewSession)
             {
-                model = new SearchViewModel
-                {
-                    NumberOfBedrooms = 1, // Default to 1 bedroom?
-                    RoomViewModels = new List<RoomViewModel>(Enumerable.Range(1, 4) // From 1 to 4 rooms
-                        .Select((room, idx) => new RoomViewModel()
-                        {
-                            Adults = idx == 1 ? 1 : 0,
-                            Children = null,
-                            AgeViewModels = new List<AgeViewModel>(Enumerable.Range(1, 3).Select(i =>
-                                new AgeViewModel()
-                                {
-                                    Age = null,
-                                }))
-                        })),
-                };
+                model = ModelInitializer.CreateSearchModel();
             }
             else
             {
-                model = Session["form"] as SearchViewModel;
+                model = Session["Search"] as SearchViewModel;
             }
 
             return View(model);
@@ -67,10 +57,9 @@ namespace Hotello.UI.Web.Controllers
         [HttpPost]
         public ActionResult Index(SearchViewModel model)
         {
-
-            if (!model.RoomViewModels.Any(viewModel => viewModel.Adults > 0 || viewModel.Children > 0))
+            if (model.RoomViewModels.Take(model.NumberOfBedrooms).Any(room => !room.Adults.HasValue && !room.Children.HasValue))
             {
-                ModelState.AddModelError("RoomViewModels", "You must enter at least 1 guest.");
+                ModelState.AddModelError("RoomViewModels", "Adults and Children required");
             }
 
             if (ModelState.IsValid)
@@ -134,24 +123,23 @@ namespace Hotello.UI.Web.Controllers
 
                     if (response.EanWsError != null)
                     {
-                        Information(response.EanWsError.PresentationMessage);
+                        Error(response.EanWsError.PresentationMessage);
                         return View(model);
                     }
 
-                    Session["form"] = model;
+                    Session["Search"] = model;
                     Session["Response"] = response;
+                    Session["DestinationId"] = model.DestinationId;
                     Session["CustomerSessionId"] = response.CustomerSessionId;
                     Session["MoreResultsAvailable"] = response.MoreResultsAvailable;
                     Session["CacheKey"] = response.CacheKey;
                     Session["CacheLocation"] = response.CacheLocation;
 
-                    return RedirectToAction("Results");
-
-                    // return Results(response.HotelList.HotelSummary.ToPagedList(1, 10));
+                    return RedirectToAction("Results", "Search");
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-
+                    Debug.WriteLine(e.Message);
                 }
             }
             return View(model);
@@ -264,25 +252,24 @@ namespace Hotello.UI.Web.Controllers
                     return View("Results", pagedList);
                 }    
             }
-
-            Information("Session Expired");
             return RedirectToAction("Index");
         }
 
         [Ajax]
         [HttpGet]
+        [OutputCache(Location = OutputCacheLocation.ServerAndClient, Duration = 60, NoStore = true, VaryByParam = "destinationString")]
         public JsonResult Landmarks(string destinationString)
         {
-            LocationInfoRequest infoRequest = new LocationInfoRequest();
-            infoRequest.DestinationString = destinationString;
+            LocationInfoRequest request = new LocationInfoRequest();
+            request.DestinationString = destinationString;
 
             try
             {
-                LocationInfoResponse locationInfoResponse = _expediaService.GetGeoSearch(infoRequest);
+                LocationInfoResponse response = _expediaService.GetGeoSearch(request);
 
-                var landmarks = locationInfoResponse.LocationInfos.LocationInfo
+                var landmarks = response.LocationInfos.LocationInfo
                     .Where(info => info.Active && info.GeoAccuracy >= 1 && info.LocationInDestination && info.ActivePropertyCount > 0)
-                        .Select((info) => new
+                        .Select(info => new
                         {
                             destinationId = info.DestinationId,
                             description = info.Description
@@ -299,7 +286,6 @@ namespace Hotello.UI.Web.Controllers
             }
 
             return new JsonResult();
-
         }
     }
 }

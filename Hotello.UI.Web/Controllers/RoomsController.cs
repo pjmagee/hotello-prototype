@@ -10,12 +10,17 @@ using Ninject;
 
 namespace Hotello.UI.Web.Controllers
 {
-    public class RoomsController : AbstractExpediaController
+    /// <summary>
+    /// The Rooms controllers provides information about
+    /// room availability for a given hotel.
+    /// Room Images for a given hotel
+    /// </summary>
+    public class RoomsController : BaseExpediaController
     {
         [Inject]
         public RoomsController(AbstractExpediaService expediaService)
         {
-            if (expediaService == null)
+            if (expediaService == null) // Guard Clause
             {
                 throw new ArgumentNullException("expediaService");
             }
@@ -26,12 +31,19 @@ namespace Hotello.UI.Web.Controllers
         [HttpGet]
         public ActionResult Availability(int id)
         {
-            var model = Session["form"] as SearchViewModel;
+            var model = Session["Search"] as SearchViewModel;
 
             if (model == null)
             {
-                Information("Please enter your criteria for room availability");
-                return RedirectToAction("Index", "Search");
+                //Information("Please enter your criteria for room availability");
+                //return RedirectToAction("Index", "Search");
+                model = ModelInitializer.CreateSearchModel();
+                model.CheckinDate = DateTime.Today.AddDays(1);
+                model.CheckoutDate = model.CheckinDate.AddDays(7);
+                model.RoomViewModels.First().Adults = 1;
+                model.RoomViewModels.First().Children = 0;
+
+                Session["Search"] = model;
             }
             
             HotelRoomAvailabilityRequest request = new HotelRoomAvailabilityRequest();
@@ -52,16 +64,14 @@ namespace Hotello.UI.Web.Controllers
                         })
                         .ToList();
 
-            HotelRoomAvailabilityResponse hotelRoomAvailabilityResponse = _expediaService.GetHotelRoomAvailability(request);
+            HotelRoomAvailabilityResponse response = _expediaService.GetHotelRoomAvailability(request);
 
-            if (hotelRoomAvailabilityResponse.EanWsError != null)
+            if (response.EanWsError != null)
             {
-                Error(hotelRoomAvailabilityResponse.EanWsError.PresentationMessage);
+                Error(response.EanWsError.PresentationMessage);
             }
 
-            Information("Room Availability is currently under construction ;-) ");
-
-            return View(hotelRoomAvailabilityResponse);
+            return View(response);
         }
     }
 }

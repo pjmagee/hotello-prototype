@@ -1,17 +1,363 @@
-﻿@model Hotello.Services.Expedia.Hotels.Models.Response.HotelRoomAvailabilityResponse
+﻿
+@model Hotello.Services.Expedia.Hotels.Models.Response.HotelRoomAvailabilityResponse
+@using System.Globalization
+@using System.Text.RegularExpressions
+@using Hotello.Common
+@using Hotello.Services.Expedia.Hotels.Models
+@using Hotello.UI.Web.Helpers
+@using Microsoft.Security.Application
+
 @{
-    ViewBag.Title = "Availability Response";
+    ViewBag.Title = "Room Availability";
+    CultureInfo cultureInfo = new CultureInfo("en-GB");
 }
 
-<h2>Rooms Available for @Model.HotelName</h2>
+<div class="row-fluid">
+    <div class="span12">
+        <h2 id="name">
+            @Server.HtmlDecode(Model.HotelName)
+            <small>@Model.HotelCity, @Model.HotelCountry</small>
+        </h2>
+    </div>
+</div>
+
+<div class="well">
+    <div class="row-fluid">
+        <div class="span2">
+            <dl class="dl-horizontal">
+                <dt>Rooms Requested:</dt>
+                <dd>@Model.NumberOfRoomsRequested</dd>
+                <dt>Total Nights:</dt>
+                <dd>@((Model.DepartureDate - Model.ArrivalDate).TotalDays)</dd>
+            </dl>
+        </div>
+        <div class="span2">
+            <dl class="dl-horizontal">
+                <dt>Check-in:</dt>
+                <dd>@Model.ArrivalDate.ToString("dd/MM/yyyy", cultureInfo)</dd>
+                <dt>Check-out:</dt>
+                <dd>@Model.DepartureDate.ToString("dd/MM/yyyy", cultureInfo)</dd>
+            </dl>
+        </div>
+    </div>
+</div>
 
 <div class="well">
     
-    <p>
-        We're really sorry, we have nothing to display here at the moment, check back again soon.        
-    </p>
-    <p>
-        We'll find you the right rooms at the right price!
-    </p>
-    
+    <div class="accordion" id="accordion">
+        
+        @foreach (var room in Model.HotelRoomResponse.OrEmptyIfNull())
+        {
+            int id = Model.HotelRoomResponse.IndexOf(room);
+
+            <div class="accordion-group" style="margin-bottom: 10px; background-color: white">
+                <div class="accordion-heading">
+                    <div class="accordion-toggle">
+                        <div class="row-fluid">
+                            <div class="span12">
+                                <div class="span4">
+                                    <p style="font-weight: bold">@Server.HtmlDecode(room.RoomType.Description)</p>
+                                </div>
+                                <div class="span2">
+                                    @if (room.RateInfos.RateInfo.CurrentAllotment > 0 && room.RateInfos.RateInfo.CurrentAllotment <= 10)
+                                    {
+                                        <span class="label label-info allotment" style="">
+                                            <i class="icon-exclamation-sign"></i> only @room.RateInfos.RateInfo.CurrentAllotment left
+                                        </span>
+                                    }
+                                </div>
+                                <div class="span2">
+                                    @if (room.RateInfos.RateInfo.Promo)
+                                    {
+                                        <p style="font-weight: bold; color: red" title="@room.RateInfos.RateInfo.PromoId">Promotional Offer!</p>
+                                    }
+                                </div>
+                                <div class="span2">
+                                    <!-- Total Price (Promo Not Applied) -->
+                                    @if (room.RateInfos.RateInfo.Promo)
+                                    {
+                                        <!-- 50 % -->
+                                        if (room.RateInfos.RateInfo.PromoId == 202596417)
+                                        {
+                                            <p class="price pull-left" style="margin-right: 5px;">
+                                                <b>
+                                                    <span class="price-total" style="text-decoration: line-through">
+                                                        @((room.RateInfos.RateInfo.ChargeableRateInfo.Total + (room.RateInfos.RateInfo.ChargeableRateInfo.Total*50/100)).ToString("C", cultureInfo))
+                                                    </span>
+                                                </b>
+                                            </p>
+                                        }
+
+                                        <!-- 25 % -->
+                                        if (room.RateInfos.RateInfo.PromoId == 202596417)
+                                        {
+                                            <p class="price pull-left" style="margin-right: 5px;">
+                                                <b>
+                                                    <span class="price-total" style="text-decoration: line-through">
+                                                        @((room.RateInfos.RateInfo.ChargeableRateInfo.Total + (room.RateInfos.RateInfo.ChargeableRateInfo.Total*25/100)).ToString("C", cultureInfo))
+                                                    </span>
+                                                </b>
+                                            </p>
+                                        }
+
+                                        <!-- 10 % -->
+                                        if (room.RateInfos.RateInfo.PromoId == 201876477)
+                                        {
+                                            <p class="price pull-left" style="margin-right: 5px;">
+                                                <b>
+                                                    <span class="price-total" style="text-decoration: line-through">
+                                                        @((room.RateInfos.RateInfo.ChargeableRateInfo.Total + (room.RateInfos.RateInfo.ChargeableRateInfo.Total*10/100)).ToString("C", cultureInfo))
+                                                    </span>
+                                                </b>
+                                            </p>
+                                        }
+                                    }
+                                    <p class="price pull-right">
+                                        <b>
+                                            <span class="price-total">
+                                                @((room.RateInfos.RateInfo.ChargeableRateInfo.Total).ToString("C", cultureInfo))
+                                            </span>
+                                        </b>
+                                    </p>
+                                </div>
+                                <div class="span2">
+                                    <div class="pull-right">
+                                        <a class="btn btn-small btn-success" href="@Server.HtmlDecode(room.DeepLink)">Book Now <i class="icon-chevron-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="room[@id]" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        <div class="row-fluid">
+                            <div class="span12">
+                                <div class="span10">
+                                    <div class="media">
+                                        <div class="pull-left">
+                                            @if (room.RoomImages != null && (room.RoomImages.RoomImage.OrEmptyIfNull().Any()))
+                                            {
+                                                <img src="@room.RoomImages.RoomImage.First().Url" class="img-polaroid" alt="" />
+                                            }
+                                        </div>
+                                        <div class="media-body">
+                                            @if (room.RateInfos.RateInfo.Promo)
+                                            {
+                                                <h6 class="media-heading">
+                                                    @room.RateInfos.RateInfo.PromoDescription
+                                                </h6>
+                                            }
+                                            <div class="row-fluid">
+                                                <span class="label label-info">Description</span><br />
+                                                <p>
+                                                    @{
+                                                        var description = Regex.Split(Server.HtmlDecode(room.RoomType.DescriptionLong), @"<[^>]*>").ToList();
+                                                        description.RemoveAll(s => Regex.IsMatch(s, "(<[^>]*>)") || s.IsEmpty());
+                                                    }
+                                                    @description.OrderBy(s => s.Length).LastOrDefault()
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </div>
+                                <div class="span2">
+                                    @if (room.BedTypes != null)
+                                    {
+                                        <span class="label label-info">Bed Configurations</span>
+                                        <ol class="unstyled" style="margin-top: 5px;">
+                                            @foreach (var type in room.BedTypes.BedType.OrEmptyIfNull())
+                                            {
+                                                <li title="@type.Id">@type.Description</li>
+                                            }
+                                        </ol>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row-fluid"  style="margin-top: 5px;">
+                            <div class="span12">
+                                @if (room.RoomType != null && room.RoomType.RoomAmenities != null)
+                                {
+                                    foreach (IEnumerable<RoomAmenity> roomAmenities in room.RoomType.RoomAmenities.RoomAmenity.Split(5))
+                                    {
+                                        <div class="span3">
+                                            <ul>
+                                                @foreach (var amenitiy in roomAmenities)
+                                                {
+                                                    <li title="@amenitiy.AmenityId">@amenitiy.Amenity</li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row-fluid">
+                            <div class="row-fluid">
+                                <span class="label label-info">Price Breakdown</span>
+                            </div>
+                            <div class="row-fluid" style="margin-top: 5px;">
+                                <div class="span12">
+                                    <table class="table table-bordered table-striped table-condensed">
+                                        <tr>
+                                            <th colspan="4" style="text-align: center">Nightly Charges</th>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="1" style="text-align: center">Night</th>
+                                            <th colspan="1" style="text-align: center">Date</th>
+                                            <th colspan="1" style="text-align: center">Amount</th>
+                                            <th colspan="1" style="text-align: center">Note</th>
+                                        </tr>
+                                        @foreach (var nightlyRate in room.RateInfos.RateInfo.ChargeableRateInfo.NightlyRatesPerRoom.NightlyRate)
+                                        {
+                                            var index = room.RateInfos.RateInfo.ChargeableRateInfo.NightlyRatesPerRoom.NightlyRate.IndexOf(nightlyRate);
+
+                                            <tr id="@(index + 1)">
+                                                <td colspan="1" style="text-align: center">@(index + 1)</td>
+                                                <td colspan="1" style="text-align: center">@Model.ArrivalDate.AddDays(index).ToString("D")</td>
+                                                <td colspan="1" style="text-align: center">
+                                                
+                                                    <p class="price">
+                                                        @if (nightlyRate.Promo)
+                                                        {
+                                                            <span class="price-total pull-left" style="text-decoration: line-through; margin-right: 5px;">
+                                                                @((nightlyRate.BaseRate).ToString("C", cultureInfo))
+                                                            </span>
+                                                        }
+                                                        <span class="price-total">
+                                                            @((nightlyRate.Rate).ToString("C", cultureInfo))
+                                                        </span>
+                                                    </p>
+                                                </td>
+                                                <td colspan="1" style="text-align: center">
+                                                    @if (nightlyRate.Promo)
+                                                    {
+                                                        <p style="color: red">Promotional Discount</p>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        }
+                                        <tr>
+                                            <th colspan="2" style="text-align: right">Total for @((Model.DepartureDate - Model.ArrivalDate).TotalDays) nights</th>
+                                            <td colspan="1" style="text-align: center">@room.RateInfos.RateInfo.ChargeableRateInfo.NightlyRateTotal.ToString("C", cultureInfo)</td>
+                                            <td colspan="1"><!-- Note --></td>
+                                        </tr>
+                                        
+                                        <!-- SURCHAGES RELATED TABLE DATA -->
+                                        <tr class="info">
+                                            <th colspan="4" style="text-align: center">Surcharges</th>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2" style="text-align: center">Type</th>
+                                            <th colspan="1" style="text-align: center">Amount</th>
+                                            <th colspan="1" style="text-align: center"><!-- Note --></th>
+                                        </tr>
+                                    
+                                        
+                                        @if (room.RateInfos.RateInfo.ChargeableRateInfo.Surcharges != null)
+                                        {
+                                            foreach (var surchage in room.RateInfos.RateInfo.ChargeableRateInfo.Surcharges.Surcharge.OrEmptyIfNull())
+                                            {
+                                                <tr>
+                                                    <td colspan="2" style="text-align: center">@surchage.Type.ToSeparatedWords()</td>
+                                                    <td colspan="1" style="text-align: center">@surchage.Amount.ToString("C", cultureInfo)</td>
+                                                    <td colspan="1"><!-- Note --></td>
+                                                </tr>
+                                            }
+                                        }
+                                        <tr>
+                                            <th colspan="2" style="text-align: right">Surcharges Total</th>
+                                            <td colspan="1" style="text-align: center">@room.RateInfos.RateInfo.ChargeableRateInfo.SurchargeTotal.ToString("C", cultureInfo)</td>
+                                            <td colspan="1"><!-- Note --></td>
+                                        </tr>
+                                        <!-- TOTAL CHARGES RELATED TABLE DATA -->
+                                        <tr>
+                                            <th colspan="2" style="text-align: right">Total Charges</th>
+                                            <td colspan="1" style="text-align: center">@room.RateInfos.RateInfo.ChargeableRateInfo.Total.ToString("C", cultureInfo)</td>
+                                            <td colspan="1"><!-- Note --></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <br />
+                        <div class="row-fluid">
+                            <div class="span12">
+                                <div class="alert alert-block" style="color: #999">
+                                    <p class="fine-print check-in">
+                                        <strong>Check-In Instructions</strong>
+                                        <br />
+                                        @Html.Raw(Sanitizer.GetSafeHtml(Server.HtmlDecode(Model.CheckInInstructions)))
+                                    </p>
+                                    <p class="fine-print cancellation-policy">
+                                        <strong>Cancellation Policy</strong>
+                                        <br />
+                                        @Html.Raw(Server.HtmlDecode(room.RateInfos.RateInfo.CancellationPolicy))
+                                    </p>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>
+
+@section Scripts {
+    
+    <script type="text/javascript">
+
+        $(function() {
+
+            $(".collapse").collapse({
+                toggle: false,
+                parent: $('div#accordion')
+            });
+
+           $(".accordion-toggle").click(function() {
+
+                console.log("accordion toggle clicked");
+
+                $(this).closest('.accordion-group').find('.collapse').collapse('toggle');
+
+            });
+
+            $(".collapse").on('hidden', function() {
+
+                var id = $(this).attr('id');
+
+                console.log('room ' + id + ' hidden');
+
+            });
+
+
+            $('.accordion-heading').hover(function() {
+
+                // mouse enter
+
+                $(this).attr('style', 'background-color: #3a87ad');
+
+            }, function() {
+
+                // mouse leave
+                $(this).attr('style', '');
+
+            });
+
+            $('.accordion-heading').click(function() {
+                $(this).attr('style', 'background-color: #3a87ad');
+            });
+
+        });
+
+        
+    </script>
+    
+
+}

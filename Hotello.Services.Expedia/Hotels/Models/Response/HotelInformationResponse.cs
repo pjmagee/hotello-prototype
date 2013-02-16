@@ -2,7 +2,7 @@
 {
     public class HotelInformationResponse
     {
-        public string HotelId { get; set; }
+        public long HotelId { get; set; }
         public string CustomerSessionId { get; set; }
         public HotelSummary HotelSummary { get; set; }
         public HotelDetails HotelDetails { get; set; }

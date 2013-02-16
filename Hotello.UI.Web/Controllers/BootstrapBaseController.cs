@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using Hotello.UI.Web.BootstrapSupport;
+using Hotello.UI.Web.Helpers;
 
 namespace Hotello.UI.Web.Controllers
 {

@@ -19,29 +19,27 @@ namespace Hotello.UI.Web.Models
         [Required]
         public int NumberOfBedrooms { get; set; }
 
+        [Required]
         public List<RoomViewModel> RoomViewModels { get; set; }
 
         [Required]
         public string Destination { get; set; }
 
-        public string DestinationId { get; set; }
+        [Required]
+        public float MinimumStarRating { get; set; }
+        
+        [Required]
+        public float MaximumStarRating { get; set; }
 
-        // Destination Search Method 2 
+        public string DestinationId { get; set; }
         public string City { get; set; }
         public string Province { get; set; }
         public string Country { get; set; }
-
-        // Filtering Search Methods
-        public float? MinimumStarRating { get; set; }
-        public float? MaximumStarRating { get; set; }
+        
         public decimal? MinRate { get; set; }
         public decimal? MaxRate { get; set; }
-
         public List<int> PropertyCategories { get; set; }
         public List<int> Amenities { get; set; }
-        
-
-        // Optional requirements
         public int ResultsPerPage { get; set; }
         public int Option { get; set; }
 

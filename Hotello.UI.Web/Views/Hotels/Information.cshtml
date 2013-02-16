@@ -1,93 +1,135 @@
-﻿@using System.Globalization
-@using Hotello.Services.Expedia.Hotels.Models
+﻿
+@using System.Globalization
 @model Hotello.Services.Expedia.Hotels.Models.Response.HotelInformationResponse
 
 @{
     ViewBag.Title = "Information";
-    var culture = new CultureInfo("en-GB");
-    HotelDetails details = Model.HotelDetails;
-    HotelSummary summary = Model.HotelSummary;
-    PropertyAmenities amenities = Model.PropertyAmenities;
-    RoomTypes roomTypes = Model.RoomTypes;
-    Suppliers suppliers = Model.Suppliers;
-    HotelImages images = Model.HotelImages;
+    CultureInfo culture = new CultureInfo("en-GB");
 }
 
 
 <div class="row well">
-
-    <!-- ROW -->
-    <div class="row">
-        <div class="span12">
-            
-            @if (!string.IsNullOrEmpty(Session["ResultUrl"] as string))
-            {
-                <a class="btn btn-info pull-left" style="margin-right: 10px;" href="@Session["ResultUrl"]" title="Return to your results">
+    
+    <div id="mapInfo">
+        <input id="IATACode" type="hidden" value="@Model.HotelSummary.AirportCode" />
+        <input id="DestinationId" type="hidden" value="@Session["DestinationId"] as string" />
+    </div>
+    
+    
+    @if (!string.IsNullOrEmpty(Session["ResultUrl"] as string))
+    {
+        <!-- ROW RESULTS -->
+        <div class="row-fluid">
+            <div class="span12">
+                <a class="btn btn-info pull-left" href="@Session["ResultUrl"]" title="Return to your results">
                     <i class="icon-arrow-left"></i> Back to results
                 </a>
-            }
-
-            <h2 id="name" style="margin-top: -5px;">@Server.HtmlDecode(Model.HotelSummary.Name)<small></small></h2>
+            </div>
+        </div>
+    }
+    <!-- ROW HOTEL NAME -->
+    <div class="row-fluid">
+        <div class="span12">
+            <h2 id="name">
+                @Server.HtmlDecode(Model.HotelSummary.Name)
+                <small>@Model.HotelSummary.City, @Model.HotelSummary.CountryCode</small>
+            </h2>
         </div>
     </div>
 
-    <!-- ROW -->
-    <div class="row">
-
-        <div class="span4">
-
+    <!-- ROW IMAGES -->
+    <div class="row-fluid">
+        
+        <!-- COLUMN 1 -->
+        <div class="span6">
             <!-- IMAGE CAROUSEL -->
             <div class="carousel slide" id="myCarousel">
                 <div class="carousel-inner">
                     @foreach (var image in Model.HotelImages.HotelImage)
-                    {
-                        <div class="item hotel-image">
-                            <img class="img-polaroid hotel-image" src="@image.Url" alt="Hotel Image" style="/*margin-left: auto; margin-right: auto;*/" />
+                    {                       
+                        <div class="item hotel-image @(Model.HotelImages.HotelImage.IndexOf(image) == 0 ? "active" : "")">
+                            <img class="img-polaroid" src="@image.Url" alt="Hotel Image" style="margin-left: auto; margin-right: auto;" />
                         </div>
                     }
                 </div>
                 <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
                 <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
             </div>
-
         </div>
-
-        <!-- HOTEL POLICY AND INFORMATION -->
-        <div class="span6">
-
-            <!-- INNER ROW 1 -->
-            <div class="row" style="margin-left: 10px;">
-                <span class="label label-important"><i class="icon-file"></i>Policy</span>
-                <p>@Model.HotelDetails.HotelPolicy</p>
-            </div>
-            <!-- INNER ROW 2 -->
-            <div class="row" style="margin-left: 10px;">
-                <span class="label label-info"><i class="icon-exclamation-sign"></i>Information</span>
-                <p>@Model.HotelDetails.PropertyInformation</p>
-            </div>
-            @if (!String.IsNullOrEmpty(Model.HotelSummary.TripAdvisorRatingUrl))
-            {
-                <div class="row" style="margin-left: 10px;">
-                <h4>TripAdvisor <small>rating based on <span>@Model.HotelSummary.TripAdvisorReviewCount</span> reviews</small></h4>
-                <img src="@Model.HotelSummary.TripAdvisorRatingUrl" />
-                </div>
-            }
+        <!-- COLUMN 2 -->
+        <div class="span6" style="margin-top: 15px;">
+            <h4>Photos 
+                <small>click to go to it</small>
+            </h4>
+            <!-- LIST OF IMAGE THUMBNAILS -->
+            <ul class="inline unstyled">
+                @foreach (var image in Model.HotelImages.HotelImage)
+                {
+                    <li style="margin-bottom: 10px;">
+                        <img title="Click me to see a bigger version!" src="@image.ThumbnailUrl" height="50" width="50" alt="" />
+                    </li>
+                }
+            </ul>
         </div>
     </div>
 
     <!-- ROW -->
-    <div class="row">
+    <div class="row-fluid">
 
-        <div class="span12" style="margin-top: 15px;">
-            <h4>Photos <small>click to go to it</small></h4>
-            <!-- LIST OF IMAGE THUMBNAILS -->
-            <ul class="thumbnails inline unstyled">
-                @foreach (var image in Model.HotelImages.HotelImage)
+        <!-- HOTEL POLICY AND INFORMATION -->
+        <div class="span12">
+            <div class="row-fluid">
+                <!-- Address -->
+                <span class="label label-inverse">Hotel Address</span>
+                
+                @if (!string.IsNullOrEmpty(Model.HotelSummary.AirportCode))
                 {
-                    <li>
-                        <img title="Click me to see a bigger version!" class="img-polaroid" src="@image.ThumbnailUrl" height="50" width="50" /></li>
+                    <span class="label label-info" title="Nearest Airport (IATA Code)">
+                        <i class="icon-plane"></i> Closest Airport: @Model.HotelSummary.AirportCode
+                    </span>
                 }
-            </ul>
+                
+                <address>
+                    @if (!string.IsNullOrEmpty(Model.HotelSummary.Address1))
+                    {
+                        @Server.HtmlDecode(Model.HotelSummary.Address1)<br />
+                    }
+                    @if (!string.IsNullOrEmpty(Model.HotelSummary.Address2))
+                    {
+                        @Server.HtmlDecode(Model.HotelSummary.Address2)<br />
+                    }
+                    @if (!string.IsNullOrEmpty(Model.HotelSummary.City))
+                    {
+                        @Server.HtmlDecode(Model.HotelSummary.City)<br />
+                    }
+                    @if (!string.IsNullOrEmpty(Model.HotelSummary.PostalCode))
+                    {
+                        @Model.HotelSummary.PostalCode<br />
+                    }
+                </address>
+
+            </div>
+            <!-- INNER ROW 1 -->
+            <div class="row-fluid">
+                <span class="label label-important"><i class="icon-file"></i> Hotel Policy</span>
+                <p>@Model.HotelDetails.HotelPolicy</p>
+            </div>
+            <!-- INNER ROW 2 -->
+            <div class="row-fluid">
+                <span class="label label-info"><i class="icon-exclamation-sign"></i> Good to know</span>
+                <ul class="unstyled">
+                    <li>Check-in Time: @Model.HotelDetails.CheckInTime</li>
+                    <li>Check-out Time: @Model.HotelDetails.CheckOutTime</li>
+                </ul>
+            </div>
+            
+            @if (!String.IsNullOrEmpty(Model.HotelSummary.TripAdvisorRatingUrl))
+            {
+                <div class="row" style="margin-left: 10px;">
+                    <h4>TripAdvisor <small>rating based on <span>@Model.HotelSummary.TripAdvisorReviewCount</span> reviews</small></h4>
+                    <img src="@Model.HotelSummary.TripAdvisorRatingUrl" />
+                </div>
+            }
         </div>
 
     </div>
@@ -99,15 +141,26 @@
                 <!-- INNER ROW PRICE -->
                 <div class="row">
                     <span>From</span>
-                    <h1 style="margin-top: -5px;">
+                    <h1 style="margin-top: -2px;">
                         <span>@culture.NumberFormat.CurrencySymbol</span>@Model.HotelSummary.LowRate.ToString("0.##")<small> / night</small>
                     </h1>
                 </div>
                 <!-- INNER ROW AVAILABILITY CHECK -->
                 <div class="row">
-                    <button id="availability" class="btn btn-success">
+                    
+                    @{
+                        var route = new RouteValueDictionary
+                                {
+                                    {"id", Model.HotelSummary.HotelId},
+                                    {"name", Server.UrlEncode(Model.HotelSummary.Name.Replace('-', ' ').Replace("  ", " ").Replace(' ', '-'))},
+                                    {"city", Model.HotelSummary.City},
+                                    {"country", Model.HotelSummary.CountryCode}
+                                };
+                    }
+
+                    <a href="@Url.Action("Availability", "Rooms", route)" class="btn btn-success">
                         <span>Check Room Availability <i class="icon-arrow-right"></i></span>
-                    </button>
+                    </a>
                 </div>
 
             </div>
@@ -115,7 +168,7 @@
     </div>
 
     <!-- ROW -->
-    <div class="row">
+    <div class="row-fluid">
 
         <!-- HIDE TABS BUTTON -->
         <div class="span2" style="margin-bottom: 10px;">
@@ -127,7 +180,7 @@
     </div>
 
     <!-- ROW -->
-    <div class="row">
+    <div class="row-fluid">
 
         <div class="span12">
 
@@ -148,7 +201,7 @@
 
                 <!-- TAB 1 -->
                 <div id="description" class="tab-pane">
-                    <p>@Html.Raw(Server.HtmlDecode(details.PropertyDescription))</p>
+                    <p>@Html.Raw(Server.HtmlDecode(Model.HotelDetails.PropertyDescription))</p>
                 </div>
 
                 <!-- TAB 2 -->
@@ -156,37 +209,37 @@
                     <ol>
                         @foreach (var amenity in Model.PropertyAmenities.PropertyAmenity)
                         {
-                            <li title="@amenity.AmenityId">@Server.HtmlDecode(amenity.Amenity)</li>
+                            <li style="margin-left: 10px;" title="@amenity.AmenityId">@Server.HtmlDecode(amenity.Amenity)</li>
                         }
                     </ol>
                 </div>
 
                 <!-- TAB 3 -->
                 <div id="area" class="tab-pane">
-                    @Html.Raw(Server.HtmlDecode(details.AreaInformation))
+                    @Html.Raw(Server.HtmlDecode(Model.HotelDetails.AreaInformation))
                 </div>
 
                 <!-- TAB 4 -->
                 <div id="driving" class="tab-pane">
-                    @Html.Raw(Server.HtmlDecode(details.DrivingDirections))
+                    @Html.Raw(Server.HtmlDecode(Model.HotelDetails.DrivingDirections))
                 </div>
 
                 <!-- TAB 5 -->
                 <div id="rooms" class="tab-pane">
-                    @Html.Raw(Server.HtmlDecode(details.RoomInformation))
+                    @Html.Raw(Server.HtmlDecode(Model.HotelDetails.RoomInformation))
                 </div>
 
                 <!-- TAB 6 -->
                 <div id="checkin" class="tab-pane">
-                    @Html.Raw(Server.HtmlDecode(details.CheckInInstructions))
+                    @Html.Raw(Server.HtmlDecode(Model.HotelDetails.CheckInInstructions))
                 </div>
 
                 <!-- TAB 7 -->
                 <div id="map" class="tab-pane">
 
                     <!-- STORE VALUES FOR JQUERY -->
-                    <div id="latitude" class="hidden" title="@summary.Latitude"></div>
-                    <div id="longitude" class="hidden" title="@summary.Longitude"></div>
+                    <div id="latitude" class="hidden" title="@Model.HotelSummary.Latitude"></div>
+                    <div id="longitude" class="hidden" title="@Model.HotelSummary.Longitude"></div>
 
                     <div id="map_canvas" style="width: 100%; height: 100%">
                         <!-- GOOGLE MAP -->
@@ -209,7 +262,9 @@
 
     <div class="row">
         
-        @using (Html.BeginForm("Availability", "Rooms", new { id = summary.HotelId }, FormMethod.Get))
+
+        
+        @using (Html.BeginForm("Availability", "Rooms", new { id = Model.HotelSummary.HotelId }, FormMethod.Get))
         {
             <input class="hide" type="submit" />
         }
@@ -221,17 +276,14 @@
 
 @section Scripts {
 
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/jqueryui-bootstrap")
-    @Scripts.Render("~/bundles/jqueryrateit")
     <script type="text/javascript">
-
-        var lat = $('div[id="latitude"]').attr('title');
-        var lon = $('div[id="longitude"]').attr('title');
-
+        
         var map;
         var service;
         var infoWindow;
+        var lat = $('div[id="latitude"]').attr('title');
+        var lon = $('div[id="longitude"]').attr('title');
+        var hotel = new google.maps.LatLng(lat, lon);
 
         function initialize() {
 
@@ -240,7 +292,7 @@
                 zoomControlOptions: {
                     style: google.maps.ZoomControlStyle.LARGE
                 },
-                zoom: 15,
+                zoom: 20,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
 
@@ -252,16 +304,20 @@
                 temperatureUnits: google.maps.weather.TemperatureUnit.CELSIUS
             });
 
+            var text = new $('h2#name').text();
+
+
             // Hotel Position
             var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(lat, lon),
+                position: hotel,
                 draggable: false,
-                title: $('h2#name').text()
+                title: text
             });
 
             marker.setMap(map);
             weatherLayer.setMap(map);
 
+            // Center on the hotels position
             map.setCenter(marker.position);
 
         }
@@ -269,10 +325,11 @@
         function getAttractions() {
 
             // https://maps.googleapis.com/maps/api/place/nearbysearch/output?parameters
+            // https://developers.google.com/places/documentation/supported_types
 
             var request = {
-                location: new google.maps.LatLng(lat, lon),
-                radius: 500,
+                location: hotel,
+                radius: 2000, // search within 2000 meters
                 types: [
                     "point_of_interest",
                     "museum",
@@ -284,23 +341,48 @@
                     "amusement_park",
                     "zoo"]
             };
+            
+            
 
-            service.radarSearch(request, callback);
+            // A Places Radar Search is initiated with a call to the PlacesService's radarSearch() method, 
+            // which will return an array of up to 200 PlaceResult objects. 
+            // PlaceResult objects returned by radarSearch() will only include the geometry.location and reference properties.
+
+            // https://developers.google.com/maps/documentation/javascript/places#radar_search_requests
+            //service.radarSearch(request, callback);
+            
+            // https://developers.google.com/maps/documentation/javascript/places#place_search_requests
+            service.nearbySearch(request, callback);
 
 
         }
 
         function createMarker(result) {
 
+
+            // https://developers.google.com/maps/documentation/javascript/overlays#Markers
+            // Markers icon customization here :)
+            // Attraction Marker
             var marker = new google.maps.Marker({
-                map: map,
+                draggable: false,
                 position: result.geometry.location,
                 title: result.name,
+                icon: result.icon
             });
 
+            // Set its map
+            marker.setMap(map);
+
+            // Info window for this marker
             google.maps.event.addListener(marker, 'click', function () {
-                infoWindow.setContent(result.name);
+
+                console.log("marker clicked");
+                
+                var infoContent = "Name: " + result.name + "<br />";
+                infoContent += "Location: <br />" + result.vicinity + "<br />";
+                infoWindow.setContent(infoContent);
                 infoWindow.open(map, this);
+                
             });
 
         }
@@ -320,19 +402,12 @@
 
         $(document).ready(function () {
 
-            $(".rateit").rateit();
-
-            $('button#availability').click(function (e) {
-                e.preventDefault();
-
-                $('input[type="submit"]').click();
-
-            });
-
             $('#myCarousel').carousel({
-                interval: 5000,
+                interval: 10000,
                 pause: 'pause'
             });
+
+            $(".rateit").rateit();           
 
             // ----------------------------------------------------------------
             // Tabbed Hotel content -------------------------------------------
@@ -365,7 +440,6 @@
                     $('.tab-content').slideDown('slow', function () {
                         $(button).html('<span><i class="icon-search"></i> Hide Tab Content</span>');
                     });
-
                 }
             });
 
@@ -374,8 +448,11 @@
             // Hotel Images ---------------------------------------------------
             // ----------------------------------------------------------------
 
-            $('ul.thumbnails li').click(function () {
-                $('#myCarousel').carousel($(this).index());
+            $('ul li img').click(function () {
+                
+                var idx = $(this).parent('li').index();
+                console.log("image clicked in li index " + idx);
+                $('#myCarousel').carousel(idx);
             });
 
             // ----------------------------------------------------------------
@@ -400,7 +477,10 @@
                     initialize();
 
                     // getAttractions();
-
+                    
+                    displayAirportRoute();
+                    displayLandmarkRoute();
+                     
                     loaded = true;
                 }
 
@@ -413,6 +493,14 @@
 
 
             });
+            
+
+            function displayAirportRoute() {
+            }
+            
+            function displayLandmarkRoute() {
+                
+            }
 
         });
 

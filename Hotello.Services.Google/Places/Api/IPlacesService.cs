@@ -6,6 +6,9 @@ using Hotello.Services.Google.Places.Models.Search;
 
 namespace Hotello.Services.Google.Places.Api
 {
+    /// <summary>
+    /// This interface defines a Contract for any Google Api Implementation 
+    /// </summary>
     public interface IPlacesService
     {
         /// <summary>

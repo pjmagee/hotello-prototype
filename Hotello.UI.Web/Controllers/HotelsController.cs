@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Web.Mvc;
 using System.Web.UI;
 using Hotello.Services.Expedia.Hotels.Api;
@@ -7,24 +8,31 @@ using Hotello.Services.Expedia.Hotels.Models;
 using Hotello.Services.Expedia.Hotels.Models.Request;
 using Hotello.Services.Expedia.Hotels.Models.Response;
 using Hotello.Services.GeoIp;
-using Hotello.UI.Web.Attributes;
+using Hotello.UI.Web.Helpers;
 using Ninject;
 
 namespace Hotello.UI.Web.Controllers
 {
-    public class HotelsController : AbstractExpediaController
+    /// <summary>
+    /// The Hotels Controller 
+    /// Consumes the Expedia and Geo Lookup Services 
+    /// Provides the following functionality: 
+    /// Retrieve images for a particular hotel
+    /// Retrieve detailed information for a particular hotel
+    /// </summary>
+    public class HotelsController : BaseExpediaController
     {
         private readonly IGeoLookupService _lookUpService;
 
         [Inject]
         public HotelsController(AbstractExpediaService expediaService, IGeoLookupService geoLookupService)
         {
-            if (expediaService == null)
+            if (expediaService == null) // Guard Clause
             {
                 throw new ArgumentNullException("expediaService");
             }
 
-            if (geoLookupService == null)
+            if (geoLookupService == null) // Guard Clause
             {
                 throw new ArgumentNullException("geoLookupService");
             }
@@ -34,45 +42,56 @@ namespace Hotello.UI.Web.Controllers
         }
 
         [HttpGet]
-        [OutputCache(Duration = 60 * 5, Location = OutputCacheLocation.ServerAndClient, NoStore = true, VaryByParam = "id")]
+        [OutputCache(Duration = 30, Location = OutputCacheLocation.Client, NoStore = true, VaryByParam = "id")]
         public ActionResult Information(int id, string name)
         {
-           HotelInformationRequest hotelInformationRequest = new HotelInformationRequest
+            HotelInformationRequest request = new HotelInformationRequest
                 {
                     Options = new List<Options>(),
                     HotelId = id
                 };
 
-            HotelInformationResponse response = _expediaService.GetHotelInformation(hotelInformationRequest);
-
-            if (response.EanWsError != null)
+            try
             {
-               Error(response.EanWsError.PresentationMessage);
+                HotelInformationResponse response = _expediaService.GetHotelInformation(request);
+
+                if (response.EanWsError != null)
+                {
+                    Error(response.EanWsError.PresentationMessage);
+                }
+
+                return View(response);
             }
-
-            if(string.IsNullOrEmpty(name))
+            catch (Exception e)
             {
-                name = response.HotelSummary.Name;
+                Debug.WriteLine(e.Message);
+                
+                Error("An error occured. Please try again later.");
             }
             
-            return View(response);
+            return View();
         }
 
 
         [Ajax]
         [HttpGet]
         [OutputCache(Duration = 60 * 5, Location = OutputCacheLocation.ServerAndClient, NoStore = true, VaryByParam = "id")]
-        public ActionResult Images(int id)
+        public JsonResult Images(int id)
         {
-            HotelInformationRequest request = new HotelInformationRequest();
-            request.HotelId = id;
-            request.Options = new List<Options>(){ Options.HOTEL_IMAGES };
+            HotelInformationRequest request = new HotelInformationRequest
+                {
+                    HotelId = id,
+                    Options = new List<Options>()
+                        {
+                            Options.HOTEL_IMAGES
+                        }
+                };
 
             HotelInformationResponse response = _expediaService.GetHotelInformation(request);
 
             if (response.EanWsError != null)
             {
-                // TODO: Complete Ean Ws Error Handling
+                Error(response.EanWsError.PresentationMessage);
             }
 
             return Json(response.HotelImages.HotelImage, JsonRequestBehavior.AllowGet);

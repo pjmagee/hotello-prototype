@@ -8,9 +8,7 @@ namespace Hotello.UI.Web.App_Start
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
-
-
+            
             routes.MapRoute(
                name: "Search",
                url: "Search/criteria",
@@ -42,7 +40,31 @@ namespace Hotello.UI.Web.App_Start
                     city = UrlParameter.Optional,
                     name = UrlParameter.Optional
                 });
+
+            routes.MapRoute(
+                name: "Rooms",
+                url: "Rooms/Availability/{id}/{country}/{city}/{name}",
+                defaults: new
+                {
+                    controller = "Rooms",
+                    action = "Availability",
+                    id = UrlParameter.Optional,
+                    country = UrlParameter.Optional,
+                    city = UrlParameter.Optional,
+                    name = UrlParameter.Optional
+                });
+
+            routes.MapRoute(
+                name: "Distance",
+                url: "Distance/Index/{page}",
+                defaults: new
+                {
+                    controller = "Distance",
+                    action = "Index",
+                    page = UrlParameter.Optional
+                });
            
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

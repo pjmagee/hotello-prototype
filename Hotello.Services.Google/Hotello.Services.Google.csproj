@@ -64,11 +64,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DistanceMatrix\Api\DistanceMatrixService.cs" />
+    <Compile Include="DistanceMatrix\Api\IDistanceMatrixService.cs" />
+    <Compile Include="DistanceMatrix\Models\Distance.cs" />
+    <Compile Include="DistanceMatrix\Models\DistanceMatrixRequest.cs" />
+    <Compile Include="DistanceMatrix\Models\DistanceMatrixResponse.cs" />
+    <Compile Include="DistanceMatrix\Models\Element.cs" />
+    <Compile Include="DistanceMatrix\Models\Duration.cs" />
+    <Compile Include="DistanceMatrix\Models\Row.cs" />
     <Compile Include="Module\GoogleModule.cs" />
     <Compile Include="Places\Api\IPlacesService.cs" />
     <Compile Include="Places\Api\PlacesService.cs" />
     <Compile Include="Places\Models\Autocomplete\AutocompletionResponse.cs" />
     <Compile Include="Places\Models\Autocomplete\AutocompletionRequest.cs" />
+    <Compile Include="Places\Models\Autocomplete\Prediction.cs" />
+    <Compile Include="Places\Models\Autocomplete\Term.cs" />
     <Compile Include="Places\Models\CheckIn\CheckInRequest.cs" />
     <Compile Include="Places\Models\CheckIn\CheckInResponse.cs" />
     <Compile Include="Places\Models\Details\DetailsRequest.cs" />
@@ -85,6 +95,7 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,8 +1,8 @@
 ﻿namespace Hotello.Services.Google.Places.Models.Autocomplete
 {
-
-    // https://developers.google.com/places/documentation/autocomplete#place_autocomplete_requests
-
+    /// <summary>
+    /// https://developers.google.com/places/documentation/autocomplete#place_autocomplete_requests
+    /// </summary>
     public class AutocompletionRequest
     {
         public string Input { get; set; }

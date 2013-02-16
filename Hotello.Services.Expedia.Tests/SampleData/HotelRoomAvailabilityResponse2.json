@@ -1,0 +1,458 @@
+﻿{
+	"HotelRoomAvailabilityResponse": {
+		"@size": "2",
+		"customerSessionId": "0ABAA82D-846F-9891-3CD2-2BC08B39375B",
+		"hotelId": 176824,
+		"arrivalDate": "2\/14\/2013",
+		"departureDate": "2\/20\/2013",
+		"hotelName": "The Stafford London by Kempinski",
+		"hotelAddress": "16-18 St James's Place",
+		"hotelCity": "London",
+		"hotelCountry": "GB",
+		"numberOfRoomsRequested": 3,
+		"checkInInstructions": "<br \/><br \/> <p><strong>Notifications and Fees:<\/strong><br \/><\/p><p><ul><li>Connecting\/adjoining rooms may be available, subject to availability. Guests can request connecting\/adjoining rooms by contacting the property directly, using the contact information on the booking confirmation. <\/li><li>No onsite parking is available. <\/li> <\/ul><\/p><p><\/p><p><\/p> <p>The following fees and deposits are charged by the property at time of service, check-in, or check-out.  <ul><li>Valet parking fee: GBP 65 per night<\/li><li>Buffet breakfast fee: GBP 25 per person (approximately)<\/li><li>Rollaway bed fee: GBP 55 per night<\/li> <\/ul><\/p><p>The above list may not be comprehensive. Fees and deposits may not include tax and are subject to change. <\/p>",
+		"tripAdvisorRating": 4.5,
+		"tripAdvisorReviewCount": 286,
+		"tripAdvisorRatingUrl": "http:\/\/www.tripadvisor.com\/img\/cdsi\/img2\/ratings\/traveler\/4.5-12345-4.gif",
+		"HotelRoomResponse": [{
+			"rateCode": 1313844,
+			"rateDescription": "Deluxe king bedded room",
+			"RoomType": {
+				"@roomCode": "388682",
+				"@roomTypeId": "494856",
+				"description": "Deluxe king bedded room",
+				"descriptionLong": "<strong><ul><li>One King Bed<\/li><li>Two Twin Beds<\/li><\/ul><\/strong>This city view room measures 344 square feet (32 square meters). Get a good night's sleep with signature bedding and cotton linens. The private bathroom has a separate bathtub and shower, as well as bathrobes, designer toiletries, and complimentary toiletries. Complimentary wireless Internet access keeps you connected, and premium TV channels with ESPN are offered for your entertainment. Rollaway\/extra beds, air conditioning, and climate control are among the conveniences offered. <p><\/p>",
+				"roomAmenities": {
+					"@size": "31",
+					"RoomAmenity": [{
+						"@amenityId": "8847718",
+						"amenity": "Air conditioning "
+					},
+					{
+						"@amenityId": "8071898",
+						"amenity": "Bathrobes "
+					},
+					{
+						"@amenityId": "8084022",
+						"amenity": "Bathroom scale "
+					},
+					{
+						"@amenityId": "8071914",
+						"amenity": "CD player "
+					},
+					{
+						"@amenityId": "9574716",
+						"amenity": "City view "
+					},
+					{
+						"@amenityId": "8071930",
+						"amenity": "Climate control "
+					},
+					{
+						"@amenityId": "8071918",
+						"amenity": "Clock radio "
+					},
+					{
+						"@amenityId": "8071962",
+						"amenity": "Complimentary bottled water "
+					},
+					{
+						"@amenityId": "8071874",
+						"amenity": "Complimentary newspaper "
+					},
+					{
+						"@amenityId": "8071902",
+						"amenity": "Complimentary toiletries "
+					},
+					{
+						"@amenityId": "14090166",
+						"amenity": "Connecting \/ adjoining rooms available "
+					},
+					{
+						"@amenityId": "8071950",
+						"amenity": "Cribs\/infant beds available "
+					},
+					{
+						"@amenityId": "8071878",
+						"amenity": "Daily housekeeping "
+					},
+					{
+						"@amenityId": "8071922",
+						"amenity": "Designer toiletries "
+					},
+					{
+						"@amenityId": "8071926",
+						"amenity": "Desk "
+					},
+					{
+						"@amenityId": "8071970",
+						"amenity": "Direct-dial phone "
+					},
+					{
+						"@amenityId": "11076281",
+						"amenity": "ESPN "
+					},
+					{
+						"@amenityId": "8071998",
+						"amenity": "Free Wi-Fi "
+					},
+					{
+						"@amenityId": "8847717",
+						"amenity": "Hair dryer "
+					},
+					{
+						"@amenityId": "8071990",
+						"amenity": "In-room safe (laptop compatible) "
+					},
+					{
+						"@amenityId": "9574718",
+						"amenity": "Individually decorated "
+					},
+					{
+						"@amenityId": "9574719",
+						"amenity": "Individually furnished "
+					},
+					{
+						"@amenityId": "8071982",
+						"amenity": "Makeup\/shaving mirror "
+					},
+					{
+						"@amenityId": "8071974",
+						"amenity": "Premium television channel(s) "
+					},
+					{
+						"@amenityId": "8071894",
+						"amenity": "Private bathroom "
+					},
+					{
+						"@amenityId": "8071994",
+						"amenity": "Satellite television service "
+					},
+					{
+						"@amenityId": "9574717",
+						"amenity": "Signature bedding "
+					},
+					{
+						"@amenityId": "8071986",
+						"amenity": "Speakerphone "
+					},
+					{
+						"@amenityId": "8084026",
+						"amenity": "Turndown service (on request) "
+					},
+					{
+						"@amenityId": "8071938",
+						"amenity": "Voice mail "
+					},
+					{
+						"@amenityId": "8071942",
+						"amenity": "Window opens "
+					}]
+				}
+			},
+			"supplierType": "E",
+			"propertyId": 11196,
+			"BedTypes": {
+				"@size": "2",
+				"BedType": [{
+					"@id": "14",
+					"description": "One King Bed"
+				},
+				{
+					"@id": "25",
+					"description": "Two Twin Beds"
+				}]
+			},
+			"smokingPreferences": "S,NS",
+			"rateOccupancyPerRoom": 3,
+			"quotedOccupancy": 2,
+			"minGuestAge": 0,
+			"RateInfos": {
+				"@size": "1",
+				"RateInfo": {
+					"@rateChange": "true",
+					"@promo": "true",
+					"@priceBreakdown": "true",
+					"RoomGroup": {
+						"Room": [{
+							"numberOfAdults": 2,
+							"numberOfChildren": 0,
+							"rateKey": "af4036ec-3cc6-4184-ae38-cdf66ea522ae"
+						},
+						{
+							"numberOfAdults": 1,
+							"numberOfChildren": 0,
+							"rateKey": "af4036ec-3cc6-4184-ae38-cdf66ea522ae"
+						},
+						{
+							"numberOfAdults": 1,
+							"numberOfChildren": 2,
+							"childAges": [2,
+							0],
+							"rateKey": "af4036ec-3cc6-4184-ae38-cdf66ea522ae"
+						}]
+					},
+					"ChargeableRateInfo": {
+						"@total": "8120.4",
+						"@nightlyRateTotal": "8120.4004",
+						"@maxNightlyRate": "542.0",
+						"@currencyCode": "GBP",
+						"@commissionableUsdTotal": "12717.93",
+						"@averageRate": "451.13333",
+						"@averageBaseRate": "528.3333",
+						"NightlyRatesPerRoom": {
+							"@size": "6",
+							"NightlyRate": [{
+								"@promo": "false",
+								"@rate": "542.0",
+								"@baseRate": "542.0"
+							},
+							{
+								"@promo": "true",
+								"@rate": "379.4",
+								"@baseRate": "542.0"
+							},
+							{
+								"@promo": "true",
+								"@rate": "379.4",
+								"@baseRate": "542.0"
+							},
+							{
+								"@promo": "true",
+								"@rate": "322.0",
+								"@baseRate": "460.0"
+							},
+							{
+								"@promo": "false",
+								"@rate": "542.0",
+								"@baseRate": "542.0"
+							},
+							{
+								"@promo": "false",
+								"@rate": "542.0",
+								"@baseRate": "542.0"
+							}]
+						}
+					},
+					"cancellationPolicy": "We understand that sometimes your travel plans change. We do not charge a change or cancel fee. However, this property (The Stafford London by Kempinski) imposes the following penalty to its customers that we are required to pass on: Cancellations or changes made after 2:00 PM ((GMT) Greenwich Mean Time : Dublin, Edinburgh, Lisbon, London) on Feb 13, 2013 are subject to a 1 Night Room &amp; Tax penalty. The property makes no refunds for no shows or early checkouts.",
+					"CancelPolicyInfoList": {
+						"CancelPolicyInfo": [{
+							"versionId": 207792434,
+							"cancelTime": "14:00:00",
+							"startWindowHours": 0,
+							"nightCount": 1,
+							"currencyCode": "GBP",
+							"timeZoneDescription": "(GMT) Greenwich Mean Time : Dublin, Edinburgh, Lisbon, London"
+						},
+						{
+							"versionId": 207792433,
+							"cancelTime": "14:00:00",
+							"startWindowHours": 24,
+							"nightCount": 0,
+							"currencyCode": "GBP",
+							"timeZoneDescription": "(GMT) Greenwich Mean Time : Dublin, Edinburgh, Lisbon, London"
+						}]
+					},
+					"nonRefundable": false,
+					"rateType": "MerchantStandard",
+					"promoId": 202229040,
+					"promoDescription": "Weekend Sale!  Save 30%!",
+					"currentAllotment": 5,
+					"guaranteeRequired": false,
+					"depositRequired": true,
+					"taxRate": 0
+				}
+			},
+			"ValueAdds": {
+				"@size": "1",
+				"ValueAdd": {
+					"@id": "2048",
+					"description": "Free Wireless Internet"
+				}
+			},
+			"deepLink": "http:\/\/travel.ian.com\/hotels\/priceCheck.jsp?cid=55505&amp;locale=en_GB&amp;currencyCode=GBP&amp;numberOfRooms=3&amp;room-0-adult-total=2&amp;room-0-child-total=0&amp;room-1-adult-total=1&amp;room-1-child-total=0&amp;room-2-adult-total=1&amp;room-2-child-total=2&amp;room-2-child-0-age=2&amp;room-2-child-1-age=0&amp;rateChange=true&amp;rateDescription=Deluxe+king+bedded+room&amp;rateCode=1313844&amp;roomTypeCodeDescription=Deluxe+king+bedded+room&amp;roomTypeCode=388682&amp;cityLink=London&amp;countryLink=GB&amp;resType=hotel&amp;propertyID=11196&amp;hotelID=176824&amp;supplierType=E&amp;propertyType=H&amp;requestKey=af4036ec-3cc6-4184-ae38-cdf66ea522ae&amp;rateKey=af4036ec-3cc6-4184-ae38-cdf66ea522ae&amp;arrivalMonth=1&amp;arrivalDay=14&amp;arrivalYear=2013&amp;departureMonth=1&amp;departureDay=20&amp;departureYear=2013&amp;nativeNightlyRates=542.0,542.0,542.0,460.0,542.0,542.0&amp;nativeCurrencyCode=GBP&amp;nativeRoomRate=9510.0&amp;displayNightlyRates=542.0,542.0,542.0,460.0,542.0,542.0&amp;displayCurrencyCode=GBP&amp;displayRoomRate=9510.0&amp;chargeableRoomRateTotal=9510.0&amp;guarantee=C&amp;cancellationPolicy=We+understand+that+sometimes+your+travel+plans+change.+We+do+not+charge+a+change+or+cancel+fee.+However%2C+this+property+%28The+Stafford+London+by+Kempinski%29+imposes+the+following+penalty+to+its+customers+that+we+are+required+to+pass+on%3A+Cancellations+or+changes+made+after+2%3A00+PM+%28%28GMT%29+Greenwich+Mean+Time+%3A+Dublin%2C+Edinburgh%2C+Lisbon%2C+London%29+on+Feb+13%2C+2013+are+subject+to+a+1+Night+Room+%26+Tax+penalty.+The+property+makes+no+refunds+for+no+shows+or+early+checkouts.&amp;directConnect=false&amp;rateFrequency=B&amp;rateIsBase=true",
+			"RoomImages": {
+				"@size": "1",
+				"RoomImage": {
+					"url": "http:\/\/media.expedia.com\/hotels\/1000000\/20000\/11200\/11196\/11196_180_s.jpg"
+				}
+			}
+		},
+		{
+			"rateCode": 200306426,
+			"rateDescription": "Junior Suite",
+			"RoomType": {
+				"@roomCode": "200052219",
+				"@roomTypeId": "663664",
+				"description": "Junior Suite",
+				"descriptionLong": "<strong><ul><li>One King Bed<\/li><\/ul><\/strong>This city view room measures NaN square feet (37-39 square meters). Get a good night's sleep with signature bedding and cotton linens. The private bathroom has bathrobes, designer toiletries, and complimentary toiletries. Complimentary wireless Internet access keeps you connected, and premium TV channels with ESPN are offered for your entertainment. Rollaway\/extra beds, air conditioning, and climate control are among the conveniences offered. This room is Non-Smoking. <p><\/p>",
+				"roomAmenities": {
+					"@size": "10",
+					"RoomAmenity": [{
+						"@amenityId": "13993618",
+						"amenity": "Complimentary toiletries "
+					},
+					{
+						"@amenityId": "14091849",
+						"amenity": "Connecting \/ adjoining rooms available "
+					},
+					{
+						"@amenityId": "13349829",
+						"amenity": "Cribs\/infant beds available "
+					},
+					{
+						"@amenityId": "11002212",
+						"amenity": "Daily housekeeping "
+					},
+					{
+						"@amenityId": "11076282",
+						"amenity": "ESPN "
+					},
+					{
+						"@amenityId": "12927954",
+						"amenity": "Free Wi-Fi "
+					},
+					{
+						"@amenityId": "11948858",
+						"amenity": "In-room safe "
+					},
+					{
+						"@amenityId": "12335280",
+						"amenity": "In-room safe (laptop compatible) "
+					},
+					{
+						"@amenityId": "11948856",
+						"amenity": "Non-smoking only "
+					},
+					{
+						"@amenityId": "11948857",
+						"amenity": "Wheelchair accessible "
+					}]
+				}
+			},
+			"supplierType": "E",
+			"propertyId": 11196,
+			"BedTypes": {
+				"@size": "1",
+				"BedType": {
+					"@id": "14",
+					"description": "One King Bed"
+				}
+			},
+			"smokingPreferences": "NS",
+			"rateOccupancyPerRoom": 3,
+			"quotedOccupancy": 2,
+			"minGuestAge": 0,
+			"RateInfos": {
+				"@size": "1",
+				"RateInfo": {
+					"@rateChange": "true",
+					"@promo": "true",
+					"@priceBreakdown": "true",
+					"RoomGroup": {
+						"Room": [{
+							"numberOfAdults": 2,
+							"numberOfChildren": 0,
+							"rateKey": "af4036ec-3cc6-4184-ae38-cdf66ea522ae"
+						},
+						{
+							"numberOfAdults": 1,
+							"numberOfChildren": 0,
+							"rateKey": "af4036ec-3cc6-4184-ae38-cdf66ea522ae"
+						},
+						{
+							"numberOfAdults": 1,
+							"numberOfChildren": 2,
+							"childAges": [2,
+							0],
+							"rateKey": "af4036ec-3cc6-4184-ae38-cdf66ea522ae"
+						}]
+					},
+					"ChargeableRateInfo": {
+						"@total": "11419.2",
+						"@nightlyRateTotal": "11419.2",
+						"@maxNightlyRate": "762.0",
+						"@currencyCode": "GBP",
+						"@commissionableUsdTotal": "17884.41",
+						"@averageRate": "634.4",
+						"@averageBaseRate": "743.0",
+						"NightlyRatesPerRoom": {
+							"@size": "6",
+							"NightlyRate": [{
+								"@promo": "false",
+								"@rate": "762.0",
+								"@baseRate": "762.0"
+							},
+							{
+								"@promo": "true",
+								"@rate": "533.4",
+								"@baseRate": "762.0"
+							},
+							{
+								"@promo": "true",
+								"@rate": "533.4",
+								"@baseRate": "762.0"
+							},
+							{
+								"@promo": "true",
+								"@rate": "453.6",
+								"@baseRate": "648.0"
+							},
+							{
+								"@promo": "false",
+								"@rate": "762.0",
+								"@baseRate": "762.0"
+							},
+							{
+								"@promo": "false",
+								"@rate": "762.0",
+								"@baseRate": "762.0"
+							}]
+						}
+					},
+					"cancellationPolicy": "We understand that sometimes your travel plans change. We do not charge a change or cancel fee. However, this property (The Stafford London by Kempinski) imposes the following penalty to its customers that we are required to pass on: Cancellations or changes made after 2:00 PM ((GMT) Greenwich Mean Time : Dublin, Edinburgh, Lisbon, London) on Feb 13, 2013 are subject to a 1 Night Room &amp; Tax penalty. The property makes no refunds for no shows or early checkouts.",
+					"CancelPolicyInfoList": {
+						"CancelPolicyInfo": [{
+							"versionId": 207792434,
+							"cancelTime": "14:00:00",
+							"startWindowHours": 0,
+							"nightCount": 1,
+							"currencyCode": "GBP",
+							"timeZoneDescription": "(GMT) Greenwich Mean Time : Dublin, Edinburgh, Lisbon, London"
+						},
+						{
+							"versionId": 207792433,
+							"cancelTime": "14:00:00",
+							"startWindowHours": 24,
+							"nightCount": 0,
+							"currencyCode": "GBP",
+							"timeZoneDescription": "(GMT) Greenwich Mean Time : Dublin, Edinburgh, Lisbon, London"
+						}]
+					},
+					"nonRefundable": false,
+					"rateType": "MerchantStandard",
+					"promoId": 202229040,
+					"promoDescription": "Weekend Sale!  Save 30%!",
+					"currentAllotment": 4,
+					"guaranteeRequired": false,
+					"depositRequired": true,
+					"taxRate": 0
+				}
+			},
+			"ValueAdds": {
+				"@size": "1",
+				"ValueAdd": {
+					"@id": "2048",
+					"description": "Free Wireless Internet"
+				}
+			},
+			"deepLink": "http:\/\/travel.ian.com\/hotels\/priceCheck.jsp?cid=55505&amp;locale=en_GB&amp;currencyCode=GBP&amp;numberOfRooms=3&amp;room-0-adult-total=2&amp;room-0-child-total=0&amp;room-1-adult-total=1&amp;room-1-child-total=0&amp;room-2-adult-total=1&amp;room-2-child-total=2&amp;room-2-child-0-age=2&amp;room-2-child-1-age=0&amp;rateChange=true&amp;rateDescription=Junior+Suite&amp;rateCode=200306426&amp;roomTypeCodeDescription=Junior+Suite&amp;roomTypeCode=200052219&amp;cityLink=London&amp;countryLink=GB&amp;resType=hotel&amp;propertyID=11196&amp;hotelID=176824&amp;supplierType=E&amp;propertyType=H&amp;requestKey=af4036ec-3cc6-4184-ae38-cdf66ea522ae&amp;rateKey=af4036ec-3cc6-4184-ae38-cdf66ea522ae&amp;arrivalMonth=1&amp;arrivalDay=14&amp;arrivalYear=2013&amp;departureMonth=1&amp;departureDay=20&amp;departureYear=2013&amp;nativeNightlyRates=762.0,762.0,762.0,648.0,762.0,762.0&amp;nativeCurrencyCode=GBP&amp;nativeRoomRate=13374.0&amp;displayNightlyRates=762.0,762.0,762.0,648.0,762.0,762.0&amp;displayCurrencyCode=GBP&amp;displayRoomRate=13374.0&amp;chargeableRoomRateTotal=13374.0&amp;guarantee=C&amp;cancellationPolicy=We+understand+that+sometimes+your+travel+plans+change.+We+do+not+charge+a+change+or+cancel+fee.+However%2C+this+property+%28The+Stafford+London+by+Kempinski%29+imposes+the+following+penalty+to+its+customers+that+we+are+required+to+pass+on%3A+Cancellations+or+changes+made+after+2%3A00+PM+%28%28GMT%29+Greenwich+Mean+Time+%3A+Dublin%2C+Edinburgh%2C+Lisbon%2C+London%29+on+Feb+13%2C+2013+are+subject+to+a+1+Night+Room+%26+Tax+penalty.+The+property+makes+no+refunds+for+no+shows+or+early+checkouts.&amp;directConnect=false&amp;rateFrequency=B&amp;rateIsBase=true",
+			"RoomImages": {
+				"@size": "1",
+				"RoomImage": {
+					"url": "http:\/\/media.expedia.com\/hotels\/1000000\/20000\/11200\/11196\/11196_179_s.jpg"
+				}
+			}
+		}]
+	}
+}

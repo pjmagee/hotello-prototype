@@ -10,16 +10,10 @@
         <title>@ViewBag.Title</title>       
         @Styles.Render("~/content/css")
         @RenderSection("Styles", required: false)
-        <style>
-            body {
-                padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-            }
-        </style>
-        @Scripts.Render("~/bundles/modernizr")
+        @Html.Partial("_html5shiv")
+        <script type="text/javascript" src="@Url.Content("~/Scripts/modernizr-2.6.2.js")"></script>
     </head>
-
     <body>
-        
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
@@ -28,12 +22,11 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="#">Hotello</a>
+                    <a class="brand" href="@Url.Action("Index", "Search")">Hotello</a>
                     <div class="nav-collapse">
                         <ul class="nav">
                             @Html.Navigation()
-                            
-                            @if (Session["form"] != null && ViewContext.Controller.ValueProvider.GetValue("action").AttemptedValue != "Index")
+                            @if (Session["Search"] != null && ViewContext.Controller.ValueProvider.GetValue("action").AttemptedValue != "Index")
                             {
                                 <li class="navbar-link">
                                     <a href="#searchForm" title="Change your search criteria">
@@ -41,28 +34,18 @@
                                     </a>
                                 </li>
                             }
-
                         </ul>
-                    </div><!--/.nav-collapse -->
+                    </div>
                 </div>
             </div>
-        </div>   
-             
+        </div>
         <div class="container">
-            <!-- ALERTS -->
             @Html.Partial("_alerts")
-            
-            @if (Session["form"] as SearchViewModel != null && ViewContext.Controller.ValueProvider.GetValue("action").AttemptedValue != "Index")
+            @if (Session["Search"] as SearchViewModel != null && ViewContext.Controller.ValueProvider.GetValue("action").AttemptedValue != "Index")
             {
-                <!-- MODAL SEARCH FORM -->
-                @Html.Partial("_search", Session["form"] as SearchViewModel)
+                @Html.Partial("_search", Session["Search"] as SearchViewModel)
             }
-            
-            <!-- BODY -->
             @RenderBody()
-            
-            
-
             <hr />
             <footer>
                 <div class="span4">
@@ -78,7 +61,6 @@
                 </div>
             </footer> 
         </div>
-        
         <!-- Le javascript
             ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
@@ -87,29 +69,16 @@
         @RenderSection("Scripts", required: false)
         <script type="text/javascript">
 
+          // Search form
             $(document).ready(function () {
                 
-                $('form').validate();
-
-                $('a[href="#searchForm"]').click(function(e) {
-
+                $('a[href="#searchForm"]').click(function (e) {
                     e.preventDefault();
-                    
                     if ($('div#searchForm').is(':visible')) {
-                        
                         $('div#searchForm').slideUp('slow');
-                        
                     } else {
-                        
                         $('div#searchForm').slideDown('slow');
-                        
                     }
-                    
-                });
-
-                $('div.form-actions button').click(function(e) {
-                    e.preventDefault();
-                    $('div.form-actions input[type="submit"]').click();
                 });
 
                 // ----------------------------------------------------------------
@@ -119,7 +88,7 @@
                 // http://api.jqueryui.com/autocomplete/#event-select
 
                 $("input#Destination").autocomplete({
-                    source: function(request, response) {
+                    source: function (request, response) {
                         $.ajax({
                             url: '@Url.Action("AutoSuggestDestination", "Places")', // Call the Google Ajax controller
                             type: "GET", // HTTP GET
@@ -127,16 +96,16 @@
                             data: {
                                 text: request.term
                             },
-                            success: function(data) {
+                            success: function (data) {
 
-                                response($.map(data, function(item) {
+                                response($.map(data, function (item) {
                                     return {
                                         label: item.suggestion,
                                         value: item.suggestion
                                     };
                                 }));
                             },
-                            error: function() {
+                            error: function () {
 
                                 return {
                                     label: "There was an error getting suggested locations",
@@ -145,7 +114,7 @@
                             }
                         });
                     },
-                    select: function(event, ui) {
+                    select: function (event, ui) {
                         console.log("Selected " + ui.item.value);
                         populateNearbyLandmarks(ui.item.value);
                     },
@@ -157,8 +126,6 @@
                 // Dates ----------------------------------------------------------
                 // ----------------------------------------------------------------
 
-                //$.datepicker.setDefaults($.datepicker.regional['en-us']);
-
                 $("input#CheckinDate").datepicker({
                     changeMonth: true,
                     changeYear: true,
@@ -167,7 +134,7 @@
                     minDate: 0,
                     //dateFormat: 'dd/mm/yy',
                     onClose: function (selectedDate) {
-                        
+
                         $("input#CheckoutDate").datepicker("option", "minDate", selectedDate);
                         $("input#CheckoutDate").datepicker("option", "maxDate", new Date(selectedDate).addDays(30));
                     }
@@ -180,7 +147,7 @@
                     numberOfMonths: 2,
                     minDate: 0,
                     //dateFormat: 'dd/mm/yy',
-                    onClose: function(selectedDate) {
+                    onClose: function (selectedDate) {
                         $("input#CheckinDate").datepicker("option", "maxDate", selectedDate);
                         $("input#CheckinDate").datepicker("option", "minDate", new Date(selectedDate).addDays(-30));
                     }
@@ -212,14 +179,13 @@
 
                 var tooltipvalues = ['Economy', 'Moderate', 'First Class', 'Superior', 'Deluxe'];
 
-                $(".star").bind('over', function(event, value) {
+                $(".star").bind('over', function (event, value) {
                     $(this).attr('title', tooltipvalues[value - 1]);
                 });
 
                 // Make sure minimum and maximum ratings make logical sense
 
-                $("div#starMinimum").bind('rated', function(event, value) {
-
+                $("div#starMinimum").bind('rated', function (event, value) {
 
                     var min = $('div#starMinimum').rateit('value');
                     var max = $('div#starMaximum').rateit('value');
@@ -230,7 +196,7 @@
 
                 });
 
-                $("div#starMaximum").bind('rated', function(event, value) {
+                $("div#starMaximum").bind('rated', function (event, value) {
 
                     var min = $('div#starMinimum').rateit('value');
                     var max = $('div#starMaximum').rateit('value');
@@ -251,7 +217,7 @@
                 // Reset Multi Select List Options --------------------------------
                 // ----------------------------------------------------------------
 
-                $('a.btn-info').click(function() {
+                $('a.btn-info').click(function () {
                     $(this).parent('div.controls').find('select option:selected').removeAttr('selected');
                 });
 
@@ -265,12 +231,12 @@
 
                     var idx = $('select#NumberOfBedrooms').val();
 
-                    $('ol.rooms > li:gt(' + (idx - 1) + ')').each(function() {
+                    $('ol.rooms > li:gt(' + (idx - 1) + ')').each(function () {
                         $(this).slideUp('slow');
                     });
 
                     // Less than the number of rooms wanted, show
-                    $('ol.rooms > li:lt(' + (idx) + ')').each(function() {
+                    $('ol.rooms > li:lt(' + (idx) + ')').each(function () {
                         $(this).slideDown('slow');
                     });
                 }
@@ -287,32 +253,13 @@
 
                 $('div.input-prepend.age').hide(); // Hide all child ages initially
 
-                // Any select list for children amount that changes
-                $('select[name$=".Children"]').change(function() {
-
+                $('select[name$=".Children"]').change(function () {
                     sortChildAges();
-
-                    //var select = $(this);
-                    //var children = $(this).val();
-
-                    //console.log("Children Selected: " + children);
-
-                    //var ageSelects = $(select.closest('.room').find('.age select'));
-
-                    //$(select.closest('.room').find('.age select')).each(function() {
-                    //    $(this).parent('div.age').hide(); // hard hide reset
-                    //});
-
-                    //for (var i = 0; i < children; i++) {
-
-                    //    $(ageSelects[i]).parent('div.age').show();
-                    //}
-
                 });
 
                 function sortChildAges() {
 
-                    $('select[name$=".Children"]').each(function() {
+                    $('select[name$=".Children"]').each(function () {
 
                         var select = $(this);
                         var children = $(this).val();
@@ -321,7 +268,7 @@
 
                         var ageSelects = $(select.closest('.room').find('.age select'));
 
-                        $(select.closest('.room').find('.age select')).each(function() {
+                        $(select.closest('.room').find('.age select')).each(function () {
                             $(this).parent('div.age').hide(); // hard hide reset
                         });
 
@@ -331,7 +278,6 @@
                         }
 
                     });
-
                 }
 
                 sortChildAges();
@@ -341,7 +287,7 @@
                 // Amenities ------------------------------------------------------
                 // ----------------------------------------------------------------
 
-                $('a[href="#amenities"]').tooltip({
+                $('form a[href="#amenities"]').tooltip({
                     placement: 'right',
                     animation: true,
                     html: false,
@@ -349,7 +295,7 @@
                     title: 'Select upto 3 amenities',
                 });
 
-                $('input[name="Amenities"]:checkbox').click(function() {
+                $('input[name="Amenities"]:checkbox').click(function () {
 
                     console.log("Checkbox event fired");
 
@@ -361,7 +307,7 @@
                 });
 
                 // Keep the checkbox button list open
-                $('.dropdown-menu input, .dropdown-menu label').click(function(e) {
+                $('.dropdown-menu input, .dropdown-menu label').click(function (e) {
                     e.stopPropagation();
                 });
 
@@ -372,7 +318,7 @@
 
                 $('#destinationId').closest('.controls').find('span.add-on');
 
-                if ($('input#Destination').val().length > 0 && $('select#destinationId option') == 0) {
+                if ($('input#Destination').length > 0) {
 
                     console.log("Pre-populating any landmarks...");
                     populateNearbyLandmarks($('input#Destination').val());
@@ -383,15 +329,17 @@
                     $('select#destinationId').append($("<option></option>").attr("value", "").text("Enter a destination"));
                 }
 
+
                 function populateNearbyLandmarks(destination) {
 
-                    // Set the loading text
+                    // Set the loading text in the select list
                     $('select#destinationId').html("<option value=''>" + 'Checking for landmarks...' + "</option>");
 
                     // Start the loading gif
                     $('#destinationId').closest('div.controls').find('span.add-on').show();
 
-                    // Request
+                    // Get nearby landmarks based on the users input destination string
+                    
                     $.ajax({
                         url: '@Url.Action("Landmarks", "Search")',
                         type: "GET", // HTTP GET
@@ -399,19 +347,25 @@
                         data: {
                             destinationString: destination
                         },
-                        success: function(data) {
+                        success: function (data) {
 
+                            // Remove any pre-populated options
                             $('select#destinationId option').remove();
 
                             if (data.length > 0) {
+                                
+                                // Ok, so we have some results to show
 
-                                $.each(data, function(index, landmark) {
-                                    console.log(landmark.description + "[" + landmark.destinationId + "]");
+                                $.each(data, function (index, landmark) {
+                                    
+                                   // console.log(landmark.description + "[" + landmark.destinationId + "]");
+                                    
                                     var option = "<option value='" + landmark.destinationId + "'>" + landmark.description + "</option>";
                                     $('select#destinationId').append(option);
+                                    
                                 });
 
-                                $('select#destinationId').prepend("<option value='' selected='selected'>No thanks</option>");
+                                $('select#destinationId').prepend("<option value='' selected='selected'>All</option>");
                                 $('select#destinationId').scrollTop(10);
 
                             } else {
@@ -421,12 +375,14 @@
                             }
 
                             $('select#destinationId').effect("highlight", {
-                                color: '#3a87ad' // Bootstrap Info 
+                                color: '#3a87ad' // Bootstrap Info Colour
                             }, 500);
 
                         },
-                        error: function(e) {
+                        error: function (e) {
+                            
                             console.log("Error populating landmarks from response: " + e);
+                            
                             $('select#destinationId').html($("<option></option>").attr("value", "").text("No landmarks available"));
                         }
                     });
@@ -434,10 +390,9 @@
                     // Stop the loading gif
                     $('#destinationId').closest('.controls').find('span.add-on').hide();
                 }
-
             });
-
-
+            
         </script>
+
     </body>
 </html>

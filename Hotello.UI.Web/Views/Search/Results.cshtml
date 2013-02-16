@@ -6,12 +6,12 @@
 @using Microsoft.Security.Application
 @using PagedList
 
-
 @model IPagedList<HotelSummary>
 
 @{   
+    
     ViewBag.Title = "Hotel Results";
-    var culture = new CultureInfo("en-GB");
+    CultureInfo culture = new CultureInfo("en-GB");
     const string googleApiKey = "AIzaSyDm7lXUQTaEvPo-eghcFIo2VjJvyKawKUo";
     
 }
@@ -44,12 +44,18 @@
             @Html.DropDownList("Sort", ResultsViewModel.ResultsOrderList)
         </div>
     </div>
-        
     
+    <!-- Results -->
 
     @foreach (var hotel in Model.OrEmptyIfNull())
-    {               
-        <div class="well" style="background-color: white">
+    {         
+        <!-- Result -->      
+        <div class="hotel well" id="@hotel.HotelId" style="background-color: white">
+            
+            @Html.HiddenFor(modelItem => hotel.HotelId)
+            @Html.HiddenFor(modelItem => hotel.Latitude)
+            @Html.HiddenFor(modelItem => hotel.Longitude)
+            @Html.HiddenFor(modelItem => Session["DestinationId"])
 
             <!-- Hotel Name and expedia star rating -->
             <div class="row-fluid">
@@ -59,14 +65,14 @@
                 </div>
                 <div class="span6">
                     <h3 class="pull-right" style="margin-top: -10px; margin-bottom: -25px;">
-                        <small>Averaging </small><span>@culture.NumberFormat.CurrencySymbol</span>@hotel.HighRate.ToString("0.##")<small> / night </small>
+                        <small>Averaging </small><span>@culture.NumberFormat.CurrencySymbol</span>@hotel.LowRate.ToString("0.##")<small> / night </small>
                     </h3>
                 </div>
             </div>
             <br />
 
             <!-- Hotel Properties -->
-            <div class="row">
+            <div class="row-fluid">
                 
                 <!-- Thumbnail -->
                 <div class="span1">
@@ -102,13 +108,10 @@
                             @hotel.PostalCode<br />
                         }
                     </address>
-                    <p>
-                        <!-- ADDITIONAL -->
-                    </p>
                 </div>
                 
                 <!-- Short Description -->
-                <div class="span2">
+                <div class="span4">
                     <span class="label label-info">
                         <i class="icon-info-sign"></i> Summary
                     </span>
@@ -120,25 +123,27 @@
                 <div class="span2">
                     <p>
                         @{
-                        var url = new StringBuilder()
-                            .Append("http://maps.googleapis.com/maps/api/staticmap?")
-                            .Append(string.Format("center={0},{1}", hotel.Latitude, hotel.Longitude))
-                            .Append(string.Format("&zoom=15&size=150x150&sensor=false"))
-                            .Append(string.Format("&key={0}", googleApiKey))
-                            .Append("&markers=").Append(Server.UrlEncode(string.Format("size:small|color:blue|{0},{1}", hotel.Latitude, hotel.Longitude)))
-                            .ToString();
+                            var url = new StringBuilder()
+                                .Append("http://maps.googleapis.com/maps/api/staticmap?")
+                                .Append(string.Format("center={0},{1}", hotel.Latitude, hotel.Longitude))
+                                .Append(string.Format("&zoom=15&size=150x150&sensor=false"))
+                                .Append(string.Format("&key={0}", googleApiKey))
+                                .Append("&markers=").Append(Server.UrlEncode(string.Format("size:small|color:blue|{0},{1}", hotel.Latitude, hotel.Longitude)))
+                                .ToString();
                         }
 
-                        <img title="@hotel.Latitude, @hotel.Longitude" src="@url" alt="Google Map" class="img-rounded" height="150" width="150" />
+                        <img title="@hotel.Latitude,@hotel.Longitude" src="@url" alt="Google Map" class="img-rounded" height="150" width="150" />
+                        <br />
                     </p>
                 </div> 
                 
-                <div class="span4">
+                <div class="span2">
                     
                     <div class="row">
                         <!-- Hotel Amenities -->
                         <div class="pull-left">
                             <ul class="unstyled" style="margin-left: 10px;">
+                                
                                 @foreach (var amenity in hotel.Amenities.GetFlags())
                                 {
                                     // Only the popular amenities, otherwise we end up listing to much crap
@@ -157,57 +162,59 @@
                                         case Amenities.Babysitting:
                                             {
                                                 <li>
+                                                    <!-- Amenity @amenity -->
                                                     <span><i class="icon-ok-sign"></i> @amenity.GetDescription()</span>
                                                 </li>
                                             }
                                             break;
                                     }
                                 }
+
                             </ul>
-                        </div>
-                        <!-- Hotel Price -->
-                        
-                    </div>
-                    
-                    <div class="pull-right" style="margin-top: -60px; position: relative">
-                            
-                        </div>
-
-                    <div class="row" style="margin-bottom: -10px">
-                        <!-- HOTEL GALLERY AJAX CALL -->
-                        <div class="buttons" style="margin-top: 150px; margin-bottom: 0px;">
-                            <div class="span2">
-                            <a href="#gallery" id="@hotel.HotelId" data-toggle="modal" class="btn btn-small btn-info">
-                                Photo Gallery <i class="icon-camera"></i>
-                            </a>
-                            </div>
-                            <!-- DETAILS LINK -->
-                            <div class="span2">
-                                
-                                @{
-                                    string seoName = hotel.Name.Replace('-', ' ').Replace("  ", " ").Replace(' ', '-');
-                                    string city = hotel.City;
-                                    string country = hotel.CountryCode;
-
-                                    var route = new RouteValueDictionary
-                                        {
-                                            {"id", hotel.HotelId},
-                                            {"name", seoName},
-                                            {"city", city},
-                                            {"country", country}
-                                        };
-                                    
-                                }
-
-                                <a href="@Url.Action("Information", "Hotels", route)" class="btn btn-small btn-info">
-                                    <span>Hotel Details </span><i class="icon-arrow-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                        
+                        </div>                        
                     </div>
                 </div>
 
+            </div>
+            
+            <!-- Row -->
+            <div class="row-fluid" style="margin-bottom: -10px">
+                
+                <div class="span12">
+                    
+                    <div class="span6">
+                        <p class="distance">
+                            <!-- ADDITIONAL -->
+                        </p>
+                    </div>
+                    
+                    <div class="span6">
+                        <!-- HOTEL GALLERY AJAX CALL -->
+                    <div class="buttons pull-right">
+
+                        <a href="#gallery" data-toggle="modal" class="btn btn-mini btn-info">
+                            Photo Gallery <i class="icon-camera"></i>
+                            <input type="hidden" value="@hotel.HotelId" />
+                        </a>
+                        <!-- DETAILS LINK -->
+                        @{
+                            var route = new RouteValueDictionary
+                                {
+                                    {"id", hotel.HotelId},
+                                    {"name", Server.UrlEncode(hotel.Name.Replace('-', ' ').Replace("  ", " ").Replace(' ', '-'))},
+                                    {"city", hotel.City},
+                                    {"country", hotel.CountryCode}
+                                };
+                        }
+
+                        <a href="@Url.Action("Information", "Hotels", route)" class="btn btn-mini btn-info">
+                            <span>Hotel Details </span><i class="icon-arrow-right"></i>
+                        </a>
+                    </div>
+                    </div>
+                    
+
+                </div>   
             </div>
         </div>
     }
@@ -222,7 +229,6 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h3>Hotel Gallery</h3>
-        
     </div>
     <div class="modal-body">
         <div id="myCarousel" class="carousel slide">
@@ -242,46 +248,109 @@
 
 @section Scripts {
 
-    <script type="text/javascript">
-        
-        /*
-        http://stackoverflow.com/questions/13391566/twitter-bootstrap-carousel-different-height-images-cause-bouncing-arrows            
-         */
+    <script type="text/javascript">        
 
-        $(document).ready(function () {
+        $(document).ready(function() {
 
-            // Rate it Initilization
+            // ----------------------------------------------------------------
+            // Distance to Landmark -------------------------------------------
+            // ----------------------------------------------------------------
+
+            var hotelList = [];
+            var destinationId = $(this).find('input[name="Session[DestinationId]"]').val();
+
+            $(".hotel").each(function() {
+
+                var hotel = {};
+                hotel.HotelId = $(this).attr('id');
+                hotel.Latitude = $(this).find('input[name="hotel.Latitude"]').val();
+                hotel.Longitude = $(this).find('input[name="hotel.Longitude"]').val();
+                hotelList.push(hotel);
+                
+            });
+
+            calculateLandmarkDistance(hotelList, destinationId);
+
+            function calculateLandmarkDistance(hotels, dest) {
+
+                console.log("Ajax begin");
+
+                $.ajax({
+                    url: '@Url.Action("Index", "Distance", new {page = Model.PageNumber})',
+                    type: 'POST',
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify({
+                            hotels: hotels,
+                            destinationId: dest
+                        }),
+                    async: true,
+                    success: function(data) {
+
+                        console.log("Landmark: " + data.Landmark);
+
+                        $.each(data.Hotels, function(index, item) {
+
+                            console.log("hotel:" + item.HotelId);
+                            console.log("Distance:" + item.Distance);
+
+                            $('div#' + item.HotelId).find('p.distance').html('Distance to ' + data.Landmark + ' is ' + item.Distance);
+
+                        });
+                    },
+                    error: function(msg) {
+
+                        console.log("Error getting calculate distance to Landmark");
+                    }
+                });
+            }
+
+            // ----------------------------------------------------------------
+            // Rate It --------------------------------------------------------
+            // ----------------------------------------------------------------
+
             $('.rateit').rateit();
-            
+
             var tooltipvalues = ['Economy', 'Moderate', 'First Class', 'Superior', 'Deluxe'];
 
             $.each($(".rateit"), function(index, item) {
 
                 $(this).attr('title', tooltipvalues[$(item).rateit('value') - 1]);
-                
+
             });
 
+            // ----------------------------------------------------------------
+            // Result sorting -------------------------------------------------
+            // ----------------------------------------------------------------
 
             $('select#Sort').val($('input#SortOrder').val());
-            
-            $('select#Sort').change(function (e) {
+
+            $('select#Sort').change(function(e) {
                 $('input#SortOrder').attr('value', $(this).val());
                 $('form[method="get"]').submit();
-            });
+            });            
 
-            // Register Click event
-            $("a[href='#gallery']").click(function () {
+
+            // ----------------------------------------------------------------
+            // Hotel Image Gallery --------------------------------------------
+            // ----------------------------------------------------------------
+
+
+            // http://stackoverflow.com/questions/13391566/twitter-bootstrap-carousel-different-height-images-cause-bouncing-arrows            
+            $("a[href='#gallery']").click(function() {
 
                 $.ajax({
-                    url: '@Url.Action("Images", "Hotels")', // MVC Action
+                    url: '@Url.Action("Images", "Hotels")',
                     type: 'GET',
                     dataType: 'json',
                     data: {
-                        id: $(this).attr('id')
+                        id: $(this).find('input[type="hidden"]').val()
                     },
-                    success: function (data) {
-                        $('.carousel-inner').html(''); // Clear any previous content, i.e from clicking on another hotel gallery
-                        $.map(data, function (item) {
+                    success: function(data) {
+
+                        $('.carousel-inner').html('');
+
+                        $.map(data, function(item) {
                             var html =
                                 "<div class='item hotel-image'>" +
                                     "<img alt='' title='" + item.name + "' src='" + item.Url + "' class='img-polaroid hotel-image' style='float:none; margin-left: auto; margin-right: auto;' />" +
@@ -292,9 +361,12 @@
 
                             $('.carousel-inner').append(html);
 
-                            $('.item').find('h4').each(function () {
+                            $('.item').find('h4').each(function() {
+
                                 if ($(this).val() === "") {
-                                    $(this).parent('.carousel-caption').hide(); // nothing to show...
+
+                                    $(this).parent('.carousel-caption').hide();
+
                                 }
                             });
                         });

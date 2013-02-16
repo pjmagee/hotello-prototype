@@ -15,10 +15,15 @@ namespace Hotello.Services.Expedia.Tests
         {
             // Arrange
             HotelSummary hotelSummary = new HotelSummary();
+            
+            hotelSummary.AmenityMask = (int) new[]
+                {
+                    Amenities.Internet | Amenities.IndoorPool | Amenities.KidsActivities
+                }
+                .CombineFlags();
 
             // Act
-            hotelSummary.AmenityMask = (int) new[] { Amenities.Internet | Amenities.IndoorPool | Amenities.KidsActivities }.CombineFlags();
-            List<Amenities> amenities = hotelSummary.Amenities.GetFlags().ToList();
+            IEnumerable<Amenities> amenities = hotelSummary.Amenities.GetFlags().ToList();
 
 
             // Assert

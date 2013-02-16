@@ -8,7 +8,7 @@ namespace Hotello.Services.Expedia.Hotels.Models
         public long RateCode { get; set; }
         public int MaxRoomOccupancy { get; set; }
         public int QuotedRoomOccupancy { get; set; }
-        public int ExpediaPropertyId { get; set; }
+        public long ExpediaPropertyId { get; set; }
         public int MinGuestAge { get; set; }
         public string RoomDescription { get; set; }
         public long PromoId { get; set; }
@@ -16,7 +16,6 @@ namespace Hotello.Services.Expedia.Hotels.Models
         public int CurrentAllotment { get; set; }
         public bool PropertyAvailable { get; set; }
         public bool PropertyRestricted { get; set; }
-        public int ExpediaProperityId { get; set; }
         public string RateKey { get; set; }
         public bool NonRefundable { get; set; }
         public List<RateInfo> RateInfos { get; set; }

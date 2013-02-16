@@ -9,7 +9,6 @@ namespace Hotello.UI.Web.Models
         {
             get
             {
-
                 return new SelectList(new List<SelectListItem>()
                     {
                         new SelectListItem()

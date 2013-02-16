@@ -8,10 +8,15 @@ namespace Hotello.Services.Expedia.Hotels.Api
     /// Most of these parameters must be sent as part of every request you 
     /// make to the API; some can be provided optionally for testing purposes, 
     /// or are only required for specific setups.
+    /// 
+    /// Expedia state that required properties are
+    /// UserAgent, User IP Address, Cid, ApiKey, Locale
+    /// 
+    /// Note, an implementation should extend the abstract class 
+    /// and over ride the 
     /// <remarks>
     ///   Author: Patrick Magee
-    ///   XML Doc transfered from the Developer EAN
-    ///   site documentation at url:
+    ///   Documentation transferred from the Developer EAN site documentation at:
     ///   <a href="http://developer.ean.com/docs/read/hotels/version_3/Endpoints_amp_Common_Elements">Endpoints and Common Elements</a>
     /// </remarks>
     /// </summary>

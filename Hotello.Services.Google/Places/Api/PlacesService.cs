@@ -14,11 +14,11 @@ namespace Hotello.Services.Google.Places.Api
     {
         private readonly string _apiKey;
         private const string BaseUrl = "https://maps.googleapis.com/maps/api/place/";
-
-
+        
+        [Inject]
         public PlacesService(string apiKey)
         {
-            if (apiKey == null)
+            if (apiKey == null) // Guard Clause
             {
                 throw new ArgumentNullException("apiKey");
             }
@@ -38,30 +38,63 @@ namespace Hotello.Services.Google.Places.Api
             return restResponse.Data;
         }
 
-        public virtual  SearchResponse Search(SearchRequest searchRequest)
+        /// <summary>
+        /// <see cref="https://developers.google.com/maps/documentation/places/#PlaceSearches"/>
+        /// https://maps.googleapis.com/maps/api/place/search/output?parameters
+        /// </summary>
+        /// <param name="searchRequest"></param>
+        /// <returns></returns>
+        public virtual SearchResponse Search(SearchRequest searchRequest)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// https://developers.google.com/maps/documentation/places/#PlaceDetails
+        /// https://maps.googleapis.com/maps/api/place/details/output?parameters
+        /// </summary>
+        /// <param name="detailsRequest"></param>
+        /// <returns></returns>
         public virtual DetailsResponse Details(DetailsRequest detailsRequest)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// https://developers.google.com/maps/documentation/places/#PlaceCheckins
+        /// https://maps.googleapis.com/maps/api/place/check-in/output?parameters
+        /// </summary>
+        /// <param name="checkInRequest"></param>
+        /// <returns></returns>
         public virtual CheckInResponse CheckIn(CheckInRequest checkInRequest)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// https://developers.google.com/maps/documentation/places/#PlaceReports
+        /// https://maps.googleapis.com/maps/api/place/add/output?parameters
+        /// https://maps.googleapis.com/maps/api/place/delete/output?parameters
+        /// </summary>
+        /// <param name="reportRequest"></param>
+        /// <returns></returns>
         public virtual ReportResponse Report(ReportRequest reportRequest)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// https://developers.google.com/maps/documentation/places/autocomplete
+        /// https://maps.googleapis.com/maps/api/place/autocomplete/output?parameters
+        /// </summary>
+        /// <param name="autocompletionRequest"></param>
+        /// <returns></returns>
         public virtual AutocompletionResponse Autocomplete(AutocompletionRequest autocompletionRequest)
         {
-            RestRequest request = new RestRequest();
-            request.Resource = "autocomplete/json";
+            RestRequest request = new RestRequest
+                {
+                    Resource = "autocomplete/json"
+                };
 
             request.AddParameter("input", autocompletionRequest.Input);
             request.AddParameter("sensor", "false");
@@ -69,9 +102,9 @@ namespace Hotello.Services.Google.Places.Api
             if (autocompletionRequest.Types.HasValue())
                 request.AddParameter("types", autocompletionRequest.Types);
 
-            AutocompletionResponse autocompletionResponse = Execute<AutocompletionResponse>(request);
+            AutocompletionResponse response = Execute<AutocompletionResponse>(request);
 
-            return autocompletionResponse;
+            return response;
         }
     }
 }

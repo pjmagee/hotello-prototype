@@ -7,7 +7,7 @@ namespace Hotello.UI.Web.Filters
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            var expediaController = filterContext.Controller as AbstractExpediaController;
+            var expediaController = filterContext.Controller as BaseExpediaController;
 
             if (expediaController != null)
             {

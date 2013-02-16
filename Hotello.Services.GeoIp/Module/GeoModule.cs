@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Ninject.Modules;
 using Ninject.Web.Common;
 
@@ -13,7 +8,7 @@ namespace Hotello.Services.GeoIp.Module
     {
         public override void Load()
         {
-            this.Bind<IGeoLookupService>()
+           Bind<IGeoLookupService>()
                 .To<FreeGeoIpService>()
                 .InRequestScope()
                 .OnActivation((context, service) => Debug.WriteLine("Geo Lookup Service Activated"))

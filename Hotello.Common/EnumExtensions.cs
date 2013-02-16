@@ -7,9 +7,12 @@ using System.Reflection;
 namespace Hotello.Common
 {
     /// <summary>
-    /// Modifications with regards to custom Attribute, 
-    /// Because Nunit has a description attribute so I decided to write a more unique attribute for amenity.
     /// http://stackoverflow.com/questions/1339976/c-how-to-check-if-any-flags-of-a-flag-combination-are-set
+    /// <remarks>
+    /// Modifications with regards to custom Attribute, 
+    /// lines 80 - 95 modified by Patrick Magee 
+    /// Because Nunit has a description attribute so I decided to write a more unique attribute for amenity.
+    /// </remarks>
     /// </summary>
     public static class EnumExtensions
     {

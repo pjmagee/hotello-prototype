@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Hotello.Common;
-using Hotello.Services.Expedia.Hotels.Api;
+using Hotello.Services.Expedia.Hotels.Api.Impl;
 using Hotello.Services.Expedia.Hotels.Models;
 using Hotello.Services.Expedia.Hotels.Models.Request;
 using Hotello.Services.Expedia.Hotels.Models.Response;
@@ -72,11 +71,9 @@ namespace Hotello.Services.Expedia.Tests
             hotelListRequest.CountryCode = "UK";
             hotelListRequest.ArrivalDate = new DateTime(2013, 02, 07);
             hotelListRequest.DepartureDate = new DateTime(2013, 03, 07);
-            hotelListRequest.RoomGroup = new List<Room>
-                {
-                    new Room {NumberOfAdults = 2, NumberOfChildren = 2, ChildAges = new List<int> {14, 16}},
-                    new Room {NumberOfAdults = 1, NumberOfChildren = 0}
-                };
+            hotelListRequest.RoomGroup = new List<Room>();
+            hotelListRequest.RoomGroup.Add(new Room {NumberOfAdults = 1, NumberOfChildren = 0});
+            hotelListRequest.RoomGroup.Add(new Room {NumberOfAdults = 2, NumberOfChildren = 2, ChildAges = new List<int> {14, 16}});
 
             // Act
             HotelListResponse hotelListResponse = expediaService.GetHotelAvailabilityList(hotelListRequest);
@@ -141,7 +138,6 @@ namespace Hotello.Services.Expedia.Tests
                 }
             }
         }
-
 
         [TearDown]
         public void TearDown()

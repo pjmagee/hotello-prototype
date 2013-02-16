@@ -6,6 +6,16 @@
 
  */
 
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+.validation-summary-errors ul
+{
+    list-style-type: none;
+}
+
 .row-hotel-info {
     margin-top: 15px;
 }

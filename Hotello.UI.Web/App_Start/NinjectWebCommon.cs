@@ -1,3 +1,13 @@
+using System;
+using System.Diagnostics;
+using System.Web;
+using Hotello.Services.Expedia.Hotels.Api;
+using Hotello.Services.Google.DistanceMatrix.Api;
+using Hotello.Services.Google.Places.Api;
+using Hotello.UI.Web.Controllers;
+using Microsoft.Web.Infrastructure.DynamicModuleHelper;
+using Ninject;
+using Ninject.Web.Common;
 using Hotello.Services.Expedia.Module;
 using Hotello.Services.GeoIp.Module;
 using Hotello.Services.Google.Module;
@@ -8,14 +18,6 @@ using Ninject.Modules;
 
 namespace Hotello.UI.Web.App_Start
 {
-    using System;
-    using System.Web;
-
-    using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-
-    using Ninject;
-    using Ninject.Web.Common;
-
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -58,14 +60,12 @@ namespace Hotello.UI.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            var modules = new INinjectModule[]
+            kernel.Load(new INinjectModule[]
                 {
-                    new GeoModule(), 
-                    new ExpediaModule(), // Expedia Service Implementation injected into AbstractExpediaService
-                    new GoogleModule() // Google Rest service Implementation injected into IPlacesService
-                };
-
-            kernel.Load(modules);
+                    new GeoModule(),
+                    new ExpediaModule(),
+                    new GoogleModule()
+                });
         }        
     }
 }
