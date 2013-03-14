@@ -187,6 +187,10 @@
     <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\delete.gif" />
     <Content Include="Content\hotello.css" />
+    <Content Include="Content\images\1361063766_offer_50.png" />
+    <Content Include="Content\images\1361063794_offer_20.png" />
+    <Content Include="Content\images\1361063851_offer_5.png" />
+    <Content Include="Content\images\1361063869_golder_offer2.png" />
     <Content Include="Content\images\affiliatedwith_EAN.jpg" />
     <Content Include="Content\images\ajax-loader.gif" />
     <Content Include="Content\images\csg-51050f8079db2.png" />
@@ -616,9 +620,6 @@
     <Content Include="Views\Rooms\Availability.cshtml" />
     <Content Include="Views\Hotels\Information.cshtml" />
     <Content Include="Views\Shared\_html5shiv.cshtml" />
-    <Content Include="Views\Shared\_BootstrapLayout.narrow.cshtml" />
-    <Content Include="Views\Shared\_BootstrapLayout.empty.cshtml" />
-    <Content Include="Views\Shared\_BootstrapLayout.basic.cshtml" />
     <Content Include="Views\Shared\_alerts.cshtml" />
     <Content Include="Views\Search\_pagination.cshtml" />
     <Content Include="Views\Shared\_search.cshtml" />

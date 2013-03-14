@@ -56,7 +56,12 @@
                         <div class="row-fluid">
                             <div class="span12">
                                 <div class="span4">
-                                    <p style="font-weight: bold">@Server.HtmlDecode(room.RoomType.Description)</p>
+                                    <p style="font-weight: bold">
+                                        @if (room.RoomType != null)
+                                        {
+                                            @Server.HtmlDecode(room.RoomType.Description)
+                                        }
+                                    </p>
                                 </div>
                                 <div class="span2">
                                     @if (room.RateInfos.RateInfo.CurrentAllotment > 0 && room.RateInfos.RateInfo.CurrentAllotment <= 10)
@@ -69,7 +74,21 @@
                                 <div class="span2">
                                     @if (room.RateInfos.RateInfo.Promo)
                                     {
-                                        <p style="font-weight: bold; color: red" title="@room.RateInfos.RateInfo.PromoId">Promotional Offer!</p>
+                                        switch (room.RateInfos.RateInfo.PromoId)
+                                        {
+                                            case 202596417:
+                                                {
+                                                    <img src="~/Content/images/1361063766_offer_50.png" alt=""/>
+                                                    break;
+                                                }
+                                                case 201876477:
+                                                default:
+                                                {
+                                                    <img src="~/Content/images/1361063869_golder_offer2.png" alt=""/>
+                                                    break;
+                                                }
+                                        }
+                                        @*<p style="font-weight: bold; color: red" title="@room.RateInfos.RateInfo.PromoId">Promotional Offer!</p>*@
                                     }
                                 </div>
                                 <div class="span2">
@@ -82,7 +101,7 @@
                                             <p class="price pull-left" style="margin-right: 5px;">
                                                 <b>
                                                     <span class="price-total" style="text-decoration: line-through">
-                                                        @((room.RateInfos.RateInfo.ChargeableRateInfo.Total + (room.RateInfos.RateInfo.ChargeableRateInfo.Total*50/100)).ToString("C", cultureInfo))
+                                                        @((room.RateInfos.RateInfo.ChargeableRateInfo.Total + (room.RateInfos.RateInfo.ChargeableRateInfo.Total * 50 / 100)).ToString("C", cultureInfo))
                                                     </span>
                                                 </b>
                                             </p>
@@ -94,7 +113,7 @@
                                             <p class="price pull-left" style="margin-right: 5px;">
                                                 <b>
                                                     <span class="price-total" style="text-decoration: line-through">
-                                                        @((room.RateInfos.RateInfo.ChargeableRateInfo.Total + (room.RateInfos.RateInfo.ChargeableRateInfo.Total*25/100)).ToString("C", cultureInfo))
+                                                        @((room.RateInfos.RateInfo.ChargeableRateInfo.Total + (room.RateInfos.RateInfo.ChargeableRateInfo.Total * 25 / 100)).ToString("C", cultureInfo))
                                                     </span>
                                                 </b>
                                             </p>
@@ -106,7 +125,7 @@
                                             <p class="price pull-left" style="margin-right: 5px;">
                                                 <b>
                                                     <span class="price-total" style="text-decoration: line-through">
-                                                        @((room.RateInfos.RateInfo.ChargeableRateInfo.Total + (room.RateInfos.RateInfo.ChargeableRateInfo.Total*10/100)).ToString("C", cultureInfo))
+                                                        @((room.RateInfos.RateInfo.ChargeableRateInfo.Total + (room.RateInfos.RateInfo.ChargeableRateInfo.Total * 10 / 100)).ToString("C", cultureInfo))
                                                     </span>
                                                 </b>
                                             </p>
@@ -151,13 +170,19 @@
                                             }
                                             <div class="row-fluid">
                                                 <span class="label label-info">Description</span><br />
-                                                <p>
-                                                    @{
+                                                
+                                                    
+                                                    @if (room.RoomType != null)
+                                                    {
                                                         var description = Regex.Split(Server.HtmlDecode(room.RoomType.DescriptionLong), @"<[^>]*>").ToList();
                                                         description.RemoveAll(s => Regex.IsMatch(s, "(<[^>]*>)") || s.IsEmpty());
-                                                    }
-                                                    @description.OrderBy(s => s.Length).LastOrDefault()
-                                                </p>
+                                                        
+                                                        <p>
+                                                            @description.OrderBy(s => s.Length).LastOrDefault()
+                                                        </p>
+                                                    }    
+                                                                                                    
+                                               
                                             </div>
                                         </div>
                                     </div> 
@@ -223,7 +248,7 @@
                                                     <p class="price">
                                                         @if (nightlyRate.Promo)
                                                         {
-                                                            <span class="price-total pull-left" style="text-decoration: line-through; margin-right: 5px;">
+                                                            <span class="price-total" style="text-decoration: line-through; margin-right: 5px;">
                                                                 @((nightlyRate.BaseRate).ToString("C", cultureInfo))
                                                             </span>
                                                         }

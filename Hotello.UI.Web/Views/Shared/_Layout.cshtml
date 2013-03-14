@@ -10,6 +10,12 @@
         <title>@ViewBag.Title</title>       
         @Styles.Render("~/content/css")
         @RenderSection("Styles", required: false)
+        <style type="text/css">
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+            }
+        </style>
         @Html.Partial("_html5shiv")
         <script type="text/javascript" src="@Url.Content("~/Scripts/modernizr-2.6.2.js")"></script>
     </head>
@@ -69,10 +75,10 @@
         @RenderSection("Scripts", required: false)
         <script type="text/javascript">
 
-          // Search form
-            $(document).ready(function () {
-                
-                $('a[href="#searchForm"]').click(function (e) {
+            // Search form
+            $(document).ready(function() {
+
+                $('a[href="#searchForm"]').click(function(e) {
                     e.preventDefault();
                     if ($('div#searchForm').is(':visible')) {
                         $('div#searchForm').slideUp('slow');
@@ -88,7 +94,7 @@
                 // http://api.jqueryui.com/autocomplete/#event-select
 
                 $("input#Destination").autocomplete({
-                    source: function (request, response) {
+                    source: function(request, response) {
                         $.ajax({
                             url: '@Url.Action("AutoSuggestDestination", "Places")', // Call the Google Ajax controller
                             type: "GET", // HTTP GET
@@ -96,16 +102,16 @@
                             data: {
                                 text: request.term
                             },
-                            success: function (data) {
+                            success: function(data) {
 
-                                response($.map(data, function (item) {
+                                response($.map(data, function(item) {
                                     return {
                                         label: item.suggestion,
                                         value: item.suggestion
                                     };
                                 }));
                             },
-                            error: function () {
+                            error: function() {
 
                                 return {
                                     label: "There was an error getting suggested locations",
@@ -114,7 +120,7 @@
                             }
                         });
                     },
-                    select: function (event, ui) {
+                    select: function(event, ui) {
                         console.log("Selected " + ui.item.value);
                         populateNearbyLandmarks(ui.item.value);
                     },
@@ -133,7 +139,7 @@
                     numberOfMonths: 2,
                     minDate: 0,
                     //dateFormat: 'dd/mm/yy',
-                    onClose: function (selectedDate) {
+                    onClose: function(selectedDate) {
 
                         $("input#CheckoutDate").datepicker("option", "minDate", selectedDate);
                         $("input#CheckoutDate").datepicker("option", "maxDate", new Date(selectedDate).addDays(30));
@@ -147,7 +153,7 @@
                     numberOfMonths: 2,
                     minDate: 0,
                     //dateFormat: 'dd/mm/yy',
-                    onClose: function (selectedDate) {
+                    onClose: function(selectedDate) {
                         $("input#CheckinDate").datepicker("option", "maxDate", selectedDate);
                         $("input#CheckinDate").datepicker("option", "minDate", new Date(selectedDate).addDays(-30));
                     }
@@ -179,13 +185,13 @@
 
                 var tooltipvalues = ['Economy', 'Moderate', 'First Class', 'Superior', 'Deluxe'];
 
-                $(".star").bind('over', function (event, value) {
+                $(".star").bind('over', function(event, value) {
                     $(this).attr('title', tooltipvalues[value - 1]);
                 });
 
                 // Make sure minimum and maximum ratings make logical sense
 
-                $("div#starMinimum").bind('rated', function (event, value) {
+                $("div#starMinimum").bind('rated', function(event, value) {
 
                     var min = $('div#starMinimum').rateit('value');
                     var max = $('div#starMaximum').rateit('value');
@@ -196,7 +202,7 @@
 
                 });
 
-                $("div#starMaximum").bind('rated', function (event, value) {
+                $("div#starMaximum").bind('rated', function(event, value) {
 
                     var min = $('div#starMinimum').rateit('value');
                     var max = $('div#starMaximum').rateit('value');
@@ -217,7 +223,7 @@
                 // Reset Multi Select List Options --------------------------------
                 // ----------------------------------------------------------------
 
-                $('a.btn-info').click(function () {
+                $('a.btn-info').click(function() {
                     $(this).parent('div.controls').find('select option:selected').removeAttr('selected');
                 });
 
@@ -231,17 +237,17 @@
 
                     var idx = $('select#NumberOfBedrooms').val();
 
-                    $('ol.rooms > li:gt(' + (idx - 1) + ')').each(function () {
+                    $('ol.rooms > li:gt(' + (idx - 1) + ')').each(function() {
                         $(this).slideUp('slow');
                     });
 
                     // Less than the number of rooms wanted, show
-                    $('ol.rooms > li:lt(' + (idx) + ')').each(function () {
+                    $('ol.rooms > li:lt(' + (idx) + ')').each(function() {
                         $(this).slideDown('slow');
                     });
                 }
 
-                $('select#NumberOfBedrooms').change(function () {
+                $('select#NumberOfBedrooms').change(function() {
                     roomSort();
                 });
 
@@ -253,13 +259,13 @@
 
                 $('div.input-prepend.age').hide(); // Hide all child ages initially
 
-                $('select[name$=".Children"]').change(function () {
+                $('select[name$=".Children"]').change(function() {
                     sortChildAges();
                 });
 
                 function sortChildAges() {
 
-                    $('select[name$=".Children"]').each(function () {
+                    $('select[name$=".Children"]').each(function() {
 
                         var select = $(this);
                         var children = $(this).val();
@@ -268,7 +274,7 @@
 
                         var ageSelects = $(select.closest('.room').find('.age select'));
 
-                        $(select.closest('.room').find('.age select')).each(function () {
+                        $(select.closest('.room').find('.age select')).each(function() {
                             $(this).parent('div.age').hide(); // hard hide reset
                         });
 
@@ -295,7 +301,7 @@
                     title: 'Select upto 3 amenities',
                 });
 
-                $('input[name="Amenities"]:checkbox').click(function () {
+                $('input[name="Amenities"]:checkbox').click(function() {
 
                     console.log("Checkbox event fired");
 
@@ -307,7 +313,7 @@
                 });
 
                 // Keep the checkbox button list open
-                $('.dropdown-menu input, .dropdown-menu label').click(function (e) {
+                $('.dropdown-menu input, .dropdown-menu label').click(function(e) {
                     e.stopPropagation();
                 });
 
@@ -339,7 +345,7 @@
                     $('#destinationId').closest('div.controls').find('span.add-on').show();
 
                     // Get nearby landmarks based on the users input destination string
-                    
+
                     $.ajax({
                         url: '@Url.Action("Landmarks", "Search")',
                         type: "GET", // HTTP GET
@@ -347,22 +353,22 @@
                         data: {
                             destinationString: destination
                         },
-                        success: function (data) {
+                        success: function(data) {
 
                             // Remove any pre-populated options
                             $('select#destinationId option').remove();
 
                             if (data.length > 0) {
-                                
+
                                 // Ok, so we have some results to show
 
-                                $.each(data, function (index, landmark) {
-                                    
-                                   // console.log(landmark.description + "[" + landmark.destinationId + "]");
-                                    
+                                $.each(data, function(index, landmark) {
+
+                                    // console.log(landmark.description + "[" + landmark.destinationId + "]");
+
                                     var option = "<option value='" + landmark.destinationId + "'>" + landmark.description + "</option>";
                                     $('select#destinationId').append(option);
-                                    
+
                                 });
 
                                 $('select#destinationId').prepend("<option value='' selected='selected'>All</option>");
@@ -379,10 +385,10 @@
                             }, 500);
 
                         },
-                        error: function (e) {
-                            
+                        error: function(e) {
+
                             console.log("Error populating landmarks from response: " + e);
-                            
+
                             $('select#destinationId').html($("<option></option>").attr("value", "").text("No landmarks available"));
                         }
                     });

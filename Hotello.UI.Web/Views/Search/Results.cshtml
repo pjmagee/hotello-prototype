@@ -2,6 +2,7 @@
 @using System.Text
 @using Hotello.Common
 @using Hotello.Services.Expedia.Hotels.Models
+@using Hotello.UI.Web.Helpers
 @using Hotello.UI.Web.Models
 @using Microsoft.Security.Application
 @using PagedList
@@ -190,30 +191,28 @@
                     
                     <div class="span6">
                         <!-- HOTEL GALLERY AJAX CALL -->
-                    <div class="buttons pull-right">
+                        <div class="buttons pull-right">
 
-                        <a href="#gallery" data-toggle="modal" class="btn btn-mini btn-info">
-                            Photo Gallery <i class="icon-camera"></i>
-                            <input type="hidden" value="@hotel.HotelId" />
-                        </a>
-                        <!-- DETAILS LINK -->
-                        @{
-                            var route = new RouteValueDictionary
-                                {
-                                    {"id", hotel.HotelId},
-                                    {"name", Server.UrlEncode(hotel.Name.Replace('-', ' ').Replace("  ", " ").Replace(' ', '-'))},
-                                    {"city", hotel.City},
-                                    {"country", hotel.CountryCode}
-                                };
-                        }
+                            <a href="#gallery" data-toggle="modal" class="btn btn-mini btn-info">
+                                Photo Gallery <i class="icon-camera"></i>
+                                <input type="hidden" value="@hotel.HotelId" />
+                            </a>
+                            <!-- DETAILS LINK -->
+                            @{
+                                var route = new RouteValueDictionary
+                                    {
+                                        {"id", hotel.HotelId},
+                                        {"name", hotel.Name.UrlFriendly()},
+                                        {"city", hotel.City},
+                                        {"country", hotel.CountryCode}
+                                    };
+                            }
 
-                        <a href="@Url.Action("Information", "Hotels", route)" class="btn btn-mini btn-info">
-                            <span>Hotel Details </span><i class="icon-arrow-right"></i>
-                        </a>
+                            <a href="@Url.Action("Information", "Hotels", route)" class="btn btn-mini btn-info">
+                                <span>Hotel Details </span><i class="icon-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
-                    </div>
-                    
-
                 </div>   
             </div>
         </div>

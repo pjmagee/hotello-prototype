@@ -1,8 +1,6 @@
-﻿@using Hotello.Common
-@using Hotello.Services.Expedia.Hotels.Models
-@using Hotello.UI.Web.Models
+﻿
 @model SearchViewModel
-
+@using Hotello.UI.Web.Models
 
 @{
 
@@ -35,21 +33,18 @@
 
 <div class="row">
     <div class="span12">
-        
         @Html.Partial("_search", Model)
-       
     </div>
 </div>
 
 @section Scripts {
-    
     <script type="text/javascript">
 
-        $('div#searchForm').show();
-
+        $(document).ready(function() {
+            $('div#searchForm').show();
+        });
+        
     </script>
-    
-     
 }
 
 
